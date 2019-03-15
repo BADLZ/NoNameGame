@@ -15,16 +15,16 @@ import javax.swing.JLabel;
 
 import com.sun.glass.ui.Cursor;
 
-
 public class MainScreen {
 
 	private JFrame frame;
 	JLabel background = null;
-	
+	private ImageIcon cursorimg, quitBtnimg, quitBtnpressedimg, optionsBtnimg, optionsBtnpressedimg, startBtnimg, startBtnpressedimg;
+
 	private Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	private final int screenWidth = size.width;
 	private final int screenHeight = size.height;
-	private ImageIcon cursor;
+
 	/**
 	 * @wbp.nonvisual location=257,709
 	 */
@@ -57,34 +57,41 @@ public class MainScreen {
 	private void initialize() {
 		initializeImages();
 
-		
-		
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-	    frame.setUndecorated(true);
+		frame.setUndecorated(true);
 		frame.setContentPane(background);
-		frame.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
-				cursor.getImage(),
-				new Point(0,0),"custom cursor"));
+		frame.setCursor(
+				Toolkit.getDefaultToolkit().createCustomCursor(cursorimg.getImage(), new Point(0, 0), "custom cursor"));
 
-		FancyButton f1 = new FancyButton("Meu Botao", screenWidth/2-100
-				, screenHeight/2+300, 200, 50,"src/resources/InGameImg/mainImg.jpg");
-		frame.add(f1);
-		f1.CloseActionListener();
+		FancyButton quitBtn = new FancyButton("Meu Botao", screenWidth / 2 - 100, screenHeight / 2 + 100, 200, 67,
+				quitBtnimg, quitBtnpressedimg);
+		frame.add(quitBtn);
+		quitBtn.CloseActionListener();
+
+		FancyButton startBtn = new FancyButton("startBtn", screenWidth / 2 - 100, screenHeight / 2 - 100, 200, 67,
+				startBtnimg,startBtnpressedimg);
+		frame.add(startBtn);
 		
-		FancyButton f2 = new FancyButton("startBtn", screenWidth/2-100
-				, screenHeight/2-300, 300, 100,"src/resources/MainScreenImg/startBtn.png");
-		frame.add(f2);
-		f2.testeListener();
+		FancyButton optionsBtn = new FancyButton("startBtn", screenWidth / 2 - 100, screenHeight / 2, 200, 67,
+				optionsBtnimg,optionsBtnpressedimg);
+		frame.add(optionsBtn);
 		
-		
+
 	}
-	
+
 	private void initializeImages() {
 		try {
 			background = new JLabel(new ImageIcon(ImageIO.read(new File("src/resources/InGameImg/mainImg.jpg"))));
-			cursor = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/pointer.png")));
+			cursorimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/pointer.png")));
+			quitBtnimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/quitBtn.png")));
+			quitBtnpressedimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/quitBtnpressed.png")));
+			optionsBtnimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/optionsBtn.png")));
+			optionsBtnpressedimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/optionsBtnpressed.png")));
+			startBtnimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/startBtn.png")));
+			startBtnpressedimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/startBtnpressed.png")));
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

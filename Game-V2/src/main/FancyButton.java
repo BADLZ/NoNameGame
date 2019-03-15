@@ -2,6 +2,9 @@ package main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -26,18 +29,26 @@ public class FancyButton extends JButton{
 	 * 
 	 * Creates a button without border and content
 	 */
-	public FancyButton(String name, int posX, int posY, int width, int height, String imgPath) {
-		this.setName(name);
+	public FancyButton(String name, int posX, int posY, int width, int height, ImageIcon img, ImageIcon pressedImg) {
+		setName(name);
 		setBounds(posX, posY, width, height);
 		setContentAreaFilled(false);
 		setBorder(BorderFactory.createEmptyBorder());
 		setFocusable(false);
-		try {
-			setIcon(new ImageIcon(ImageIO.read(new File(imgPath))));
-		} catch (IOException e) {
-		}
+		
+		FancyButton f = this;
+		
+		f.setIcon(img);
+		MouseListener startgamelistner = new MouseAdapter() {
+			public void mouseExited(MouseEvent e) {
+					f.setIcon(img);
+			}
+			public void mouseEntered(MouseEvent e) {
+					f.setIcon(pressedImg);
+			}
+		};
+		addMouseListener(startgamelistner);
 	}
-	
 	/**
 	 * Creates a actionListener to close the parent frame
 	 */
