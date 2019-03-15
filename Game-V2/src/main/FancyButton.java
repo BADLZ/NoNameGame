@@ -23,6 +23,8 @@ public class FancyButton extends JButton{
 	 * @param width - Width of the button
 	 * @param height - Height of the button
 	 * @param imgPath - BackGround Image path
+	 * 
+	 * Creates a button without border and content
 	 */
 	public FancyButton(String name, int posX, int posY, int width, int height, String imgPath) {
 		this.setName(name);
