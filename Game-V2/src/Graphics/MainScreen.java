@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -13,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import com.sun.glass.ui.Cursor;
 
@@ -56,7 +59,11 @@ public class MainScreen {
 		FancyButton quitBtn = new FancyButton("Meu Botao", screenWidth / 2 - 100, screenHeight / 2 + 100, 200, 67,
 				quitBtnimg, quitBtnpressedimg);
 		frame.add(quitBtn);
-		quitBtn.CloseActionListener();
+		quitBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
 
 		FancyButton startBtn = new FancyButton("startBtn", screenWidth / 2 - 100, screenHeight / 2 - 100, 200, 67,
 				startBtnimg,startBtnpressedimg);
@@ -69,6 +76,7 @@ public class MainScreen {
 		
 
 	}
+
 
 	private void initializeImages() {
 		try {

@@ -45,18 +45,8 @@ public class FancyButton extends JButton{
 		};
 		addMouseListener(startgamelistner);
 	}
-	/**
-	 * Creates a actionListener to close the parent frame
-	 */
-	public void CloseActionListener() {
-		JFrame topFrame = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, this);
-		addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				topFrame.dispose();
-			}
-		});
-	}
+
+
 	
 	public void testeListener() {
 		addActionListener(new ActionListener() {
@@ -66,9 +56,6 @@ public class FancyButton extends JButton{
 			}
 		});
 	}
-	
-	public void startActionListener() {
-		
-	}
+
 
 }
