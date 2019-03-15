@@ -63,7 +63,7 @@ public class MainScreen {
 		frame.add(startBtn);
 		
 		
-		FancyButton optionsBtn = new FancyButton("startBtn", screenWidth / 2 - 100, screenHeight / 2, 200, 67,
+		FancyButton optionsBtn = new FancyButton("optionsBtn", screenWidth / 2 - 100, screenHeight / 2, 200, 67,
 				optionsBtnimg,optionsBtnpressedimg);
 		frame.add(optionsBtn);
 		
