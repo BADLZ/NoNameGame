@@ -1,0 +1,46 @@
+todos os personagens tem main?
+Gladiador unico que tem nome, e por alguma razao tem um private "nivel", enquanto Personagens ja tem esse atributo.
+--> a parte do nível é estúpido ya. Gladiador é o único a receber String porque só estava a fazer testes com essa classe, mas é para as outras 2 (caçador e feiticeiro) também terem.
+
+É de porposito que tem cenas em ingles tipo "Gold" e os stats sao em portugues?
+--> eu prefiro eng, mas o gajo que me enviou 'o enunciado' mandou em PT e há coisas que ao traduzir fica confuso saber o que é. Mas ya devia estar tudo na mesma lingua
+
+PowerPerLevel muda os atribuitos do personagem e mostra um nivel no Sysout mas nao muda o nivel dele da classe Personagens
+-- > Essa função é só para sabermos os atributos do personagem, não é para mudar o nível
+
+Sistema XP esta um pouco estranho em termos de nao haver uma funcao para dar x XP e verificar se foi suficiente para evoluir...
+		--Sugestao: cirar funcao que retorna um boolean que recebe um x (inteiro ou long) e aumenta o xp do personagem,
+			caso este passe o xp necessario para evoluir, retorna true (para avisar que evoluiu) e atualiza o nivel do jogador..
+--> Hey thanks!
+
+
+Outra coisa do XP:
+	Funcao lvlUp recebe um numero.. da +1 a esse numero... e torna o nivel do personagem nesse numero..
+		será que nao queriam é essa funcao sem receber argumentos e apenas dava +1 ao nivel do proprio personagem??
+--> I´m dumb
+
+
+Classe Missoes - linha 127 (ja devem saber mas vou responder...) - p.getNivel(); 
+--> Isso foi uma cena qualquer de quando estava a começar a fazer e meti ai para não me esquecer xD 
+I´m embarassed now
+
+------
+mudancas que fiz:
+	coloquei atribuitos de personagens diferentes na classe Personagens e atribui valores dos mesmos em cada classe
+	nao sei se querem meter esses atribuitos private e depois ter de meter getters e setters
+	criei toString dos personagens para fazer debuging mais facil
+	meti as personagens numa package - personagens
+--> Apreciate it!
+
+----------------------
+O que acrescentei:
+	-NPC´s (tenho a certeza que dá para meter aquilo melhor tho, mas por enquanto funciona para o que se quer)
+	-Catacumbas:
+		.ainda só tem para 2 
+		.basicamente cada Floor tem 5 NPC´s e ganhas recompensar pelos que derrotas
+	-Main.java
+		.é onde estou a fazer os testes do que se tem. Tirei o main das outras classes.
+	-Segui a sugestão de criar a tal função boolean, chama-se updateXp.
+
+	
+	
