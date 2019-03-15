@@ -67,14 +67,16 @@ public class MainScreen {
 		frame.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
 				cursor.getImage(),
 				new Point(0,0),"custom cursor"));
-		
-		
 
-		FancyButton f1 = new FancyButton("Meu Botao", screenWidth/2-25
-				, screenHeight/2+300, 50, 50,"src/resources/InGameImg/mainImg.jpg");
+		FancyButton f1 = new FancyButton("Meu Botao", screenWidth/2-100
+				, screenHeight/2+300, 200, 50,"src/resources/InGameImg/mainImg.jpg");
 		frame.add(f1);
 		f1.CloseActionListener();
 		
+		FancyButton f2 = new FancyButton("startBtn", screenWidth/2-100
+				, screenHeight/2-300, 300, 100,"src/resources/MainScreenImg/startBtn.png");
+		frame.add(f2);
+		f2.testeListener();
 		
 		
 	}

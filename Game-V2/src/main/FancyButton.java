@@ -50,5 +50,14 @@ public class FancyButton extends JButton{
 			}
 		});
 	}
+	
+	public void testeListener() {
+		addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Foi clicado");
+			}
+		});
+	}
 
 }
