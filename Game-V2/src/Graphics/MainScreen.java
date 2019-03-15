@@ -1,4 +1,4 @@
-package main;
+package Graphics;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -12,8 +12,12 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import com.sun.glass.ui.Cursor;
+
+import Scenes.Scenes;
+import javafx.scene.Scene;
 
 public class MainScreen {
 
@@ -24,25 +28,6 @@ public class MainScreen {
 	private Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	private final int screenWidth = size.width;
 	private final int screenHeight = size.height;
-
-	/**
-	 * @wbp.nonvisual location=257,709
-	 */
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainScreen window = new MainScreen();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -56,7 +41,10 @@ public class MainScreen {
 	 */
 	private void initialize() {
 		initializeImages();
-
+		Scenes s = new Scenes();
+		
+		
+		
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -73,6 +61,7 @@ public class MainScreen {
 		FancyButton startBtn = new FancyButton("startBtn", screenWidth / 2 - 100, screenHeight / 2 - 100, 200, 67,
 				startBtnimg,startBtnpressedimg);
 		frame.add(startBtn);
+		
 		
 		FancyButton optionsBtn = new FancyButton("startBtn", screenWidth / 2 - 100, screenHeight / 2, 200, 67,
 				optionsBtnimg,optionsBtnpressedimg);
@@ -95,6 +84,10 @@ public class MainScreen {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public JFrame getFrame() {
+		return frame;
 	}
 
 }
