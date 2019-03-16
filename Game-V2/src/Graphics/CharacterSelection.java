@@ -1,32 +1,38 @@
 package Graphics;
 
-import javax.swing.JFrame;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-
 import java.awt.Dimension;
 import java.awt.Font;
-import javax.swing.SwingConstants;
+import java.awt.GridLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.OverlayLayout;
+import javax.swing.SwingConstants;
 
 public class CharacterSelection {
 
 	private JFrame frame;
 	private int persIndex;
-	private String[] personagens = { "Cacador", "Feiticeiro", "Gladiador" };
-	private JLabel nomePersonagem;
-	private ImageIcon leftarrowimg, rightarrowimg, leftarrowpressedimg, rightarrowpressedimg, selectimg,
-			selectpressedimg;
 
+	private JLabel personagem, nomePersonagem, background;
+	private ImageIcon leftarrowimg, rightarrowimg, leftarrowpressedimg, rightarrowpressedimg, selectimg,
+			selectpressedimg, labelname;
+
+	private ImageIcon cacadorimg, feiticeiroimg, gladiadorimg;
+	private ImageIcon[] personagens = { cacadorimg, feiticeiroimg, gladiadorimg };
+	private String[] personagensnome = { "Cacador", "Feiticeiro", "Gladiador" };
 	private Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	private final int screenWidth = size.width;
 	private final int screenHeight = size.height;
+	private JLabel textlabel;
 
 	public CharacterSelection(JFrame frame) {
 		this.frame = frame;
@@ -45,10 +51,20 @@ public class CharacterSelection {
 			selectimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/select.png")));
 			selectpressedimg = new ImageIcon(
 					ImageIO.read(new File("src/resources/characterSelection/selectpressed.png")));
+			cacadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
+			feiticeiroimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/selectpressed.png")));
+			gladiadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/selectpressed.png")));
+			
+			background = new JLabel(
+					new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/selectionbackground.jpg"))));
+			labelname = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/namelabel.png")));
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		FancyButton btnRight = new FancyButton("btnRight", screenWidth / 2 + 133, screenHeight / 2 - 50, 35, 28,
+		
+		frame.setContentPane(background);
+		FancyButton btnRight = new FancyButton("btnRight", screenWidth / 2 + 233, screenHeight / 2 - 50, 35, 28,
 				rightarrowimg, rightarrowpressedimg);
 		btnRight.addKeyListener(new KeyAdapter() {
 			@Override
@@ -65,7 +81,7 @@ public class CharacterSelection {
 		});
 		frame.getContentPane().add(btnRight);
 
-		FancyButton btnLeft = new FancyButton("btnLeft", screenWidth / 2 - 167, screenHeight / 2 - 50, 35, 28,
+		FancyButton btnLeft = new FancyButton("btnLeft", screenWidth / 2 - 267, screenHeight / 2 - 50, 35, 28,
 				leftarrowimg, leftarrowpressedimg);
 		btnLeft.addMouseListener(new MouseAdapter() {
 			@Override
@@ -82,15 +98,18 @@ public class CharacterSelection {
 		});
 		frame.getContentPane().add(btnLeft);
 
-		FancyButton btnSelect = new FancyButton("select", screenWidth / 2 - 110, screenHeight / 2 + 130, 220, 67,
+		FancyButton btnSelect = new FancyButton("select", screenWidth / 2 - 110, screenHeight / 2 + 300, 220, 67,
 				selectimg, selectpressedimg);
 		frame.getContentPane().add(btnSelect);
 
-		nomePersonagem = new JLabel(personagens[persIndex]);
-		nomePersonagem.setHorizontalAlignment(SwingConstants.CENTER);
-		nomePersonagem.setFont(new Font("Tahoma", Font.BOLD, 16));
-		nomePersonagem.setBounds(278, 169, 156, 30);
-		frame.getContentPane().add(nomePersonagem);
+		personagem = new JLabel(cacadorimg);
+		personagem.setBounds(screenWidth / 2 - 290, screenHeight / 2 - 300, 480, 600);
+		frame.add(personagem);
+		
+		
+		textlabel = new JLabel(labelname);
+		textlabel.setBounds(screenWidth / 2 - 125, 5, 250, 80);
+		
 	}
 
 	private void changeLabel(int num) {
@@ -101,6 +120,7 @@ public class CharacterSelection {
 		} else {
 			persIndex = (persIndex + num) % personagens.length;
 		}
-		nomePersonagem.setText(personagens[persIndex]);
+		nomePersonagem.setText(personagensnome[persIndex]);
+		personagem.setIcon(personagens[persIndex]);
 	}
 }
