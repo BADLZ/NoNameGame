@@ -10,12 +10,44 @@ public abstract class Personagens {
 	private long currentGold = 0;
 	
 	//--------------------------novas cenas-----
-	public int statusBase, inteligencia, destreza, forca, constituicao, mira, treinoArmas, audacia;
+	private int statusBase, inteligencia, destreza, forca, constituicao, mira, treinoArmas, audacia;
 	
 
 	
 	public int getStatusBase() {
 		return statusBase;
+	}
+
+	public void setStatusBase(int statusBase) {
+		this.statusBase = statusBase;
+	}
+
+	public void setInteligencia(int inteligencia) {
+		this.inteligencia = inteligencia;
+	}
+
+	public void setDestreza(int destreza) {
+		this.destreza = destreza;
+	}
+
+	public void setForca(int forca) {
+		this.forca = forca;
+	}
+
+	public void setConstituicao(int constituicao) {
+		this.constituicao = constituicao;
+	}
+
+	public void setMira(int mira) {
+		this.mira = mira;
+	}
+
+	public void setTreinoArmas(int treinoArmas) {
+		this.treinoArmas = treinoArmas;
+	}
+
+	public void setAudacia(int audacia) {
+		this.audacia = audacia;
 	}
 
 	public int getInteligencia() {
@@ -50,16 +82,16 @@ public abstract class Personagens {
 		StringBuilder result = new StringBuilder();
 		
 		result.append("Nivel:          -" + getNivel() + "-\n");
-		result.append("Current XP:     -" + currentXp + "-\n");
-		result.append("Current Gold:   -" + currentGold + "-\n");
-		result.append("Status Base:    -"+ statusBase + "-\n");
-		result.append("Inteligencia:   -" + inteligencia + "-\n");
-		result.append("Destreza:       -" + destreza + "-\n");
-		result.append("Forca:          -" + forca + "-\n");
-		result.append("Constituicao:   -" + constituicao + "-\n");
-		result.append("Mira:           -" + mira + "-\n");
-		result.append("Treino Armas:   -" + treinoArmas + "-\n");
-		result.append("Audacia:        -" + audacia + "-");
+		result.append("Current XP:     -" + getCurrentXp() + "-\n");
+		result.append("Current Gold:   -" + getCurrentGold() + "-\n");
+		result.append("Status Base:    -" + getStatusBase() + "-\n");
+		result.append("Inteligencia:   -" + getInteligencia() + "-\n");
+		result.append("Destreza:       -" + getDestreza() + "-\n");
+		result.append("Forca:          -" + getForca() + "-\n");
+		result.append("Constituicao:   -" + getConstituicao() + "-\n");
+		result.append("Mira:           -" + getMira() + "-\n");
+		result.append("Treino Armas:   -" + getTreinoArmas() + "-\n");
+		result.append("Audacia:        -" + getAudacia() + "-");
 		
 		return result.toString();
 	}
@@ -87,8 +119,35 @@ public abstract class Personagens {
 		nivel = a;
 	}
 	
-	public void lvlUp() {
-		setNivel(getNivel()+1);
+	public void lvlUp(Personagens p) {
+		p.setNivel(p.getNivel()+1);
+		p.setStatusBase(getStatusBase() + 20);
+		if (p instanceof Gladiador) {
+			p.setInteligencia(p.getInteligencia() + 0);
+			p.setDestreza(p.getDestreza() + 0);
+			p.setForca(p.getForca() + 6);
+			p.setConstituicao(p.getConstituicao() + 11);
+			p.setMira(p.getMira() + 3);
+			p.setTreinoArmas(p.getTreinoArmas() + 0);
+			p.setAudacia(p.getAudacia() + 0);
+		}
+		else if (p instanceof Feiticeiro) {
+			p.setInteligencia(p.getInteligencia() + 12);
+			p.setDestreza(p.getDestreza() + 0);
+			p.setForca(p.getForca() + 0);
+			p.setConstituicao(p.getConstituicao() + 2);
+			p.setMira(p.getMira() + 6);
+			p.setTreinoArmas(p.getTreinoArmas() + 0);
+			p.setAudacia(p.getAudacia() + 0);
+		}
+		else { //caçador
+			p.setInteligencia(p.getInteligencia() + 0);
+			p.setDestreza(p.getDestreza() + 7);
+			p.setForca(p.getForca() + 0);
+			p.setConstituicao(p.getConstituicao() + 7);
+			p.setMira(p.getMira() + 6);
+			p.setTreinoArmas(p.getTreinoArmas() + 0);
+		}
 	}
 	
 	
@@ -114,7 +173,6 @@ public abstract class Personagens {
 	}
 	
 	
-
 	public static boolean updateXp(Personagens p, long xp) {
 		boolean chegouAqui = false;
 		
@@ -124,18 +182,14 @@ public abstract class Personagens {
 			//resetar xp
 			p.setCurrentXp(p.getCurrentXp()-xpForNextLvl(p.getNivel()+1));
 			//aumentar lvl
-			p.lvlUp();
+			p.lvlUp(p);
 			System.out.println("LEVEL UP!");
 			
 			chegouAqui = true;
 			//p.setNivel(p.getNivel()+1);			
 		}	
 		
-		//codigo serguinte podia ser trocado por 1 linha:
-		//return chegouAqui;
-		
 		if (chegouAqui == true) {
-			//why put false????
 			chegouAqui = false;
 			return true;
 		}

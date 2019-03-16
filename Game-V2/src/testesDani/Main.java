@@ -7,11 +7,13 @@ import Graphics.MainWindowManager;
 import Personagens.Cacador;
 import Personagens.Feiticeiro;
 import Personagens.Gladiador;
+import Personagens.Personagens;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
+//		testePersonagens();
 		testeLogin();
 		
 	}
@@ -19,6 +21,14 @@ public class Main {
 	private static void testeLogin() {
 		MainWindowManager m = new MainWindowManager();
 		
+	}
+	
+	private static void testePersonagens() {
+		Cacador c = new Cacador("nome");
+		if(c instanceof Personagens) {
+			Personagens p = (Personagens) c;
+			System.out.println(p);
+		}
 	}
 	
 	private static void testeToString() {

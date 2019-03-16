@@ -5,14 +5,6 @@ public class Cacador extends Personagens {
 	String name;
 	//-------------------------------
 	public Cacador(String name) {
-		super.statusBase = 40;   
-		super.inteligencia = 5;  
-		super.destreza = 10;     
-		super.forca = 5;         
-		super.constituicao = 10; 
-		super.mira = 10;         
-		super.treinoArmas = 10;  
-		super.audacia = 5;
 		
 		if (name == null || name.length() < 1) {
 			throw new IllegalArgumentException("Nome inválido");
@@ -32,35 +24,36 @@ public class Cacador extends Personagens {
 
 	@Override
 	public void powerPerLvl(int lvl) {		
-		statusBase = 20;
-		inteligencia = 5;
-		destreza = 10;
-		forca = 5;
-		constituicao = 10;
-		mira = 10;
-		treinoArmas = 10;
-		audacia = 5;
+		setStatusBase(20);
+		setInteligencia(5);
+		setDestreza(10);
+		setForca(5);
+		setConstituicao(10);
+		setMira(10);
+		setTreinoArmas(10);
+		setAudacia(5);
 		
 		if (lvl > 1) {		
 			for (int i = 0; i < lvl-1; i++) {
-				statusBase += 20;
-				inteligencia += 0;
-				destreza += 7;
-				forca += 0;
-				constituicao += 7;
-				mira += 6;
-				treinoArmas += 0;
+				setStatusBase(getStatusBase() + 20);
+				setInteligencia(getInteligencia() + 0);
+				setDestreza(getDestreza() + 7);
+				setForca(getForca() + 0);
+				setConstituicao(getConstituicao() + 7);
+				setMira(getMira() + 6);
+				setTreinoArmas(getTreinoArmas() + 0);
 			}
 		}
-		System.out.println("Nivel "+lvl);
-		System.out.println("forcaBase "+statusBase);
-		System.out.println("inteligencia "+inteligencia);
-		System.out.println("destreza "+destreza);
-		System.out.println("forca "+forca);
-		System.out.println("constituicao "+constituicao);
-		System.out.println("mira "+mira);
-		System.out.println("treinoArmas "+treinoArmas);
-		System.out.println("Audacia "+audacia);
+		
+		System.out.println("Nivel "+getNivel());
+		System.out.println("forcaBase "+getStatusBase());
+		System.out.println("inteligencia "+getInteligencia());
+		System.out.println("destreza "+getDestreza());
+		System.out.println("forca "+getForca());
+		System.out.println("constituicao "+getConstituicao());
+		System.out.println("mira "+getMira());
+		System.out.println("treinoArmas "+getTreinoArmas());
+		System.out.println("Audacia "+getAudacia());
 	}
 
 }
