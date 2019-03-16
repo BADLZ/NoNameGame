@@ -1,21 +1,15 @@
 package Graphics;
 
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.OverlayLayout;
-import javax.swing.SwingConstants;
 
 public class CharacterSelection {
 
@@ -24,15 +18,14 @@ public class CharacterSelection {
 
 	private JLabel personagem, nomePersonagem, background;
 	private ImageIcon leftarrowimg, rightarrowimg, leftarrowpressedimg, rightarrowpressedimg, selectimg,
-			selectpressedimg, labelname;
+			selectpressedimg, labelcacadorimg, labelfeiticeitoimg, labelgladiadorimg;
 
 	private ImageIcon cacadorimg, feiticeiroimg, gladiadorimg;
 	private ImageIcon[] personagens = { cacadorimg, feiticeiroimg, gladiadorimg };
-	private String[] personagensnome = { "Cacador", "Feiticeiro", "Gladiador" };
+	private ImageIcon[] personagensnome = { labelcacadorimg, labelfeiticeitoimg, labelgladiadorimg };
 	private Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	private final int screenWidth = size.width;
 	private final int screenHeight = size.height;
-	private JLabel textlabel;
 
 	public CharacterSelection(JFrame frame) {
 		this.frame = frame;
@@ -52,13 +45,13 @@ public class CharacterSelection {
 			selectpressedimg = new ImageIcon(
 					ImageIO.read(new File("src/resources/characterSelection/selectpressed.png")));
 			cacadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
-			feiticeiroimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/selectpressed.png")));
-			gladiadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/selectpressed.png")));
-			
+			feiticeiroimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
+			gladiadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
 			background = new JLabel(
 					new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/selectionbackground.jpg"))));
-			labelname = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/namelabel.png")));
-			
+			labelcacadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacadorlabel.png")));
+			labelfeiticeitoimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/feiticeirolabel.png")));
+			labelgladiadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/gladiadorlabel.png")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -107,8 +100,9 @@ public class CharacterSelection {
 		frame.add(personagem);
 		
 		
-		textlabel = new JLabel(labelname);
-		textlabel.setBounds(screenWidth / 2 - 125, 5, 250, 80);
+		nomePersonagem = new JLabel(labelcacadorimg);
+		nomePersonagem.setBounds(screenWidth / 2 - 125, 5, 250, 80);
+		frame.add(nomePersonagem);
 		
 	}
 
@@ -120,7 +114,8 @@ public class CharacterSelection {
 		} else {
 			persIndex = (persIndex + num) % personagens.length;
 		}
-		nomePersonagem.setText(personagensnome[persIndex]);
+		nomePersonagem.setIcon(personagensnome[persIndex]);
 		personagem.setIcon(personagens[persIndex]);
+		frame.repaint();
 	}
 }
