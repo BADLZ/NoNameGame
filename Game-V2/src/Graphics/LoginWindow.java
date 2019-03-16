@@ -11,10 +11,16 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -25,65 +31,41 @@ public class LoginWindow {
 	private JPasswordField passwordField;
 	private String username, passwordHash;
 	private MainWindowManager parentClass;
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//														//just because I have to
-//					LoginWindow window = new LoginWindow(new MainWindowManager());
-//					window.frame.setVisible(true);
-//					
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	private ImageIcon loginBtnimg, loginBtnpressedimg, registerBtnimg, registerBtnpressedimg;
 	
-	public LoginWindow(MainWindowManager parentClass) {
-		this.parentClass = parentClass;
-		frame = new JFrame();
-		initialize();
-		MainWindowManager.centreWindow(frame);
-		frame.setVisible(true);
-	}
+	private Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+	private final int screenWidth = size.width;
+	private final int screenHeight = size.height;
+
 	
 	public LoginWindow(MainWindowManager parentClass, JFrame frame) {
 		this.parentClass = parentClass;
 		this.frame = frame;
 		initialize();
-//		MainWindowManager.centreWindow(frame);
-//		this.frame.setVisible(true);
+		
 	}
 	
-	/**
-	 * Create the application.
-	 */
-	/**
-	public LoginWindow() {
-		initialize();
-		MainWindowManager.centreWindow(frame);
-		frame.setVisible(true);
-	}
-	*/
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		try {
+		loginBtnimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/loginBtn.png")));
+		loginBtnpressedimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/loginBtnpressed.png")));
+		registerBtnimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/registerBtn.png")));
+		registerBtnpressedimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/registerBtnpressed.png")));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 
-//		frame.setBounds(100, 100, 600, 400);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.getContentPane().setLayout(null);
-		
-		usernameField = new JTextField();
-		usernameField.setToolTipText("Nome");
-		usernameField.setBounds(215, 131, 263, 22);
+		FancyTextField usernameField = new FancyTextField("Enter Your Username", screenWidth/2-263/2
+				, screenHeight/2-70, 263, 22);
 		frame.getContentPane().add(usernameField);
-		usernameField.setColumns(10);
+		
+		FancyTextField passwordField = new FancyTextField("Enter Your Password", screenWidth/2-263/2
+				, screenHeight/2-30, 263, 22);
+		frame.getContentPane().add(usernameField);
+		frame.getContentPane().add(passwordField);
 		
 		JLabel nameLabel = new JLabel("Nome:");
 		nameLabel.setForeground(Color.GRAY);
@@ -97,7 +79,8 @@ public class LoginWindow {
 		passwordLabel.setBounds(127, 195, 76, 22);
 		frame.getContentPane().add(passwordLabel);
 		
-		JButton btnLogin = new JButton("Login");
+		FancyButton btnLogin = new FancyButton("btnLogin", screenWidth/2-250, screenHeight/2+50,
+				200, 67, loginBtnimg, loginBtnpressedimg);
 		btnLogin.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -112,17 +95,13 @@ public class LoginWindow {
 				tryLogin();
 			}
 		});
-		btnLogin.setBounds(215, 254, 97, 25);
-		frame.getContentPane().add(btnLogin);
+		frame.add(btnLogin);
 		
-		JButton btnRegister = new JButton("Register");
-		btnRegister.setBounds(363, 254, 97, 25);
-		frame.getContentPane().add(btnRegister);
+		FancyButton btnRegister = new FancyButton("btnRegister", screenWidth/2+50, screenHeight/2+50,
+				200, 67, registerBtnimg, registerBtnpressedimg);
+		frame.add(btnRegister);
 		
-		passwordField = new JPasswordField();
-		passwordField.setToolTipText("Password");
-		passwordField.setBounds(215, 198, 263, 22);
-		frame.getContentPane().add(passwordField);
+
 	}
 	
 	private void tryLogin() {
