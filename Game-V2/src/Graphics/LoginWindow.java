@@ -58,13 +58,14 @@ public class LoginWindow {
 			e.printStackTrace();
 		}
 
-		
-		usernameField = new JTextField();
-		usernameField.setToolTipText("Nome");
-		usernameField.setBounds(215, 131, 263, 22);
+		FancyTextField usernameField = new FancyTextField("Enter Your Username", screenWidth/2-263/2
+				, screenHeight/2-70, 263, 22);
 		frame.getContentPane().add(usernameField);
-		usernameField.setColumns(10);
 		
+		FancyTextField passwordField = new FancyTextField("Enter Your Password", screenWidth/2-263/2
+				, screenHeight/2-30, 263, 22);
+		frame.getContentPane().add(usernameField);
+		frame.getContentPane().add(passwordField);
 		
 		JLabel nameLabel = new JLabel("Nome:");
 		nameLabel.setForeground(Color.GRAY);
@@ -100,10 +101,7 @@ public class LoginWindow {
 				200, 67, registerBtnimg, registerBtnpressedimg);
 		frame.add(btnRegister);
 		
-		passwordField = new JPasswordField();
-		passwordField.setToolTipText("Password");
-		passwordField.setBounds(215, 198, 263, 22);
-		frame.getContentPane().add(passwordField);
+
 	}
 	
 	private void tryLogin() {
