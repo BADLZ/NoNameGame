@@ -57,34 +57,37 @@ public class LoginWindow {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 
-
-		usernameField = new FancyTextField("Enter Your Username", screenWidth / 2 - 121,
-				screenHeight / 2 - 103, 240, 30);
+		usernameField = new FancyTextField("Enter Your Username", screenWidth / 2 - 121, screenHeight / 2 - 103, 240,
+				30);
 		frame.getContentPane().add(usernameField);
 
-		passwordField = new FancyPasswordField("Enter Your Password", screenWidth / 2 - 121,
-				screenHeight / 2  - 23, 240, 30);
+		passwordField = new FancyPasswordField("Enter Your Password", screenWidth / 2 - 121, screenHeight / 2 - 23, 240,
+				30);
 		frame.getContentPane().add(usernameField);
 		frame.getContentPane().add(passwordField);
-		
+
 		JLabel img1 = new JLabel(textfieldimg);
-		img1.setBounds(screenWidth/2-210, screenHeight/2-165, 420, 150);
+		img1.setBounds(screenWidth / 2 - 210, screenHeight / 2 - 165, 420, 150);
 		frame.add(img1);
 		JLabel img2 = new JLabel(textfieldimg);
-		img2.setBounds(screenWidth/2-210, screenHeight/2-85, 420, 150);
+		img2.setBounds(screenWidth / 2 - 210, screenHeight / 2 - 85, 420, 150);
 		frame.add(img2);
-	
 
 		FancyButton btnLogin = new FancyButton("btnLogin", screenWidth / 2 - 250, screenHeight / 2 + 50, 200, 67,
 				loginBtnimg, loginBtnpressedimg);
-		btnLogin.addActionListener(new ActionListener() {
-			
+
+		btnLogin.addMouseListener(new MouseAdapter() {
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void mouseClicked(MouseEvent arg0) {
 				tryLogin();
+			}
+		});
+		btnLogin.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER)
+					tryLogin();
 			}
 		});
 		frame.add(btnLogin);
@@ -92,7 +95,6 @@ public class LoginWindow {
 		FancyButton btnRegister = new FancyButton("btnRegister", screenWidth / 2 + 50, screenHeight / 2 + 50, 200, 67,
 				registerBtnimg, registerBtnpressedimg);
 		frame.add(btnRegister);
-		
 
 	}
 

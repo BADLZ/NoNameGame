@@ -1,9 +1,7 @@
 package Graphics;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import javax.swing.JComboBox;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -19,6 +17,7 @@ public class CharacterSelection {
 	private int persIndex;
 	private String[] personagens = {"Cacador", "Feiticeiro", "Gladiador"};
 	private JLabel nomePersonagem;
+	private ImageIcon leftarrowimg, rightarrowimg;
 	
 	public CharacterSelection(JFrame frame) {
 		this.frame = frame;
@@ -31,7 +30,7 @@ public class CharacterSelection {
 		btnRight.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if(e.getKeyCode() == KeyEvent.VK_ENTER)
+				if(e.getKeyCode() == KeyEvent.VK_RIGHT)
 					changeLabel(1);
 			}
 		});
@@ -54,7 +53,7 @@ public class CharacterSelection {
 		btnLeft.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if(e.getKeyCode() == KeyEvent.VK_ENTER)
+				if(e.getKeyCode() == KeyEvent.VK_LEFT)
 					changeLabel(-1);
 			}
 		});
