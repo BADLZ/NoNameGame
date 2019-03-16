@@ -1,4 +1,4 @@
-package ParteGrafica;
+package Graphics;
 
 import java.awt.EventQueue;
 
