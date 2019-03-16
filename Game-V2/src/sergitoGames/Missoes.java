@@ -73,6 +73,13 @@ public class Missoes {
 				"Mission19",
 				"Mission20"};
 		
+		/* podia ser assim tmb acho eu (n foi testado)
+		String[] mission = new String[20];
+		for(int i = 1; i <= 20; i++) {
+			mission[i-1] = "Mission" + i;
+		}
+		*/
+		
 		randMission = new Random();
 		
         int randomNumber = randMission.nextInt(mission.length);
