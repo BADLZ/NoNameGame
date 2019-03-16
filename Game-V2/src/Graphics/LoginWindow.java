@@ -14,6 +14,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
@@ -73,6 +74,7 @@ public class LoginWindow {
 		usernameField.setBounds(215, 131, 263, 22);
 		frame.getContentPane().add(usernameField);
 		usernameField.setColumns(10);
+		
 		
 		JLabel nameLabel = new JLabel("Nome:");
 		nameLabel.setForeground(Color.GRAY);
