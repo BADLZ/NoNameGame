@@ -9,10 +9,9 @@ import javax.swing.JTextField;
 
 public class FancyTextField extends JTextField{
 
-	public FancyTextField(String placeholder) {
+	public FancyTextField(String placeholder, int posX, int posY, int width, int height) {
 		setBorder(BorderFactory.createEmptyBorder());
-		
-		
+		setBounds(posX, posY, width, height);
 		
 		
 		addFocusListener(new FocusListener() {

@@ -38,23 +38,12 @@ public class LoginWindow {
 	private final int screenHeight = size.height;
 
 	
-	public LoginWindow(MainWindowManager parentClass) {
-		this.parentClass = parentClass;
-		frame = new JFrame();
-		initialize();
-		MainWindowManager.centreWindow(frame);
-		frame.setVisible(true);
-	}
-	
 	public LoginWindow(MainWindowManager parentClass, JFrame frame) {
 		this.parentClass = parentClass;
 		this.frame = frame;
 		initialize();
 	}
 	
-
-
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
