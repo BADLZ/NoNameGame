@@ -13,7 +13,8 @@ public class FancyTextField extends JTextField{
 		setBorder(BorderFactory.createEmptyBorder());
 		setBounds(posX, posY, width, height);
 		setText(placeholder);
-		
+		setOpaque(false);
+
 		addFocusListener(new FocusListener() {
 		    @Override
 		    public void focusGained(FocusEvent e) {
