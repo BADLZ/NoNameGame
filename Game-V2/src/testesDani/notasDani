@@ -1,3 +1,25 @@
+Classe Missoes - funcoes todas nao static enquanto atributos todos static
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 todos os personagens tem main?
 Gladiador unico que tem nome, e por alguma razao tem um private "nivel", enquanto Personagens ja tem esse atributo.
 É de porposito que tem cenas em ingles tipo "Gold" e os stats sao em portugues?

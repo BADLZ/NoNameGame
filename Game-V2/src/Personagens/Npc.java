@@ -2,7 +2,7 @@ package Personagens;
 
 public class Npc extends Personagens {
 
-	
+	//falta atualizar esta classe toda
 	
 	private int statusBase;
 	private int inteligencia;

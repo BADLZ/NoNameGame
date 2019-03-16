@@ -1,6 +1,7 @@
 package main;
 
 import Graphics.MainScreen;
+import Graphics.MainWindowManager;
 
 public class Main {
 
@@ -8,8 +9,9 @@ public class Main {
 
 
 	public static void main(String[] args) {
-		MainScreen window = new MainScreen();
-		window.getFrame().setVisible(true);
+		MainWindowManager game = new MainWindowManager();
+//		MainScreen window = new MainScreen();
+//		window.getFrame().setVisible(true);
 	}
 	
 	
