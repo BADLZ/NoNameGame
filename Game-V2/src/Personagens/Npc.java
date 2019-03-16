@@ -4,25 +4,16 @@ public class Npc extends Personagens {
 
 	
 	
-	private int statusBase;
-	private int inteligencia;
-	private int destreza;
-	private int forca;
-	private int constituicao;
-	private int mira;
-	private int treinoArmas;
-	private int audacia;
-	private int nivel;
-	
 	//para sabermos o atributo para o dano
 	private String attBase;	
-	String name;
+
 	
 	public Npc(String name) {
+		super(name);
+		
 		if (name == null || name.length() < 1) {
-			throw new IllegalArgumentException("Nome NPC inv醠ido");
+			throw new IllegalArgumentException("Nome NPC inválido");
 		}
-		this.name = name;
 	}
 
 	
@@ -80,96 +71,7 @@ public class Npc extends Personagens {
 	
 	public String getName() {
 		
-		return name;
-	}
-
-	public int getStatusBase() {
-		return statusBase;
-	}
-
-
-	public void setStatusBase(int statusBase) {
-		this.statusBase = statusBase;
-	}
-
-
-	public int getInteligencia() {
-		return inteligencia;
-	}
-
-
-	public void setInteligencia(int inteligencia) {
-		this.inteligencia = inteligencia;
-	}
-
-
-	public int getDestreza() {
-		return destreza;
-	}
-
-
-	public void setDestreza(int destreza) {
-		this.destreza = destreza;
-	}
-
-
-	public int getForca() {
-		return forca;
-	}
-
-
-	public void setForca(int forca) {
-		this.forca = forca;
-	}
-
-
-	public int getConstituicao() {
-		return constituicao;
-	}
-
-
-	public void setConstituicao(int constituicao) {
-		this.constituicao = constituicao;
-	}
-
-
-	public int getMira() {
-		return mira;
-	}
-
-
-	public void setMira(int mira) {
-		this.mira = mira;
-	}
-
-
-	public int getTreinoArmas() {
-		return treinoArmas;
-	}
-
-
-	public void setTreinoArmas(int treinoArmas) {
-		this.treinoArmas = treinoArmas;
-	}
-
-
-	public int getAudacia() {
-		return audacia;
-	}
-
-
-	public void setAudacia(int audacia) {
-		this.audacia = audacia;
-	}
-
-
-	public int getNivel() {
-		return nivel;
-	}
-
-
-	public void setNivel(int nivel) {
-		this.nivel = nivel;
+		return super.getName();
 	}
 
 	public String getAttBase() {

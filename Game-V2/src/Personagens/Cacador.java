@@ -2,14 +2,16 @@ package Personagens;
 
 public class Cacador extends Personagens {
 	
-	String name;
+//	String name;
 	//-------------------------------
 	public Cacador(String name) {
+		//o nome vai para a classe Personagens
+		super(name);
 		
 		if (name == null || name.length() < 1) {
 			throw new IllegalArgumentException("Nome inválido");
 		}
-		this.name = name;
+		
 	}
 	
 	public String toString() {
@@ -19,7 +21,7 @@ public class Cacador extends Personagens {
 	//-------------------------------
 	
 	public String getName() {		
-		return name;
+		return super.getName();
 	}
 
 	@Override
