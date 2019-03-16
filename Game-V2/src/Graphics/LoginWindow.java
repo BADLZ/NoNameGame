@@ -1,4 +1,4 @@
-package ParteGrafica;
+package Graphics;
 
 import java.awt.EventQueue;
 
@@ -55,8 +55,8 @@ public class LoginWindow {
 		this.parentClass = parentClass;
 		this.frame = frame;
 		initialize();
-		MainWindowManager.centreWindow(frame);
-		this.frame.setVisible(true);
+//		MainWindowManager.centreWindow(frame);
+//		this.frame.setVisible(true);
 	}
 	
 	/**
@@ -75,9 +75,9 @@ public class LoginWindow {
 	 */
 	private void initialize() {
 
-		frame.setBounds(100, 100, 600, 400);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+//		frame.setBounds(100, 100, 600, 400);
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.getContentPane().setLayout(null);
 		
 		usernameField = new JTextField();
 		usernameField.setToolTipText("Nome");
@@ -135,8 +135,7 @@ public class LoginWindow {
 			
 			//fechar janela
 //			frame.dispose();
-			frame.getContentPane().removeAll();
-			frame.repaint();
+			
 			parentClass.login(username, passwordHash);
 		}
 	}

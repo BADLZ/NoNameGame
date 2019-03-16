@@ -7,6 +7,8 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -25,7 +27,8 @@ import javafx.scene.Scene;
 public class MainScreen {
 
 	private JFrame frame;
-	JLabel background = null;
+	private MainWindowManager mainWindow;
+	private JLabel background = null;
 	private ImageIcon cursorimg, quitBtnimg, quitBtnpressedimg, optionsBtnimg, optionsBtnpressedimg, startBtnimg, startBtnpressedimg;
 
 	private Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -38,6 +41,12 @@ public class MainScreen {
 	public MainScreen() {
 		initialize();
 	}
+	
+	public MainScreen(MainWindowManager mainWindow, JFrame frame) {
+		this.mainWindow = mainWindow;
+		this.frame = frame;
+		initialize();
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -48,10 +57,10 @@ public class MainScreen {
 		
 		
 		
-		frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		frame.setUndecorated(true);
+//		frame = new JFrame();
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//		frame.setUndecorated(true);
 		frame.setContentPane(background);
 		frame.setCursor(
 				Toolkit.getDefaultToolkit().createCustomCursor(cursorimg.getImage(), new Point(0, 0), "custom cursor"));
@@ -67,6 +76,12 @@ public class MainScreen {
 
 		FancyButton startBtn = new FancyButton("startBtn", screenWidth / 2 - 100, screenHeight / 2 - 100, 200, 67,
 				startBtnimg,startBtnpressedimg);
+		startBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				mainWindow.openLoginWindow();
+			}
+		});
 		frame.add(startBtn);
 		
 		

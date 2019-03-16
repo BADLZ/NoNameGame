@@ -1,4 +1,4 @@
-package ParteGrafica;
+package Graphics;
 
 import java.awt.Container;
 import java.awt.Dimension;
@@ -14,12 +14,22 @@ public class MainWindowManager {
 	
 	private JFrame frame;
 	private LoginWindow loginWindow;
+	private MainScreen mainScreen;
 	
 	public MainWindowManager() {
 		this.frame = new JFrame();
-		frame.setTitle("DravenPrograms");
+		frame.setTitle("Game");
+		Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		int screenWidth = size.width;                                   
+		int screenHeight = size.height;
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.setUndecorated(true);
 //		loginWindow = new LoginWindow(this);
-		loginWindow = new LoginWindow(this, frame);
+		
+		mainScreen = new MainScreen(this, frame);
+		frame.setVisible(true);
+//		loginWindow = new LoginWindow(this, frame);
 
 	}
 	
@@ -30,11 +40,21 @@ public class MainWindowManager {
 	    frame.setLocation(x, y);
 	}
 	
+	public void openLoginWindow() {
+		clearWindow();
+		loginWindow = new LoginWindow(this, frame);
+	}
 	
 	//corre isto quando faz login
 	public void login(String username, String hashedPass) {
+		clearWindow();
 		System.out.println(username + " is gonna Play!");
 		CharacterSelection s = new CharacterSelection(frame);
+	}
+	
+	private void clearWindow() {
+		frame.getContentPane().removeAll();
+		frame.repaint();
 	}
 	
 }
