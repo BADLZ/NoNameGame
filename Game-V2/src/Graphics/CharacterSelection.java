@@ -17,7 +17,7 @@ public class CharacterSelection {
 	private int persIndex;
 	private String[] personagens = {"Cacador", "Feiticeiro", "Gladiador"};
 	private JLabel nomePersonagem;
-	private ImageIcon leftarrowimg, rightarrowimg;
+	private ImageIcon leftarrowimg, rightarrowimg ;
 	
 	public CharacterSelection(JFrame frame) {
 		this.frame = frame;
