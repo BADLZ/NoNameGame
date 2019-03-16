@@ -58,15 +58,15 @@ public class Gladiador extends Personagens {
 				setAudacia(getAudacia() + 0);
 			}
 		}
-		System.out.println("Nivel "+getNivel());
-		System.out.println("forcaBase "+getStatusBase());
-		System.out.println("inteligencia "+getInteligencia());
-		System.out.println("destreza "+getDestreza());
-		System.out.println("forca "+getForca());
-		System.out.println("constituicao "+getConstituicao());
-		System.out.println("mira "+getMira());
-		System.out.println("treinoArmas "+getTreinoArmas());
-		System.out.println("Audacia "+getAudacia());
+//		System.out.println("Nivel "+getNivel());
+//		System.out.println("forcaBase "+getStatusBase());
+//		System.out.println("inteligencia "+getInteligencia());
+//		System.out.println("destreza "+getDestreza());
+//		System.out.println("forca "+getForca());
+//		System.out.println("constituicao "+getConstituicao());
+//		System.out.println("mira "+getMira());
+//		System.out.println("treinoArmas "+getTreinoArmas());
+//		System.out.println("Audacia "+getAudacia());
 	}
 
 	

@@ -14,8 +14,17 @@ public class Main {
 	public static void main(String[] args) {
 		
 //		testePersonagens();
-		testeLogin();
+//		testeLogin();
+		testeDatabaseReader();
 		
+	}
+	
+	private static void testeDatabaseReader(){
+		Personagens p = DatabaseReader.getPersonagem("BAD AXE");
+		if(p instanceof Gladiador)
+			System.out.println(p);
+		else
+			System.out.println("o personagem nao e um gladiador");
 	}
 	
 	private static void testeLogin() {
