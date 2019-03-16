@@ -78,8 +78,6 @@ public class DatabaseReader {
 				break;
 			}
 		}
-		
-		
 		return result;
 	}
 	
