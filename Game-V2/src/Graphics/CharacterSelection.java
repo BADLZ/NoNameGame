@@ -21,8 +21,8 @@ public class CharacterSelection {
 			selectpressedimg, labelcacadorimg, labelfeiticeitoimg, labelgladiadorimg;
 
 	private ImageIcon cacadorimg, feiticeiroimg, gladiadorimg;
-	private ImageIcon[] personagens = { cacadorimg, feiticeiroimg, gladiadorimg };
-	private ImageIcon[] personagensnome = { labelcacadorimg, labelfeiticeitoimg, labelgladiadorimg };
+	private ImageIcon[] personagens;
+	private ImageIcon[] personagensnome;
 	private Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	private final int screenWidth = size.width;
 	private final int screenHeight = size.height;
@@ -34,27 +34,7 @@ public class CharacterSelection {
 	}
 
 	private void initialize() {
-		try {
-			leftarrowimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/leftarrow.png")));
-			rightarrowimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/rightarrow.png")));
-			leftarrowpressedimg = new ImageIcon(
-					ImageIO.read(new File("src/resources/characterSelection/leftarrowpressed.png")));
-			rightarrowpressedimg = new ImageIcon(
-					ImageIO.read(new File("src/resources/characterSelection/rightarrowpressed.png")));
-			selectimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/select.png")));
-			selectpressedimg = new ImageIcon(
-					ImageIO.read(new File("src/resources/characterSelection/selectpressed.png")));
-			cacadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
-			feiticeiroimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
-			gladiadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
-			background = new JLabel(
-					new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/selectionbackground.jpg"))));
-			labelcacadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacadorlabel.png")));
-			labelfeiticeitoimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/feiticeirolabel.png")));
-			labelgladiadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/gladiadorlabel.png")));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		initializeImage();
 		
 		frame.setContentPane(background);
 		FancyButton btnRight = new FancyButton("btnRight", screenWidth / 2 + 233, screenHeight / 2 - 50, 35, 28,
@@ -95,12 +75,12 @@ public class CharacterSelection {
 				selectimg, selectpressedimg);
 		frame.getContentPane().add(btnSelect);
 
-		personagem = new JLabel(cacadorimg);
+		personagem = new JLabel(personagens[persIndex]);
 		personagem.setBounds(screenWidth / 2 - 290, screenHeight / 2 - 300, 480, 600);
 		frame.add(personagem);
 		
 		
-		nomePersonagem = new JLabel(labelcacadorimg);
+		nomePersonagem = new JLabel(personagensnome[persIndex]);
 		nomePersonagem.setBounds(screenWidth / 2 - 125, 5, 250, 80);
 		frame.add(nomePersonagem);
 		
@@ -117,5 +97,31 @@ public class CharacterSelection {
 		nomePersonagem.setIcon(personagensnome[persIndex]);
 		personagem.setIcon(personagens[persIndex]);
 		frame.repaint();
+	}
+	
+	private void initializeImage() {
+		try {
+			leftarrowimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/leftarrow.png")));
+			rightarrowimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/rightarrow.png")));
+			leftarrowpressedimg = new ImageIcon(
+					ImageIO.read(new File("src/resources/characterSelection/leftarrowpressed.png")));
+			rightarrowpressedimg = new ImageIcon(
+					ImageIO.read(new File("src/resources/characterSelection/rightarrowpressed.png")));
+			selectimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/select.png")));
+			selectpressedimg = new ImageIcon(
+					ImageIO.read(new File("src/resources/characterSelection/selectpressed.png")));
+			cacadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
+			feiticeiroimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
+			gladiadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
+			background = new JLabel(
+					new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/selectionbackground.jpg"))));
+			labelcacadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacadorlabel.png")));
+			labelfeiticeitoimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/feiticeirolabel.png")));
+			labelgladiadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/gladiadorlabel.png")));
+			personagensnome = new ImageIcon[]{ labelcacadorimg, labelfeiticeitoimg, labelgladiadorimg };
+			personagens = new ImageIcon[]{ cacadorimg, feiticeiroimg, gladiadorimg };
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
