@@ -114,6 +114,7 @@ public abstract class Personagens {
 	}
 	
 	
+
 	public static boolean updateXp(Personagens p, long xp) {
 		boolean chegouAqui = false;
 		
@@ -130,7 +131,11 @@ public abstract class Personagens {
 			//p.setNivel(p.getNivel()+1);			
 		}	
 		
+		//codigo serguinte podia ser trocado por 1 linha:
+		//return chegouAqui;
+		
 		if (chegouAqui == true) {
+			//why put false????
 			chegouAqui = false;
 			return true;
 		}
