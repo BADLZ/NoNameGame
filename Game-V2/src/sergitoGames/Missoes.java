@@ -99,7 +99,7 @@ public class Missoes {
 		
 		long xpPerLvl;
 		
-		xpPerLvl = (lvl*10)*((lvl-1));		
+		xpPerLvl = (lvl*10)*(lvl-1);		
 		
 		long goldPerLvl = 20*lvl;
 		
@@ -125,8 +125,13 @@ public class Missoes {
 		System.out.println("2 - " + randomMission());
 		System.out.println("EXP - " + gainXp2);
 		System.out.println("Gold - " + gainGold2);
-		System.out.print("Option (1|2) ----> ");
-		choice = sc.nextInt();
+		//opcao assim de certeza fica 1 ou 2
+		choice = 0;
+		while(choice != 1 || choice != 2) {
+			System.out.print("Option (1|2) ----> ");
+			choice = sc.nextInt();
+		}
+		
 		
 		switch (choice) {
 
@@ -140,10 +145,11 @@ public class Missoes {
 			//p.setCurrentXp(p.getCurrentXp()+gainXp2);
 			Personagens.updateXp(p, gainXp2);
 			p.setCurrentGold(p.getCurrentGold()+gainGold2);	
-			break;		
+			break;	
 		}
 		System.out.println();
 		
+		sc.close();
 	}
 
 }
