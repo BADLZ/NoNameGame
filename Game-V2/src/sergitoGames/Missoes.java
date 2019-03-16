@@ -37,7 +37,7 @@ public class Missoes {
 	static long gainGold;
 	
 	//Missão 2
-	static long gainXp2;
+	static long gainXp2; 
 	static long gainGold2;
 	
 	static int countMissions = 0;
