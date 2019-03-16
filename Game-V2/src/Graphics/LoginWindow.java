@@ -55,9 +55,7 @@ public class LoginWindow {
 		}
 		
 		
-		JLabel j = new JLabel(textfieldimg);
-		j.setBounds(screenWidth/2-160, screenHeight/2-135, 420, 150);
-		frame.add(j);
+
 
 		FancyTextField usernameField = new FancyTextField("Enter Your Username", screenWidth / 2 - 265 / 2,
 				screenHeight / 2 - 80, 265, 30);
@@ -67,7 +65,11 @@ public class LoginWindow {
 				screenHeight / 2 , 263, 22);
 		frame.getContentPane().add(usernameField);
 		frame.getContentPane().add(passwordField);
-
+		
+		JLabel j = new JLabel(textfieldimg);
+		j.setBounds(screenWidth/2-220, screenHeight/2-135, 420, 150);
+		frame.add(j);
+		
 		JLabel nameLabel = new JLabel("Nome:");
 		nameLabel.setForeground(Color.GRAY);
 		nameLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -101,6 +103,7 @@ public class LoginWindow {
 		FancyButton btnRegister = new FancyButton("btnRegister", screenWidth / 2 + 50, screenHeight / 2 + 50, 200, 67,
 				registerBtnimg, registerBtnpressedimg);
 		frame.add(btnRegister);
+		
 
 	}
 
