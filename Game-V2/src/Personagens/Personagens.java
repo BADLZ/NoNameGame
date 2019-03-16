@@ -8,6 +8,11 @@ public abstract class Personagens {
 	private int nivel;
 	private long currentXp = 0;
 	private long currentGold = 0;
+	private String name;
+	
+	public Personagens(String name) {
+		this.name = name;
+	}
 	
 	//--------------------------novas cenas-----
 	private int statusBase, inteligencia, destreza, forca, constituicao, mira, treinoArmas, audacia;
@@ -76,6 +81,10 @@ public abstract class Personagens {
 
 	public int getAudacia() {
 		return audacia;
+	}
+	
+	public String getName() {
+		return name;
 	}
 	
 	public String toString() {

@@ -15,8 +15,13 @@ public class Main {
 		
 //		testePersonagens();
 //		testeLogin();
-		testeDatabaseReader();
+//		testeDatabaseReader();
+		testeDatabaseWriter();
 		
+	}
+	
+	private static void testeDatabaseWriter() {
+		DatabaseWriter.CreateNewPlayer("Teste1", "Gladiador");
 	}
 	
 	private static void testeDatabaseReader(){

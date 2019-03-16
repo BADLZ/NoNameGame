@@ -4,8 +4,6 @@ import Personagens.Personagens;
 public class Gladiador extends Personagens {
 	
 	
-	String name;
-	
 	//-------------------------------
 	public Gladiador(String name) {
 		/*
@@ -18,10 +16,12 @@ public class Gladiador extends Personagens {
 		super.setTreinoArmas(10);  
 		super.setAudacia(5);*/
 		
+		//o nome vai para a classe Personagens
+		super(name);
+		
 		if (name == null || name.length() < 1) {
 			throw new IllegalArgumentException("Nome inválido");
 		}
-		this.name = name;
 	}
 	
 	public String toString() {
@@ -31,7 +31,7 @@ public class Gladiador extends Personagens {
 	//-------------------------------
 	
 	public String getName() {		
-		return name;
+		return super.getName();
 	}
 
 
