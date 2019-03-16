@@ -145,7 +145,7 @@ public class Catacumbas {
 		return true;
 	}
 	
-	
+	//TODO aleatorio entre -20 e 20
 	public boolean battleNPC(Personagens p, Npc npc) {
 		//TODO por enquanto não tem ARMA
 		npc.statusNpc(npc.getName()); //status NPC
@@ -171,15 +171,15 @@ public class Catacumbas {
 		
 		//danoNPC
 		if (npc.getAttBase().equalsIgnoreCase("inteligencia")) {
-			//System.out.println("ATTBASE - INTELIGENCIA");
+			System.out.println("ATTBASE - INTELIGENCIA");
 			danoNPC = npc.getInteligencia();
 		}
 		else if (npc.getAttBase().equalsIgnoreCase("forca")) {
-			//System.out.println("ATTBASE - FORCA");
+			System.out.println("ATTBASE - FORCA");
 			danoNPC = npc.getForca();
 		}
 		else if (npc.getAttBase().equalsIgnoreCase("destreza")) {
-			//System.out.println("ATTBASE - DESTREZA");
+			System.out.println("ATTBASE - DESTREZA");
 			danoNPC = npc.getDestreza();
 		}
 		else {
@@ -198,26 +198,26 @@ public class Catacumbas {
 			//assumindo que Player começa TODO confirmar com Sergito
 			//TODO falta critico
 			
-			//System.out.println("Vida actual Player: "+vidaP);
-			//System.out.println("Vida actual NPC: "+vidaNPC+"\n");
+			System.out.println("Vida actual Player: "+vidaP);
+			System.out.println("Vida actual NPC: "+vidaNPC+"\n");
 			
 			randP = randomString();
 			if (randP.equalsIgnoreCase("pos")) {
-				//System.out.println("PLAYER 10% POS");
+				System.out.println("PLAYER 10% POS");
 				danoP = danoP + danoP*0.1;
 			}
 			else {
-				//System.out.println("PLAYER 10% NEG");
+				System.out.println("PLAYER 10% NEG");
 				danoP = danoP - danoP*0.1;
 			}
 						
 			randNPC = randomString();
 			if (randNPC.equalsIgnoreCase("pos")) {
-				//System.out.println("NPC 10% POS");
+				System.out.println("NPC 10% POS");
 				danoNPC = danoNPC + danoNPC*0.1;
 			}
 			else {
-				//System.out.println("NPC 10% NEG");
+				System.out.println("NPC 10% NEG");
 				danoNPC = danoNPC - danoNPC*0.1;
 			}
 			
@@ -226,11 +226,20 @@ public class Catacumbas {
 			danoNPC = Math.round(danoNPC * 100.0) / 100.0;
 			
 			
-			//System.out.println(((Gladiador) p).getName()+" ataca com "+danoP+" de dano");
+			
+			if (p instanceof Gladiador) {
+				System.out.println(((Gladiador) p).getName()+" ataca com "+danoP+" de dano");
+			}
+			else if (p instanceof Feiticeiro) {
+				System.out.println(((Feiticeiro) p).getName()+" ataca com "+danoP+" de dano");
+			}
+			else {
+				System.out.println(((Cacador) p).getName()+" ataca com "+danoP+" de dano");
+			}
 			vidaNPC = vidaNPC - danoP;
 			vidaNPC = Math.round(vidaNPC * 100.0) / 100.0;
 
-			//System.out.println(npc.getName()+" ataca com "+danoNPC+" de dano");
+			System.out.println(npc.getName()+" ataca com "+danoNPC+" de dano");
 			vidaP = vidaP - danoNPC;
 			vidaP = Math.round(vidaP * 100.0) / 100.0;
 			
@@ -263,7 +272,8 @@ public class Catacumbas {
 	//Recompensa Catacumba 1
 	public void rewards1(Personagens p, Npc n) {			
 		System.out.println("\nYour Rewards:");
-		rewXp = (n.getNivel()+(n.getNivel()/2))*22188*1;
+		//rewXp = (n.getNivel()+(n.getNivel()/2))*22188*1;
+		rewXp = 1500*(n.getNivel()-10)*1;
 		rewGold = 100*n.getNivel()/2*1;
 		System.out.println("XP GAINED: "+rewXp);
 		System.out.println("GOLD GAINED: "+rewGold);

@@ -2,7 +2,7 @@ package Personagens;
 
 public class Npc extends Personagens {
 
-	//falta atualizar esta classe toda
+	
 	
 	private int statusBase;
 	private int inteligencia;
@@ -14,14 +14,13 @@ public class Npc extends Personagens {
 	private int audacia;
 	private int nivel;
 	
-	
 	//para sabermos o atributo para o dano
 	private String attBase;	
 	String name;
 	
 	public Npc(String name) {
 		if (name == null || name.length() < 1) {
-			throw new IllegalArgumentException("Nome NPC inválido");
+			throw new IllegalArgumentException("Nome NPC invé† ido");
 		}
 		this.name = name;
 	}
@@ -30,131 +29,55 @@ public class Npc extends Personagens {
 	public void statusNpc(String name) {
 		//FIRST FLOOR
 		if (name.equalsIgnoreCase("bruxinha")) {
-			setInteligencia(230);
-			setConstituicao(150);
-			setMira(250);
-			setNivel(15);
-			setStatusBase(0);
-			setDestreza(0);
-			setForca(0);
-			setTreinoArmas(0);
-			setAudacia(0);
-			setAttBase("inteligencia");
+			setAtributos(230, 150, 250, 15, 0, 0, 0, 0, 0, "inteligencia");
 		}
 		else if (name.equalsIgnoreCase("PequenoGuerreiro")) {
-			setInteligencia(0);
-			setConstituicao(450);
-			setMira(250);
-			setNivel(40);
-			setStatusBase(0);
-			setDestreza(0); 
-			setForca(550);
-			setTreinoArmas(0);
-			setAudacia(0);
-			setAttBase("forca");
+			setAtributos(0, 450, 250, 40, 0, 0, 550, 0, 0, "forca");
 		}
 		else if (name.equalsIgnoreCase("ArqueiroMorto")) {
-			setInteligencia(0);
-			setConstituicao(800);
-			setMira(700);
-			setNivel(70);
-			setStatusBase(0);
-			setDestreza(900); 
-			setForca(0);
-			setTreinoArmas(0);
-			setAudacia(0);
-			setAttBase("Destreza");
+			setAtributos(0, 800, 700, 70, 0, 900, 0, 0, 0, "destreza");
 		}
 		else if (name.equalsIgnoreCase("RoqueiroFantasma")) {
-			setInteligencia(1250);
-			setConstituicao(800);
-			setMira(1100);
-			setNivel(110);
-			setStatusBase(0);
-			setDestreza(0); 
-			setForca(0);
-			setTreinoArmas(0);
-			setAudacia(0);
-			setAttBase("inteligencia");
+			setAtributos(1250, 800, 1100, 110, 0, 0, 0, 0, 0, "inteligencia");
 		}
 		else if (name.equalsIgnoreCase("BailarinaMortifora")) {
-			setInteligencia(0);
-			setConstituicao(1500);
-			setMira(900);
-			setNivel(150);
-			setStatusBase(0);
-			setDestreza(1600); 
-			setForca(0);
-			setTreinoArmas(0);
-			setAudacia(0);
-			setAttBase("destreza");
+			setAtributos(0, 1500, 900, 150, 0, 1600, 0, 0, 0, "destreza");
 		}
 		//SECOND FLOOR
 		else if (name.equalsIgnoreCase("PecadorEmEspera")) {
-			setInteligencia(0);
-			setConstituicao(250);
-			setMira(200);
-			setNivel(25);
-			setStatusBase(0);
-			setDestreza(300); 
-			setForca(0);
-			setTreinoArmas(0);
-			setAudacia(0);
-			setAttBase("destreza");
+			setAtributos(0, 250, 200, 25, 0, 300, 0, 0, 0, "destreza");
 		}
 		else if (name.equalsIgnoreCase("ChefeDaFila")) {
-			setInteligencia(700);
-			setConstituicao(300);
-			setMira(600);
-			setNivel(60);
-			setStatusBase(0);
-			setDestreza(0); 
-			setForca(0);
-			setTreinoArmas(0);
-			setAudacia(0);
-			setAttBase("inteligencia");
+			setAtributos(700, 300, 600, 60, 0, 0, 0, 0, 0, "inteligencia");
 		}
 		else if (name.equalsIgnoreCase("MestreCucumba")) {
-			setInteligencia(0);
-			setConstituicao(1000);
-			setMira(400);
-			setNivel(90);
-			setStatusBase(0);
-			setDestreza(0); 
-			setForca(1100);
-			setTreinoArmas(0);
-			setAudacia(0);
-			setAttBase("forca");
+			setAtributos(0, 1000, 400, 90, 0, 0, 1100, 0, 0, "forca");
 		}
 		else if (name.equalsIgnoreCase("GuardiaoDoPortao")) {
-			setInteligencia(0);
-			setConstituicao(1500);
-			setMira(650);
-			setNivel(130);
-			setStatusBase(0);
-			setDestreza(0); 
-			setForca(1700);
-			setTreinoArmas(0);
-			setAudacia(0);
-			setAttBase("forca");
+			setAtributos(0, 1500, 650, 130, 0, 0, 1700, 0, 0, "forca");
 		}
 		else if (name.equalsIgnoreCase("PortaoDemoniaco")) {
-			setInteligencia(0);
-			setConstituicao(2000);
-			setMira(1500);
-			setNivel(180);
-			setStatusBase(0);
-			setDestreza(2200); 
-			setForca(0);
-			setTreinoArmas(0);
-			setAudacia(0);
-			setAttBase("destreza");
+			setAtributos(0, 2000, 1500, 180, 0, 2200, 0, 0, 0, "destreza");
 		}
 		else {
-			System.out.println("NPC não encontrados");
+			System.out.println("NPC nÃ£o encontrados");
 		}
 	}
-
+	private void setAtributos(int inteligencia, int constituicao, int mira, 
+			int nivel ,int statusbase, int destreza, int forca, int treinoarmas,
+			int audacia, String attBase) {
+		setInteligencia(inteligencia);
+		setConstituicao(constituicao);
+		setMira(mira);
+		setNivel(nivel);
+		setStatusBase(statusbase);
+		setDestreza(destreza); 
+		setForca(forca);
+		setTreinoArmas(treinoarmas);
+		setAudacia(audacia);
+		setAttBase(attBase);
+	}
+	
 	public String getName() {
 		
 		return name;

@@ -8,15 +8,15 @@ public class Gladiador extends Personagens {
 	
 	//-------------------------------
 	public Gladiador(String name) {
-		
-		super.statusBase = 40;   
-		super.inteligencia = 5;  
-		super.destreza = 5;      
-		super.forca = 12;        
-		super.constituicao = 12; 
-		super.mira = 6;          
-		super.treinoArmas = 10;  
-		super.audacia = 5;
+		/*
+		super.setStatusBase(40);   
+		super.setInteligencia(5);  
+		super.setDestreza(5);      
+		super.setForca(12);        
+		super.setConstituicao(12); 
+		super.setMira(6);          
+		super.setTreinoArmas(10);  
+		super.setAudacia(5);*/
 		
 		if (name == null || name.length() < 1) {
 			throw new IllegalArgumentException("Nome inválido");
@@ -37,36 +37,36 @@ public class Gladiador extends Personagens {
 
 	@Override
 	public void powerPerLvl(int lvl) {
-		statusBase = 40;
-		inteligencia = 5;
-		destreza = 5;
-		forca = 12;
-		constituicao = 12;
-		mira = 6;
-		treinoArmas = 10;
-		audacia = 5;
+		setStatusBase(40);
+		setInteligencia(5);
+		setDestreza(5);
+		setForca(12);
+		setConstituicao(12);
+		setMira(6);
+		setTreinoArmas(10);
+		setAudacia(5);
 		
 		if (lvl > 1) {		
 			for (int i = 0; i < lvl-1; i++) {
-				statusBase += 20;
-				inteligencia += 0;
-				destreza += 0;
-				forca += 6;
-				constituicao += 11;
-				mira += 3;
-				treinoArmas += 0;
-				audacia += 0;
+				setStatusBase(getStatusBase() + 20);
+				setInteligencia(getInteligencia() + 0);
+				setDestreza(getDestreza() + 0);
+				setForca(getForca() + 6);
+				setConstituicao(getConstituicao() + 11);
+				setMira(getMira() + 3);
+				setTreinoArmas(getTreinoArmas() + 0);
+				setAudacia(getAudacia() + 0);
 			}
 		}
-		System.out.println("Nivel "+lvl);
-		System.out.println("forcaBase "+statusBase);
-		System.out.println("inteligencia "+inteligencia);
-		System.out.println("destreza "+destreza);
-		System.out.println("forca "+forca);
-		System.out.println("constituicao "+constituicao);
-		System.out.println("mira "+mira);
-		System.out.println("treinoArmas "+treinoArmas);
-		System.out.println("Audacia "+audacia);
+		System.out.println("Nivel "+getNivel());
+		System.out.println("forcaBase "+getStatusBase());
+		System.out.println("inteligencia "+getInteligencia());
+		System.out.println("destreza "+getDestreza());
+		System.out.println("forca "+getForca());
+		System.out.println("constituicao "+getConstituicao());
+		System.out.println("mira "+getMira());
+		System.out.println("treinoArmas "+getTreinoArmas());
+		System.out.println("Audacia "+getAudacia());
 	}
 
 	
