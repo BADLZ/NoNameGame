@@ -5,14 +5,6 @@ public class Cacador extends Personagens {
 	String name;
 	//-------------------------------
 	public Cacador(String name) {
-		/*super.setStatusBase(40);   
-		super.setInteligencia(5);  
-		super.setDestreza(10);     
-		super.setForca(5);         
-		super.setConstituicao(10); 
-		super.setMira(10);         
-		super.setTreinoArmas(10);  
-		super.setAudacia(5);*/
 		
 		if (name == null || name.length() < 1) {
 			throw new IllegalArgumentException("Nome inválido");

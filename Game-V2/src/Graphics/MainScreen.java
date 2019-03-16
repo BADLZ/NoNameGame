@@ -1,8 +1,6 @@
 package Graphics;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -16,13 +14,6 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
-import com.sun.glass.ui.Cursor;
-
-import Scenes.Scenes;
-import javafx.scene.Scene;
 
 public class MainScreen {
 
@@ -53,14 +44,7 @@ public class MainScreen {
 	 */
 	private void initialize() {
 		initializeImages();
-		Scenes s = new Scenes();
 		
-		
-		
-//		frame = new JFrame();
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//		frame.setUndecorated(true);
 		frame.setContentPane(background);
 		frame.setCursor(
 				Toolkit.getDefaultToolkit().createCustomCursor(cursorimg.getImage(), new Point(0, 0), "custom cursor"));
