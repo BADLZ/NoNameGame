@@ -57,30 +57,22 @@ public class LoginWindow {
 		
 
 
-		FancyTextField usernameField = new FancyTextField("Enter Your Username", screenWidth / 2 - 265 / 2,
-				screenHeight / 2 - 80, 265, 30);
+		FancyTextField usernameField = new FancyTextField("Enter Your Username", screenWidth / 2 - 121,
+				screenHeight / 2 - 103, 240, 30);
 		frame.getContentPane().add(usernameField);
 
-		FancyTextField passwordField = new FancyTextField("Enter Your Password", screenWidth / 2 - 263 / 2,
-				screenHeight / 2 , 263, 22);
+		FancyPasswordField passwordField = new FancyPasswordField("Enter Your Password", screenWidth / 2 - 121,
+				screenHeight / 2  - 23, 240, 30);
 		frame.getContentPane().add(usernameField);
 		frame.getContentPane().add(passwordField);
 		
-		JLabel j = new JLabel(textfieldimg);
-		j.setBounds(screenWidth/2-220, screenHeight/2-135, 420, 150);
-		frame.add(j);
-		
-		JLabel nameLabel = new JLabel("Nome:");
-		nameLabel.setForeground(Color.GRAY);
-		nameLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		nameLabel.setBounds(127, 128, 76, 22);
-		frame.getContentPane().add(nameLabel);
-
-		JLabel passwordLabel = new JLabel("Pass:");
-		passwordLabel.setForeground(Color.GRAY);
-		passwordLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		passwordLabel.setBounds(127, 195, 76, 22);
-		frame.getContentPane().add(passwordLabel);
+		JLabel img1 = new JLabel(textfieldimg);
+		img1.setBounds(screenWidth/2-210, screenHeight/2-165, 420, 150);
+		frame.add(img1);
+		JLabel img2 = new JLabel(textfieldimg);
+		img2.setBounds(screenWidth/2-210, screenHeight/2-85, 420, 150);
+		frame.add(img2);
+	
 
 		FancyButton btnLogin = new FancyButton("btnLogin", screenWidth / 2 - 250, screenHeight / 2 + 50, 200, 67,
 				loginBtnimg, loginBtnpressedimg);

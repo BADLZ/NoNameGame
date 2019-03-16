@@ -1,6 +1,7 @@
 package Graphics;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
@@ -13,26 +14,26 @@ public class FancyTextField extends JTextField{
 		setBorder(BorderFactory.createEmptyBorder());
 		setBounds(posX, posY, width, height);
 		setText(placeholder);
-//		setOpaque(false);
-
+		setForeground(new Color(255,255,255));
+		setFont(new Font("Consolas", 0, 20));
+		setOpaque(false);
+		
 		addFocusListener(new FocusListener() {
 		    @Override
 		    public void focusGained(FocusEvent e) {
 		        if (getText().equals(placeholder)) {
 		            setText("");
-		            setForeground(Color.BLACK);
 		        }
 		    }
 		    @Override
 		    public void focusLost(FocusEvent e) {
 		        if (getText().isEmpty()) {
-		            setForeground(Color.GRAY);
 		            setText(placeholder);
 		        }
 		    }
 		    });
 	}
-
+	
 	
 
 }
