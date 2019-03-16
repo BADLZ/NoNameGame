@@ -43,8 +43,10 @@ public class LogSign{
 				NodeList lista = databaseName.getParentNode().getChildNodes();
 				for (int j = 0; j < lista.getLength(); j++) {
 					Node m = lista.item(j);
-					if(m.getNodeType() == Node.ELEMENT_NODE)
+					if(m.getNodeType() == Node.ELEMENT_NODE) {
 						s.append(m.getTextContent());
+						
+					}
 				}
 				return s.toString();
 			}

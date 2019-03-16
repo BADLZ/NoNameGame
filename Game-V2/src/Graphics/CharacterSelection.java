@@ -5,6 +5,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
+import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
@@ -21,6 +23,10 @@ public class CharacterSelection {
 	private JLabel nomePersonagem;
 	private ImageIcon leftarrowimg, rightarrowimg, leftarrowpressedimg, rightarrowpressedimg;
 	
+	private Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+	private final int screenWidth = size.width;
+	private final int screenHeight = size.height;
+	
 	public CharacterSelection(JFrame frame) {
 		this.frame = frame;
 		initialize();
@@ -29,15 +35,17 @@ public class CharacterSelection {
 
 	private void initialize() {	
 		try {
-			leftarrowimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/loginBtn.png")));
+			leftarrowimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/leftarrow.png")));
 			rightarrowimg = new ImageIcon(
-					ImageIO.read(new File("src/resources/MainScreenImg/loginBtnpressed.png")));
-			leftarrowpressedimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/registerBtn.png")));
+					ImageIO.read(new File("src/resources/characterSelection/rightarrow.png")));
+			leftarrowpressedimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/leftarrowpressed.png")));
 			rightarrowpressedimg = new ImageIcon(
-					ImageIO.read(new File("src/resources/MainScreenImg/registerBtnpressed.png")));
+					ImageIO.read(new File("src/resources/characterSelection/rightarrowpressed.png")));
 		}catch (Exception e) {
+			e.printStackTrace();
 		}
-		FancyButton btnRight = new FancyButton("btnRight",491, 174, 97, 25,rightarrowimg,rightarrowpressedimg);
+		FancyButton btnRight = new FancyButton("btnRight", screenWidth/2, screenHeight/2
+				, 97, 25,rightarrowimg,rightarrowpressedimg);
 		btnRight.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -53,7 +61,8 @@ public class CharacterSelection {
 		});
 		frame.getContentPane().add(btnRight);
 		
-		JButton btnLeft = new JButton("left");
+		FancyButton btnLeft = new FancyButton("btnLeft",screenWidth/2+50, screenHeight/2
+				, 97, 25,leftarrowimg,leftarrowpressedimg);
 		btnLeft.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -67,7 +76,6 @@ public class CharacterSelection {
 					changeLabel(-1);
 			}
 		});
-		btnLeft.setBounds(111, 174, 97, 25);
 		frame.getContentPane().add(btnLeft);
 		
 		JButton btnSelect = new JButton("select");

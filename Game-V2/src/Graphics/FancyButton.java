@@ -27,7 +27,7 @@ public class FancyButton extends JButton{
 		setName(name);
 		setBounds(posX, posY, width, height);
 		setContentAreaFilled(false);
-		setBorder(BorderFactory.createEmptyBorder());
+//		setBorder(BorderFactory.createEmptyBorder());
 		setFocusable(false);
 		
 		FancyButton f = this;

@@ -36,6 +36,7 @@ public class MainWindowManager {
 		if (dados != null) {
 			createPlayer(dados.split(""));
 		} else {
+			clearWindow();
 			CharacterSelection s = new CharacterSelection(frame);
 		}
 	}
