@@ -55,6 +55,8 @@ public class Feiticeiro extends Personagens {
 				audacia += 0;
 			}
 		}
+		//Se das um nivel o nivel da personagem tem de mudar
+		setNivel(lvl);
 		
 		System.out.println("Nivel "+lvl);
 		System.out.println("forcaBase "+statusBase);

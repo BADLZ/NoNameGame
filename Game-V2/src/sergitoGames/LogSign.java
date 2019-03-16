@@ -1,8 +1,5 @@
 package sergitoGames;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -18,26 +15,12 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 
-public class LogSign {
+
+public class LogSign{
 
 	private Document document;
-
-	public static void main(String args[]) {
-		LogSign m = new LogSign();
-		
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Username: ");
-		String username = sc.nextLine();
-		
-		System.out.print("Categoria: ");
-		String categoria = sc.nextLine();
-		
-		//m.login("Sergito");
-		m.CreateNewPlayer(username, categoria);
-		sc.close();
-	}
-
-	public NodeList login(String name) {
+	
+	public LogSign() {
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
@@ -47,7 +30,11 @@ public class LogSign {
 		} catch (Exception e) {
 
 		}
+	}
+	public String login(String name) {
 
+		StringBuilder s = new StringBuilder();
+		
 		NodeList allPlayers = document.getElementsByTagName("name");
 
 		for (int i = 0; i < allPlayers.getLength(); i++) {
@@ -56,11 +43,10 @@ public class LogSign {
 				NodeList lista = databaseName.getParentNode().getChildNodes();
 				for (int j = 0; j < lista.getLength(); j++) {
 					Node m = lista.item(j);
-					if (m.getNodeName().equalsIgnoreCase("class")) {
-						System.out.println("Welcome back " + m.getTextContent() + ": " + name);
-						return lista;
-					}
+					if(m.getNodeType() == Node.ELEMENT_NODE)
+						s.append(m.getTextContent());
 				}
+				return s.toString();
 			}
 		}
 		return null;
@@ -68,9 +54,6 @@ public class LogSign {
 
 	public void CreateNewPlayer(String name, String Class) {
 		try {
-			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-			Document document = documentBuilder.parse("PlayerBase.xml");
 			
 			Element root = document.getDocumentElement();
 

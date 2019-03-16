@@ -19,30 +19,6 @@ public class CharacterSelection {
 	private int persIndex;
 	private String[] personagens = {"Cacador", "Feiticeiro", "Gladiador"};
 	private JLabel nomePersonagem;
-
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					CharacterSelection window = new CharacterSelection();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-//	/**
-//	 * Create the application.
-//	 */
-//	public CharacterSelection() {
-//		initialize();
-//		frame.setVisible(true);
-//	}
 	
 	public CharacterSelection(JFrame frame) {
 		this.frame = frame;
@@ -50,15 +26,7 @@ public class CharacterSelection {
 		frame.setVisible(true);
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-//		frame = new JFrame();
-//		frame.setBounds(100, 100, 732, 392);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.getContentPane().setLayout(null);
-		
+	private void initialize() {	
 		JButton btnRight = new JButton("right");
 		btnRight.addKeyListener(new KeyAdapter() {
 			@Override

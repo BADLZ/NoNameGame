@@ -3,11 +3,14 @@ package Graphics;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -22,7 +25,8 @@ public class LoginWindow {
 	private JFrame frame;
 	private JTextField usernameField;
 	private JPasswordField passwordField;
-	private String username, passwordHash;
+	private String username;
+	private String passwordHash;
 	private MainWindowManager parentClass;
 	private ImageIcon loginBtnimg, loginBtnpressedimg, registerBtnimg, registerBtnpressedimg, textfieldimg;
 
@@ -57,11 +61,11 @@ public class LoginWindow {
 		
 
 
-		FancyTextField usernameField = new FancyTextField("Enter Your Username", screenWidth / 2 - 121,
+		usernameField = new FancyTextField("Enter Your Username", screenWidth / 2 - 121,
 				screenHeight / 2 - 103, 240, 30);
 		frame.getContentPane().add(usernameField);
 
-		FancyPasswordField passwordField = new FancyPasswordField("Enter Your Password", screenWidth / 2 - 121,
+		passwordField = new FancyPasswordField("Enter Your Password", screenWidth / 2 - 121,
 				screenHeight / 2  - 23, 240, 30);
 		frame.getContentPane().add(usernameField);
 		frame.getContentPane().add(passwordField);
@@ -76,17 +80,10 @@ public class LoginWindow {
 
 		FancyButton btnLogin = new FancyButton("btnLogin", screenWidth / 2 - 250, screenHeight / 2 + 50, 200, 67,
 				loginBtnimg, loginBtnpressedimg);
-		btnLogin.addKeyListener(new KeyAdapter() {
+		btnLogin.addActionListener(new ActionListener() {
+			
 			@Override
-			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					tryLogin();
-				}
-			}
-		});
-		btnLogin.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				tryLogin();
 			}
 		});
@@ -104,13 +101,13 @@ public class LoginWindow {
 			username = usernameField.getText();
 			// --------------------------------------------AVISO--------------------------------------------------
 			// falta meter password em hash
-			passwordHash = String.valueOf(passwordField.getPassword());
-			System.out.println("nome: " + username + " password: " + passwordHash);
+			passwordHash = new String(passwordField.getPassword());
+			System.out.println("nome: " + username + " password: " + Arrays.toString(passwordField.getPassword()));
 
 			// fechar janela
 //			frame.dispose();
 
-			parentClass.login(username, passwordHash);
+			parentClass.login(username);
 		}
 	}
 }
