@@ -42,6 +42,7 @@ public class LoginWindow {
 		this.parentClass = parentClass;
 		this.frame = frame;
 		initialize();
+		
 	}
 	
 	/**
