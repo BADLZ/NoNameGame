@@ -14,6 +14,7 @@ public class Npc extends Personagens {
 	private int audacia;
 	private int nivel;
 	
+	
 	//para sabermos o atributo para o dano
 	private String attBase;	
 	String name;
