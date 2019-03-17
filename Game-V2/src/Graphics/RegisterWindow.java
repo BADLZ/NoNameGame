@@ -73,8 +73,9 @@ public class RegisterWindow extends JLabel {
 				if(passwordField.getPassword().length<=7) {
 					return;
 				}
-				sm.setRegisterInfo(emailField.getText(), usernameField.getText(), passwordField.getPassword());
-				sm.changeCards("CharacterSelection");
+				//se conseguir registar muda de cenario
+				if(sm.setRegisterInfo(emailField.getText(), usernameField.getText(), passwordField.getPassword()))
+					sm.changeCards("CharacterSelection");
 			}
 		});
 	}

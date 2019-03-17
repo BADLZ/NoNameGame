@@ -81,4 +81,11 @@
 <xp>0</xp>
 <gold>20</gold>
 </player>
+<player>
+<name>Teste3</name>
+<class>Gladiador</class>
+<Level>1</Level>
+<xp>0</xp>
+<gold>0</gold>
+</player>
 </players>

@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JWindow;
 
 import Graphics.MainWindowManager;
+import Graphics.SceneManager;
 import Personagens.Cacador;
 import Personagens.Feiticeiro;
 import Personagens.Gladiador;
@@ -15,13 +16,15 @@ public class Main {
 
 	public static void main(String[] args) {
 		
+		SceneManager sm = new SceneManager();
+		
 //		testePersonagens();
 //		testeLogin();
 //		testeDatabaseReader();
 //		testeDatabaseWriter();
 //		testeDatabaseWriter2();
 //		testeRegistaConta();
-		testarLogin();
+//		testarLogin();
 		
 	}
 	
