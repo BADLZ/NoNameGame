@@ -24,6 +24,7 @@ public class DatabaseWriter {
 		
 		Document document = DatabaseReader.readDocument();
 		
+		
 		try {
 			
 			Element root = document.getDocumentElement();
