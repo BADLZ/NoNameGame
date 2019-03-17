@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import Personagens.Personagens;
 import database.DatabaseReader;
+import database.DatabaseWriter;
 import sergitoGames.LogSign;
 
 public class SceneManager {
@@ -49,6 +50,7 @@ public class SceneManager {
 		cards.add(loginwindow, "LoginWindow");
 		cards.add(characterselection, "CharacterSelection");
 		cards.add(registerwindow, "RegisterWindow");
+		//falta crear PubScreen
 	}
 	
 	public void Login(String name, char[] password) {
@@ -60,8 +62,15 @@ public class SceneManager {
 			cl.show(cards, "CharacterSelection");
 	}
 	
-	public void setRegisterInfo(String email, String name, char[] password) {
+	public boolean createPersonagem(String category) {
+		return DatabaseWriter.createNewPlayer(name, category);
+	}
+	
+	public boolean setRegisterInfo(String email, String name, char[] password) {
+		this.name = name;
 		//Ir a database criar o gajo
+		return DatabaseWriter.createAccout(name, password, email);
+		
 	}
 	
 	

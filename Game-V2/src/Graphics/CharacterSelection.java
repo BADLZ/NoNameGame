@@ -19,6 +19,7 @@ public class CharacterSelection extends JLabel{
 	private ImageIcon background, leftarrowimg, rightarrowimg, leftarrowpressedimg, rightarrowpressedimg, selectimg,
 			selectpressedimg, labelcacadorimg, labelfeiticeitoimg, labelgladiadorimg;
 
+	private String[] categorias = {"Cacador", "Feiticeiro", "Gladiador"};
 	private ImageIcon cacadorimg, feiticeiroimg, gladiadorimg;
 	private ImageIcon[] personagens;
 	private ImageIcon[] personagensnome;
@@ -72,6 +73,13 @@ public class CharacterSelection extends JLabel{
 
 		FancyButton btnSelect = new FancyButton("select", screenWidth / 2 - 110, screenHeight / 2 + 300, 220, 67,
 				selectimg, selectpressedimg);
+		btnSelect.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if(sm.createPersonagem(categorias[persIndex]))
+					sm.changeCards("PubScreen");
+			}
+		});
 		add(btnSelect);
 		
 
