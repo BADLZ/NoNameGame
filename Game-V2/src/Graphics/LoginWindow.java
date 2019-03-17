@@ -24,7 +24,7 @@ public class LoginWindow extends JLabel{
 	private JTextField usernameField;
 	private JPasswordField passwordField;
 	private String username;
-	private String passwordHash;
+	private char[] passwordHash;
 	private MainWindowManager parentClass;
 	private ImageIcon background, loginBtnimg, loginBtnpressedimg, registerBtnimg, registerBtnpressedimg, textfieldimg;
 	
@@ -109,9 +109,10 @@ public class LoginWindow extends JLabel{
 			username = usernameField.getText();
 			// --------------------------------------------AVISO--------------------------------------------------
 			// falta meter password em hash
-			passwordHash = new String(passwordField.getPassword());
-
-			sm.changeCards("CharacterSelection");
+			passwordHash = passwordField.getPassword();
+			//caso conseguir fazer login
+			if(sm.Login(username, passwordHash))
+				sm.changeCards("PubScreen");
 		}
 	}
 	

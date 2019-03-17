@@ -53,13 +53,18 @@ public class SceneManager {
 		//falta crear PubScreen
 	}
 	
-	public void Login(String name, char[] password) {
-		Personagens p = DatabaseReader.getPersonagem(name);
-		this.name = name;
-		if (p != null) {
-			this.p = p;
-		}else
-			cl.show(cards, "CharacterSelection");
+	public boolean Login(String name, char[] password) {
+		if(DatabaseReader.login(name, password)) {
+			Personagens p = DatabaseReader.getPersonagem(name);
+			if(p == null) {
+				cl.show(cards, "CharacterSelection");
+				return false;
+			}
+			this.name = name;
+			return true;
+		}
+			
+		return true;
 	}
 	
 	public boolean createPersonagem(String category) {
