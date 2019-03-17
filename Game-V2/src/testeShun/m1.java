@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import Graphics.FancyButton;
 
 public class m1 extends JLabel{
-
+	myteste m;
 	private int persIndex;
 
 	private JLabel personagem, nomePersonagem;
@@ -29,7 +29,8 @@ public class m1 extends JLabel{
 	private final int screenWidth = size.width;
 	private final int screenHeight = size.height;
 
-	public m1() {
+	public m1(myteste m) {
+		this.m = m;
 		initializeImage();
 		
 		setIcon(background);
@@ -40,12 +41,14 @@ public class m1 extends JLabel{
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_RIGHT)
 					changeLabel(1);
+				
 			}
 		});
 		btnRight.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				changeLabel(1);
+				m.mudaCards();
 			}
 		});
 		add(btnRight);

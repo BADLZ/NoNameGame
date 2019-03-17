@@ -1,13 +1,14 @@
 package Graphics;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import Personagens.Cacador;
 import Personagens.Feiticeiro;
 import Personagens.Gladiador;
 import sergitoGames.LogSign;
 
-public class MainWindowManager {
+public class MainWindowManager extends JLabel{
 
 	private JFrame frame;
 	private LoginWindow loginWindow;
@@ -20,14 +21,13 @@ public class MainWindowManager {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setUndecorated(true);
-		mainScreen = new MainScreen(this, frame);
+//		mainScreen = new MainScreen(this, frame);
 		frame.setVisible(true);
 		logsign = new LogSign();
 	}
 
 	public void openLoginWindow() {
 		clearWindow();
-		loginWindow = new LoginWindow(this, frame);
 	}
 
 	// corre isto quando faz login

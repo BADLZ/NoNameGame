@@ -15,15 +15,16 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class LoginWindow {
-
-	private JFrame frame;
+public class LoginWindow extends JLabel{
+	
+	private SceneManager sm;
+	
 	private JTextField usernameField;
 	private JPasswordField passwordField;
 	private String username;
 	private String passwordHash;
 	private MainWindowManager parentClass;
-	private ImageIcon loginBtnimg, loginBtnpressedimg, registerBtnimg, registerBtnpressedimg, textfieldimg;
+	private ImageIcon background, loginBtnimg, loginBtnpressedimg, registerBtnimg, registerBtnpressedimg, textfieldimg;
 	
 	
 
@@ -31,17 +32,16 @@ public class LoginWindow {
 	private final int screenWidth = size.width;
 	private final int screenHeight = size.height;
 
-	public LoginWindow(MainWindowManager parentClass, JFrame frame) {
-		this.parentClass = parentClass;
-		this.frame = frame;
+	public LoginWindow(SceneManager sm) {
+		this.sm = sm;
 		initialize();
-
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		try {
 			loginBtnimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/loginBtn.png")));
 			loginBtnpressedimg = new ImageIcon(
@@ -50,26 +50,26 @@ public class LoginWindow {
 			registerBtnpressedimg = new ImageIcon(
 					ImageIO.read(new File("src/resources/MainScreenImg/registerBtnpressed.png")));
 			textfieldimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/textfieldimg.png")));
-
+			background = new ImageIcon(ImageIO.read(new File("src/resources/InGameImg/mainImg.jpg")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		setIcon(background);
 		usernameField = new FancyTextField("Enter Your Username", screenWidth / 2 - 121, screenHeight / 2 - 103, 240,
 				30);
-		frame.getContentPane().add(usernameField);
+		add(usernameField);
 
 		passwordField = new FancyPasswordField("Enter Your Password", screenWidth / 2 - 121, screenHeight / 2 - 23, 240,
 				30);
-		frame.getContentPane().add(usernameField);
-		frame.getContentPane().add(passwordField);
+		add(usernameField);
+		add(passwordField);
 
 		JLabel img1 = new JLabel(textfieldimg);
 		img1.setBounds(screenWidth / 2 - 210, screenHeight / 2 - 165, 420, 150);
-		frame.add(img1);
+		add(img1);
 		JLabel img2 = new JLabel(textfieldimg);
 		img2.setBounds(screenWidth / 2 - 210, screenHeight / 2 - 85, 420, 150);
-		frame.add(img2);
+		add(img2);
 
 		FancyButton btnLogin = new FancyButton("btnLogin", screenWidth / 2 - 250, screenHeight / 2 + 50, 200, 67,
 				loginBtnimg, loginBtnpressedimg);
@@ -87,11 +87,11 @@ public class LoginWindow {
 					tryLogin();
 			}
 		});
-		frame.add(btnLogin);
+		add(btnLogin);
 
 		FancyButton btnRegister = new FancyButton("btnRegister", screenWidth / 2 + 50, screenHeight / 2 + 50, 200, 67,
 				registerBtnimg, registerBtnpressedimg);
-		frame.add(btnRegister);
+		add(btnRegister);
 
 	}
 
@@ -103,10 +103,7 @@ public class LoginWindow {
 			passwordHash = new String(passwordField.getPassword());
 			System.out.println("nome: " + username + " password: " + Arrays.toString(passwordField.getPassword()));
 
-			// fechar janela
-//			frame.dispose();
-
-			parentClass.login(username);
+			sm.changeCards("ChracterSelection");
 		}
 	}
 }

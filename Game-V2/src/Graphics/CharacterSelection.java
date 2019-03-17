@@ -11,9 +11,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class CharacterSelection {
-
-	private JFrame frame;
+public class CharacterSelection extends JLabel{
+	private SceneManager sm;
 	private int persIndex;
 
 	private JLabel personagem, nomePersonagem, background;
@@ -27,16 +26,15 @@ public class CharacterSelection {
 	private final int screenWidth = size.width;
 	private final int screenHeight = size.height;
 
-	public CharacterSelection(JFrame frame) {
-		this.frame = frame;
+	public CharacterSelection(SceneManager sm) {
+		this.sm = sm;
 		initialize();
-		frame.setVisible(true);
 	}
 
 	private void initialize() {
 		initializeImage();
 		
-		frame.setContentPane(background);
+		setIcon(background);
 		FancyButton btnRight = new FancyButton("btnRight", screenWidth / 2 + 233, screenHeight / 2 - 50, 35, 28,
 				rightarrowimg, rightarrowpressedimg);
 		btnRight.addKeyListener(new KeyAdapter() {

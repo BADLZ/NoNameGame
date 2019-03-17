@@ -14,47 +14,35 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 
-public class MainScreen {
+public class MainScreen extends JLabel{
 
-	private JFrame frame;
-	private MainWindowManager mainWindow;
-	private JLabel background = null;
-	private ImageIcon cursorimg, quitBtnimg, quitBtnpressedimg, optionsBtnimg, optionsBtnpressedimg, startBtnimg, startBtnpressedimg;
+	private SceneManager sm;
+	private ImageIcon background, cursorimg, quitBtnimg, quitBtnpressedimg, optionsBtnimg, optionsBtnpressedimg, startBtnimg, startBtnpressedimg;
 
 	private Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	private final int screenWidth = size.width;
 	private final int screenHeight = size.height;
 
-	/**
-	 * Create the application.
-	 */
-	public MainScreen() {
-		initialize();
-	}
 	
-	public MainScreen(MainWindowManager mainWindow, JFrame frame) {
-		this.mainWindow = mainWindow;
-		this.frame = frame;
+	public MainScreen(SceneManager sm) {
+		this.sm = sm;
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		initializeImages();
-		
-		frame.setContentPane(background);
-		frame.setCursor(
+		setIcon(background);
+		setCursor(
 				Toolkit.getDefaultToolkit().createCustomCursor(cursorimg.getImage(), new Point(0, 0), "custom cursor"));
 
 		FancyButton quitBtn = new FancyButton("Meu Botao", screenWidth / 2 - 100, screenHeight / 2 + 100, 200, 67,
 				quitBtnimg, quitBtnpressedimg);
-		frame.add(quitBtn);
+		add(quitBtn);
 		quitBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
+				sm.getFrame().dispose();
 			}
 		});
 
@@ -63,15 +51,15 @@ public class MainScreen {
 		startBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				mainWindow.openLoginWindow();
+				sm.changeCards("LoginWindow");
 			}
 		});
-		frame.add(startBtn);
+		add(startBtn);
 		
 		
 		FancyButton optionsBtn = new FancyButton("optionsBtn", screenWidth / 2 - 100, screenHeight / 2, 200, 67,
 				optionsBtnimg,optionsBtnpressedimg);
-		frame.add(optionsBtn);
+		add(optionsBtn);
 		
 
 	}
@@ -79,7 +67,7 @@ public class MainScreen {
 
 	private void initializeImages() {
 		try {
-			background = new JLabel(new ImageIcon(ImageIO.read(new File("src/resources/InGameImg/mainImg.jpg"))));
+			background = new ImageIcon(ImageIO.read(new File("src/resources/InGameImg/mainImg.jpg")));
 			cursorimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/pointer.png")));
 			quitBtnimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/quitBtn.png")));
 			quitBtnpressedimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/quitBtnpressed.png")));
@@ -91,10 +79,6 @@ public class MainScreen {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public JFrame getFrame() {
-		return frame;
 	}
 
 }

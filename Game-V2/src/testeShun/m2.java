@@ -18,7 +18,7 @@ import javax.swing.JLabel;
 import Graphics.FancyButton;
 
 public class m2 extends JLabel{
-
+	myteste myteste;
 	private ImageIcon background, cursorimg, quitBtnimg, quitBtnpressedimg, optionsBtnimg, optionsBtnpressedimg, startBtnimg, startBtnpressedimg;
 
 	private Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -27,8 +27,10 @@ public class m2 extends JLabel{
 
 	/**
 	 * Create the application.
+	 * @param myteste 
 	 */
-	public m2() {
+	public m2(myteste myteste) {
+		this.myteste = myteste;
 		initialize();
 	}
 	
@@ -57,6 +59,7 @@ public class m2 extends JLabel{
 		startBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				myteste.mudaCards();
 			}
 		});
 		add(startBtn);
