@@ -15,8 +15,8 @@ public class CharacterSelection extends JLabel{
 	private SceneManager sm;
 	private int persIndex;
 
-	private JLabel personagem, nomePersonagem, background;
-	private ImageIcon leftarrowimg, rightarrowimg, leftarrowpressedimg, rightarrowpressedimg, selectimg,
+	private JLabel personagem, nomePersonagem;
+	private ImageIcon background, leftarrowimg, rightarrowimg, leftarrowpressedimg, rightarrowpressedimg, selectimg,
 			selectpressedimg, labelcacadorimg, labelfeiticeitoimg, labelgladiadorimg;
 
 	private ImageIcon cacadorimg, feiticeiroimg, gladiadorimg;
@@ -29,6 +29,7 @@ public class CharacterSelection extends JLabel{
 	public CharacterSelection(SceneManager sm) {
 		this.sm = sm;
 		initialize();
+		
 	}
 
 	private void initialize() {
@@ -50,7 +51,7 @@ public class CharacterSelection extends JLabel{
 				changeLabel(1);
 			}
 		});
-		frame.getContentPane().add(btnRight);
+		add(btnRight);
 
 		FancyButton btnLeft = new FancyButton("btnLeft", screenWidth / 2 - 267, screenHeight / 2 - 50, 35, 28,
 				leftarrowimg, leftarrowpressedimg);
@@ -67,20 +68,21 @@ public class CharacterSelection extends JLabel{
 					changeLabel(-1);
 			}
 		});
-		frame.getContentPane().add(btnLeft);
+		add(btnLeft);
 
 		FancyButton btnSelect = new FancyButton("select", screenWidth / 2 - 110, screenHeight / 2 + 300, 220, 67,
 				selectimg, selectpressedimg);
-		frame.getContentPane().add(btnSelect);
+		add(btnSelect);
+		
 
 		personagem = new JLabel(personagens[persIndex]);
 		personagem.setBounds(screenWidth / 2 - 290, screenHeight / 2 - 300, 480, 600);
-		frame.add(personagem);
+		add(personagem);
 		
 		
 		nomePersonagem = new JLabel(personagensnome[persIndex]);
 		nomePersonagem.setBounds(screenWidth / 2 - 125, 5, 250, 80);
-		frame.add(nomePersonagem);
+		add(nomePersonagem);
 		
 	}
 
@@ -94,7 +96,7 @@ public class CharacterSelection extends JLabel{
 		}
 		nomePersonagem.setIcon(personagensnome[persIndex]);
 		personagem.setIcon(personagens[persIndex]);
-		frame.repaint();
+		repaint();
 	}
 	
 	private void initializeImage() {
@@ -111,8 +113,7 @@ public class CharacterSelection extends JLabel{
 			cacadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
 			feiticeiroimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
 			gladiadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
-			background = new JLabel(
-					new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/selectionbackground.jpg"))));
+			background = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/selectionbackground.jpg")));
 			labelcacadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacadorlabel.png")));
 			labelfeiticeitoimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/feiticeirolabel.png")));
 			labelgladiadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/gladiadorlabel.png")));

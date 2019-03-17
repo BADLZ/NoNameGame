@@ -1,6 +1,7 @@
 package Graphics;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Personagens.Cacador;
@@ -37,7 +38,6 @@ public class MainWindowManager extends JLabel{
 			createPlayer(dados.split(""));
 		} else {
 			clearWindow();
-			CharacterSelection s = new CharacterSelection(frame);
 		}
 	}
 

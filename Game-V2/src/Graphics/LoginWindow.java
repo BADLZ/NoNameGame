@@ -103,7 +103,7 @@ public class LoginWindow extends JLabel{
 			passwordHash = new String(passwordField.getPassword());
 			System.out.println("nome: " + username + " password: " + Arrays.toString(passwordField.getPassword()));
 
-			sm.changeCards("ChracterSelection");
+			sm.changeCards("CharacterSelection");
 		}
 	}
 }

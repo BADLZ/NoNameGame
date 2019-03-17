@@ -39,6 +39,11 @@ public class SceneManager {
 		
 		cards.add(mainscreen, "mainscreen");
 		cards.add(loginwindow, "LoginWindow");
+		cards.add(characterselection, "CharacterSelection");
+	}
+	
+	public void Login(String name, char[] password) {
+		
 	}
 	
 	public void changeCards(String cardName) {
