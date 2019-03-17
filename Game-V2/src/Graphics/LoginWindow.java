@@ -1,6 +1,8 @@
 package Graphics;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -92,7 +94,14 @@ public class LoginWindow extends JLabel{
 		FancyButton btnRegister = new FancyButton("btnRegister", screenWidth / 2 + 50, screenHeight / 2 + 50, 200, 67,
 				registerBtnimg, registerBtnpressedimg);
 		add(btnRegister);
-
+		btnRegister.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				sm.changeCards("RegisterWindow");
+				
+			}
+		});
 	}
 
 	private void tryLogin() {
@@ -101,9 +110,10 @@ public class LoginWindow extends JLabel{
 			// --------------------------------------------AVISO--------------------------------------------------
 			// falta meter password em hash
 			passwordHash = new String(passwordField.getPassword());
-			System.out.println("nome: " + username + " password: " + Arrays.toString(passwordField.getPassword()));
 
 			sm.changeCards("CharacterSelection");
 		}
 	}
+	
+	
 }
