@@ -24,7 +24,7 @@ public class Main {
 	}
 	
 	private static void testeDatabaseWriter() {
-		DatabaseWriter.CreateNewPlayer("Teste1", "Gladiador");
+//		DatabaseWriter.CreateNewPlayer("Teste1", "Gladiador");
 	}
 	
 	private static void testeDatabaseWriter2() {

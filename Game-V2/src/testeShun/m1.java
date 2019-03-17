@@ -1,4 +1,4 @@
-package Graphics;
+package testeShun;
 
 import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
@@ -10,14 +10,17 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-public class CharacterSelection extends JLabel{
-	private SceneManager sm;
+import Graphics.FancyButton;
+
+public class m1 extends JLabel{
+	myteste m;
 	private int persIndex;
 
-	private JLabel personagem, nomePersonagem, background;
+	private JLabel personagem, nomePersonagem;
 	private ImageIcon leftarrowimg, rightarrowimg, leftarrowpressedimg, rightarrowpressedimg, selectimg,
-			selectpressedimg, labelcacadorimg, labelfeiticeitoimg, labelgladiadorimg;
+			selectpressedimg, labelcacadorimg, labelfeiticeitoimg, labelgladiadorimg,background;
 
 	private ImageIcon cacadorimg, feiticeiroimg, gladiadorimg;
 	private ImageIcon[] personagens;
@@ -26,12 +29,8 @@ public class CharacterSelection extends JLabel{
 	private final int screenWidth = size.width;
 	private final int screenHeight = size.height;
 
-	public CharacterSelection(SceneManager sm) {
-		this.sm = sm;
-		initialize();
-	}
-
-	private void initialize() {
+	public m1(myteste m) {
+		this.m = m;
 		initializeImage();
 		
 		setIcon(background);
@@ -42,15 +41,17 @@ public class CharacterSelection extends JLabel{
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_RIGHT)
 					changeLabel(1);
+				
 			}
 		});
 		btnRight.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				changeLabel(1);
+				m.mudaCards();
 			}
 		});
-		frame.getContentPane().add(btnRight);
+		add(btnRight);
 
 		FancyButton btnLeft = new FancyButton("btnLeft", screenWidth / 2 - 267, screenHeight / 2 - 50, 35, 28,
 				leftarrowimg, leftarrowpressedimg);
@@ -67,20 +68,20 @@ public class CharacterSelection extends JLabel{
 					changeLabel(-1);
 			}
 		});
-		frame.getContentPane().add(btnLeft);
+		add(btnLeft);
 
 		FancyButton btnSelect = new FancyButton("select", screenWidth / 2 - 110, screenHeight / 2 + 300, 220, 67,
 				selectimg, selectpressedimg);
-		frame.getContentPane().add(btnSelect);
+		add(btnSelect);
 
 		personagem = new JLabel(personagens[persIndex]);
 		personagem.setBounds(screenWidth / 2 - 290, screenHeight / 2 - 300, 480, 600);
-		frame.add(personagem);
+		add(personagem);
 		
 		
 		nomePersonagem = new JLabel(personagensnome[persIndex]);
 		nomePersonagem.setBounds(screenWidth / 2 - 125, 5, 250, 80);
-		frame.add(nomePersonagem);
+		add(nomePersonagem);
 		
 	}
 
@@ -94,7 +95,7 @@ public class CharacterSelection extends JLabel{
 		}
 		nomePersonagem.setIcon(personagensnome[persIndex]);
 		personagem.setIcon(personagens[persIndex]);
-		frame.repaint();
+		repaint();
 	}
 	
 	private void initializeImage() {
@@ -111,8 +112,7 @@ public class CharacterSelection extends JLabel{
 			cacadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
 			feiticeiroimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
 			gladiadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
-			background = new JLabel(
-					new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/selectionbackground.jpg"))));
+			background = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/selectionbackground.jpg")));
 			labelcacadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacadorlabel.png")));
 			labelfeiticeitoimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/feiticeirolabel.png")));
 			labelgladiadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/gladiadorlabel.png")));
