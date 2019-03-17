@@ -8,6 +8,8 @@ import Personagens.Cacador;
 import Personagens.Feiticeiro;
 import Personagens.Gladiador;
 import Personagens.Personagens;
+import database.DatabaseReader;
+import database.DatabaseWriter;
 
 public class Main {
 
@@ -16,12 +18,22 @@ public class Main {
 //		testePersonagens();
 //		testeLogin();
 //		testeDatabaseReader();
-		testeDatabaseWriter();
+//		testeDatabaseWriter();
+		testeDatabaseWriter2();
 		
 	}
 	
 	private static void testeDatabaseWriter() {
 //		DatabaseWriter.CreateNewPlayer("Teste1", "Gladiador");
+	}
+	
+	private static void testeDatabaseWriter2() {
+		Personagens p = DatabaseReader.getPersonagem("Teste1");
+		System.out.println(p);
+		p.lvlUp(p);
+		p.setCurrentGold(20);
+		System.out.println(p);
+		DatabaseWriter.StorePlayer(p);
 	}
 	
 	private static void testeDatabaseReader(){

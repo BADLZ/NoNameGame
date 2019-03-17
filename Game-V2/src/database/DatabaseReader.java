@@ -1,4 +1,4 @@
-package testesDani;
+package database;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -20,7 +20,7 @@ import Personagens.Personagens;
 
 public class DatabaseReader {
 	
-	public static Personagens getPersonagem(String id) {
+	public static Personagens getPersonagem(String nome) {
 		
 		Document document = readDocument();
 		
@@ -31,7 +31,7 @@ public class DatabaseReader {
 		for (int i = 0; i < allPlayers.getLength(); i++) {
 			
 			Node databaseName = allPlayers.item(i);
-			if (databaseName.getNodeType() == Node.ELEMENT_NODE && databaseName.getTextContent().equals(id)) {
+			if (databaseName.getNodeType() == Node.ELEMENT_NODE && databaseName.getTextContent().equals(nome)) {
 				
 				StringBuilder s = new StringBuilder();
 				
@@ -51,7 +51,7 @@ public class DatabaseReader {
 				//gold
 				
 				String[] atributos = s.toString().split("\n");
-				String idJogador = atributos[0];
+				String nomeJogador = atributos[0];
 				String classe = atributos[1];
 				int nivel = Integer.parseInt(atributos[2]);
 				long xp = Long.parseLong(atributos[3]);
@@ -59,17 +59,17 @@ public class DatabaseReader {
 				
 				switch (classe) {
 				case "Cacador":
-					Cacador c = new Cacador(idJogador);
+					Cacador c = new Cacador(nomeJogador);
 					c.powerPerLvl(nivel);
 					result = (Personagens) c;
 					break;
 				case "Feiticeiro":
-					Feiticeiro f = new Feiticeiro(idJogador);
+					Feiticeiro f = new Feiticeiro(nomeJogador);
 					f.powerPerLvl(nivel);
 					result = (Personagens) f;
 					break;
 				case "Gladiador":
-					Gladiador g = new Gladiador(idJogador);
+					Gladiador g = new Gladiador(nomeJogador);
 					g.powerPerLvl(nivel);
 					result = (Personagens) g;
 					break;
@@ -78,6 +78,7 @@ public class DatabaseReader {
 					break;
 				}
 				
+				result.setNivel(nivel);
 				result.setCurrentXp(xp);
 				result.setCurrentGold(gold);
 				

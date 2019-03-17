@@ -77,8 +77,8 @@
 <player>
 <name>Teste1</name>
 <class>Gladiador</class>
-<Level>1</Level>
+<Level>4</Level>
 <xp>0</xp>
-<gold>0</gold>
+<gold>20</gold>
 </player>
 </players>

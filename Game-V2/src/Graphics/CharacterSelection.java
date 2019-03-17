@@ -35,7 +35,7 @@ public class CharacterSelection extends JLabel{
 	private void initialize() {
 		initializeImage();
 		
-		setIcon(background);
+		setIcon(background); 
 		FancyButton btnRight = new FancyButton("btnRight", screenWidth / 2 + 233, screenHeight / 2 - 50, 35, 28,
 				rightarrowimg, rightarrowpressedimg);
 		btnRight.addKeyListener(new KeyAdapter() {
