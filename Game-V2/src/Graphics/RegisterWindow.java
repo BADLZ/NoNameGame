@@ -8,6 +8,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
+import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 
 public class RegisterWindow extends JLabel {
@@ -28,26 +29,26 @@ public class RegisterWindow extends JLabel {
 		initializeImage();
 		
 		setIcon(background);
-		usernameField = new FancyTextField("Enter Your Username", screenWidth / 2 - 121, screenHeight / 2 - 103, 240,
+		usernameField = new FancyTextField("Enter Your Username", screenWidth / 2 - 121, screenHeight / 2 - 113, 240,
 				30);
 		add(usernameField);
 
 		passwordField = new FancyPasswordField("Enter Your Password", screenWidth / 2 - 121, screenHeight / 2 - 23, 240,
 				30);
-		emailField = new FancyTextField("Enter Your Email", screenWidth / 2 - 121, screenHeight / 2 - 183, 240,
+		emailField = new FancyTextField("Enter Your Email", screenWidth / 2 - 121, screenHeight / 2 - 203, 240,
 				30);
 		add(usernameField);
 		add(passwordField);
 		add(emailField);
 		
 		JLabel img1 = new JLabel(textfieldimg);
-		img1.setBounds(screenWidth / 2 - 210, screenHeight / 2 - 165, 420, 150);
+		img1.setBounds(screenWidth / 2 - 210, screenHeight / 2 - 175, 420, 150);
 		add(img1);
 		JLabel img2 = new JLabel(textfieldimg);
 		img2.setBounds(screenWidth / 2 - 210, screenHeight / 2 - 85, 420, 150);
 		add(img2);
 		JLabel img3 = new JLabel(textfieldimg);
-		img3.setBounds(screenWidth / 2 - 210, screenHeight / 2 - 245, 420, 150);
+		img3.setBounds(screenWidth / 2 - 210, screenHeight / 2 - 265, 420, 150);
 		add(img3);
 		
 
@@ -59,6 +60,8 @@ public class RegisterWindow extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(emailField.getText().split("@").length!=2) {
+					JPopupMenu l = new JPopupMenu();
+					
 					return;
 				}
 				if((emailField.getText().split("@"))[1].split("\\.").length!=2) {
