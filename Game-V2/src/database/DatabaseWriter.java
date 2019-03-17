@@ -13,16 +13,13 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import Personagens.Cacador;
-import Personagens.Feiticeiro;
-import Personagens.Gladiador;
 import Personagens.Personagens;
 
 public class DatabaseWriter {
 	
-	public static boolean CreateNewPlayer(String name, String Class) {
+	public static boolean createNewPlayer(String name, String Class) {
 		
-		Document document = DatabaseReader.readDocument();
+		Document document = DatabaseReader.readDocument("PlayerBase.xml");
 		
 		
 		try {
@@ -68,38 +65,57 @@ public class DatabaseWriter {
 		}
 	}
 	
-	public static boolean StorePlayer(Personagens p) {
+	public static boolean createAccout(String name, char[] password, String email) {
 		
-		Document document = DatabaseReader.readDocument();
+		if(DatabaseReader.existsAccount(name))
+			return false;
+
+		Document document = DatabaseReader.readDocument("AccountBase.xml");
+		
 		
 		try {
 			
-//			Element root = document.getDocumentElement();
-//
-//			Element newServer = document.createElement("player");
-//
-//			Element nodeName = document.createElement("name");
-//			nodeName.appendChild(document.createTextNode(name));
-//			newServer.appendChild(nodeName);
-//
-//			Element nodeClass = document.createElement("class");
-//			nodeClass.appendChild(document.createTextNode(Class));
-//			newServer.appendChild(nodeClass);
-//			
-//			Element nodeLvl = document.createElement("Level");
-//			nodeLvl.appendChild(document.createTextNode("1"));
-//			newServer.appendChild(nodeLvl);
-//			
-//			Element nodeXP = document.createElement("xp");
-//			nodeXP.appendChild(document.createTextNode("0"));
-//			newServer.appendChild(nodeXP);
-//			
-//			Element nodeGold = document.createElement("gold");
-//			nodeGold.appendChild(document.createTextNode("0"));
-//			newServer.appendChild(nodeGold);
-//
-//			root.appendChild(newServer);
+			Element root = document.getDocumentElement();
+
+			Element newServer = document.createElement("conta");
 			
+			Element nodeName = document.createElement("name");
+			nodeName.appendChild(document.createTextNode(name));
+			newServer.appendChild(nodeName);
+
+			Element nodePass = document.createElement("pass");
+			nodePass.appendChild(document.createTextNode(String.valueOf(password)));
+			newServer.appendChild(nodePass);
+			
+			Element nodeEmail = document.createElement("email");
+			nodeEmail.appendChild(document.createTextNode(email));
+			newServer.appendChild(nodeEmail);
+
+			root.appendChild(newServer);
+
+			DOMSource source = new DOMSource(document);
+
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			StreamResult result = new StreamResult("AccountBase.xml");
+			transformer.transform(source, result);
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+
+	
+	public static boolean storePlayer(Personagens p) {
+		
+		Document document = DatabaseReader.readDocument("PlayerBase.xml");
+		
+		try {
 			NodeList allPlayers = document.getElementsByTagName("name");
 			
 			for (int i = 0; i < allPlayers.getLength(); i++) {

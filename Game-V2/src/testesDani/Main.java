@@ -19,12 +19,26 @@ public class Main {
 //		testeLogin();
 //		testeDatabaseReader();
 //		testeDatabaseWriter();
-		testeDatabaseWriter2();
+//		testeDatabaseWriter2();
+//		testeRegistaConta();
+		testarLogin();
 		
+	}
+	
+	private static void testarLogin() {
+		System.out.println(DatabaseReader.login("Teste2", "123".toCharArray()));
 	}
 	
 	private static void testeDatabaseWriter() {
 //		DatabaseWriter.CreateNewPlayer("Teste1", "Gladiador");
+	}
+	
+	private static void testeRegistaConta() {
+		String nome = "Teste2";
+		char[] password = "123".toCharArray();
+		String email = "123@gmail.com";
+//		System.out.println(DatabaseWriter.existsAccount(nome));
+		DatabaseWriter.createAccout(nome, password, email);
 	}
 	
 	private static void testeDatabaseWriter2() {
@@ -33,7 +47,7 @@ public class Main {
 		p.lvlUp(p);
 		p.setCurrentGold(20);
 		System.out.println(p);
-		DatabaseWriter.StorePlayer(p);
+		DatabaseWriter.storePlayer(p);
 	}
 	
 	private static void testeDatabaseReader(){
