@@ -28,6 +28,7 @@ public class RegisterWindow extends JLabel {
 		
 		initializeImage();
 		
+		
 		setIcon(background);
 		usernameField = new FancyTextField("Enter Your Username", screenWidth / 2 - 121, screenHeight / 2 - 113, 240,
 				30);
