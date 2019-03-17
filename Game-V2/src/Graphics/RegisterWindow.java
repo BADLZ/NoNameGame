@@ -40,7 +40,6 @@ public class RegisterWindow extends JLabel {
 		add(usernameField);
 		add(passwordField);
 		add(emailField);
-		
 		JLabel img1 = new JLabel(textfieldimg);
 		img1.setBounds(screenWidth / 2 - 210, screenHeight / 2 - 175, 420, 150);
 		add(img1);
