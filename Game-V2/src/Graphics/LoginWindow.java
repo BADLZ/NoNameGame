@@ -1,12 +1,16 @@
 package Graphics;
 
 import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Arrays;
 
@@ -52,10 +56,11 @@ public class LoginWindow extends JLabel{
 			registerBtnpressedimg = new ImageIcon(
 					ImageIO.read(new File("src/resources/MainScreenImg/registerBtnpressed.png")));
 			textfieldimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/textfieldimg.png")));
-			background = new ImageIcon(ImageIO.read(new File("src/resources/InGameImg/mainImg.jpg")));
+			background = new ImageIcon(ImageIO.read(new File("src/resources/InGameImg/mainImg.jpg")).getScaledInstance(screenWidth, screenHeight, Image.SCALE_SMOOTH));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		setIcon(background);
 		usernameField = new FancyTextField("Enter Your Username", screenWidth / 2 - 121, screenHeight / 2 - 103, 240,
 				30);
