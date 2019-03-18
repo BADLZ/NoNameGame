@@ -21,7 +21,7 @@ public class RegisterWindow extends JLabel {
 
 	private JTextField usernameField, emailField;
 	private JPasswordField passwordField;
-	private ImageIcon background, registerBtnimg, registerBtnpressedimg, textfieldimg;
+	private ImageIcon registerBtnimg, registerBtnpressedimg, textfieldimg;
 
 	public RegisterWindow(SceneManager sm) {
 		this.sm = sm;
@@ -29,7 +29,7 @@ public class RegisterWindow extends JLabel {
 		initializeImage();
 		
 		
-		setIcon(background);
+		setIcon(sm.getBackground());
 		usernameField = new FancyTextField("Enter Your Username", screenWidth / 2 - 121, screenHeight / 2 - 113, 240,
 				30);
 		add(usernameField);
@@ -86,7 +86,6 @@ public class RegisterWindow extends JLabel {
 			registerBtnpressedimg = new ImageIcon(
 					ImageIO.read(new File("src/resources/MainScreenImg/registerBtnpressed.png")));
 			textfieldimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/textfieldimg.png")));
-			background = new ImageIcon(ImageIO.read(new File("src/resources/InGameImg/mainImg.jpg")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

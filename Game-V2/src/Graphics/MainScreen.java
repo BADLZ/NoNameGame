@@ -19,7 +19,7 @@ import javax.swing.SwingUtilities;
 public class MainScreen extends JLabel{
 
 	private SceneManager sm;
-	private ImageIcon background, cursorimg, quitBtnimg, quitBtnpressedimg, optionsBtnimg, optionsBtnpressedimg, startBtnimg, startBtnpressedimg;
+	private ImageIcon cursorimg, quitBtnimg, quitBtnpressedimg, optionsBtnimg, optionsBtnpressedimg, startBtnimg, startBtnpressedimg;
 
 	private Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	private final int screenWidth = size.width;
@@ -33,7 +33,7 @@ public class MainScreen extends JLabel{
 
 	private void initialize() {
 		initializeImages();
-		setIcon(background);
+		setIcon(sm.getBackground());
 		setCursor(
 				Toolkit.getDefaultToolkit().createCustomCursor(cursorimg.getImage(), new Point(0, 0), "custom cursor"));
 
@@ -67,7 +67,6 @@ public class MainScreen extends JLabel{
 
 	private void initializeImages() {
 		try {
-			background = new ImageIcon(ImageIO.read(new File("src/resources/InGameImg/mainImg.jpg")));
 			cursorimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/pointer.png")));
 			quitBtnimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/quitBtn.png")));
 			quitBtnpressedimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/quitBtnpressed.png")));

@@ -1,6 +1,5 @@
 package Graphics;
 
-import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -8,7 +7,6 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class CharacterSelection extends JLabel{
@@ -16,16 +14,14 @@ public class CharacterSelection extends JLabel{
 	private int persIndex;
 
 	private JLabel personagem, nomePersonagem;
-	private ImageIcon background, leftarrowimg, rightarrowimg, leftarrowpressedimg, rightarrowpressedimg, selectimg,
+	private ImageIcon leftarrowimg, rightarrowimg, leftarrowpressedimg, rightarrowpressedimg, selectimg,
 			selectpressedimg, labelcacadorimg, labelfeiticeitoimg, labelgladiadorimg;
 
 	private String[] categorias = {"Cacador", "Feiticeiro", "Gladiador"};
 	private ImageIcon cacadorimg, feiticeiroimg, gladiadorimg;
 	private ImageIcon[] personagens;
 	private ImageIcon[] personagensnome;
-	private Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-	private final int screenWidth = size.width;
-	private final int screenHeight = size.height;
+
 
 	public CharacterSelection(SceneManager sm) {
 		this.sm = sm;
@@ -36,8 +32,8 @@ public class CharacterSelection extends JLabel{
 	private void initialize() {
 		initializeImage();
 		
-		setIcon(background); 
-		FancyButton btnRight = new FancyButton("btnRight", screenWidth / 2 + 233, screenHeight / 2 - 50, 35, 28,
+		setIcon(sm.getBackground()); 
+		FancyButton btnRight = new FancyButton("btnRight", sm.screenWidth / 2 + 233, sm.screenHeight / 2 - 50, 35, 28,
 				rightarrowimg, rightarrowpressedimg);
 		btnRight.addKeyListener(new KeyAdapter() {
 			@Override
@@ -54,7 +50,7 @@ public class CharacterSelection extends JLabel{
 		});
 		add(btnRight);
 
-		FancyButton btnLeft = new FancyButton("btnLeft", screenWidth / 2 - 267, screenHeight / 2 - 50, 35, 28,
+		FancyButton btnLeft = new FancyButton("btnLeft", sm.screenWidth / 2 - 267, sm.screenHeight / 2 - 50, 35, 28,
 				leftarrowimg, leftarrowpressedimg);
 		btnLeft.addMouseListener(new MouseAdapter() {
 			@Override
@@ -71,7 +67,7 @@ public class CharacterSelection extends JLabel{
 		});
 		add(btnLeft);
 
-		FancyButton btnSelect = new FancyButton("select", screenWidth / 2 - 110, screenHeight / 2 + 300, 220, 67,
+		FancyButton btnSelect = new FancyButton("select", sm.screenWidth / 2 - 110, sm.screenHeight / 2 + 300, 220, 67,
 				selectimg, selectpressedimg);
 		btnSelect.addMouseListener(new MouseAdapter() {
 			@Override
@@ -84,12 +80,12 @@ public class CharacterSelection extends JLabel{
 		
 
 		personagem = new JLabel(personagens[persIndex]);
-		personagem.setBounds(screenWidth / 2 - 290, screenHeight / 2 - 300, 480, 600);
+		personagem.setBounds(sm.screenWidth / 2 - 290, sm.screenHeight / 2 - 300, 480, 600);
 		add(personagem);
 		
 		
 		nomePersonagem = new JLabel(personagensnome[persIndex]);
-		nomePersonagem.setBounds(screenWidth / 2 - 125, 5, 250, 80);
+		nomePersonagem.setBounds(sm.screenWidth / 2 - 125, 5, 250, 80);
 		add(nomePersonagem);
 		
 	}
@@ -121,12 +117,12 @@ public class CharacterSelection extends JLabel{
 			cacadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
 			feiticeiroimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
 			gladiadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacador.png")));
-			background = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/selectionbackground.jpg")));
 			labelcacadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/cacadorlabel.png")));
 			labelfeiticeitoimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/feiticeirolabel.png")));
 			labelgladiadorimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/gladiadorlabel.png")));
 			personagensnome = new ImageIcon[]{ labelcacadorimg, labelfeiticeitoimg, labelgladiadorimg };
 			personagens = new ImageIcon[]{ cacadorimg, feiticeiroimg, gladiadorimg };
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

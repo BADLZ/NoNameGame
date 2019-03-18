@@ -1,22 +1,14 @@
 package Graphics;
 
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.Arrays;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -29,15 +21,8 @@ public class LoginWindow extends JLabel{
 	private JPasswordField passwordField;
 	private String username;
 	private char[] passwordHash;
-	private MainWindowManager parentClass;
-	private ImageIcon background, loginBtnimg, loginBtnpressedimg, registerBtnimg, registerBtnpressedimg, textfieldimg;
+	private ImageIcon loginBtnimg, loginBtnpressedimg, registerBtnimg, registerBtnpressedimg, textfieldimg;
 	
-	
-
-	private Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-	private final int screenWidth = size.width;
-	private final int screenHeight = size.height;
-
 	public LoginWindow(SceneManager sm) {
 		this.sm = sm;
 		initialize();
@@ -56,29 +41,28 @@ public class LoginWindow extends JLabel{
 			registerBtnpressedimg = new ImageIcon(
 					ImageIO.read(new File("src/resources/MainScreenImg/registerBtnpressed.png")));
 			textfieldimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/textfieldimg.png")));
-			background = new ImageIcon(ImageIO.read(new File("src/resources/InGameImg/mainImg.jpg")).getScaledInstance(screenWidth, screenHeight, Image.SCALE_SMOOTH));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		setIcon(background);
-		usernameField = new FancyTextField("Enter Your Username", screenWidth / 2 - 121, screenHeight / 2 - 103, 240,
+		setIcon(sm.getBackground());
+		usernameField = new FancyTextField("Enter Your Username", sm.screenWidth / 2 - 121, sm.screenHeight / 2 - 103, 240,
 				30);
 		add(usernameField);
 
-		passwordField = new FancyPasswordField("Enter Your Password", screenWidth / 2 - 121, screenHeight / 2 - 23, 240,
+		passwordField = new FancyPasswordField("Enter Your Password", sm.screenWidth / 2 - 121, sm.screenHeight / 2 - 23, 240,
 				30);
 		add(usernameField);
 		add(passwordField);
 
 		JLabel img1 = new JLabel(textfieldimg);
-		img1.setBounds(screenWidth / 2 - 210, screenHeight / 2 - 165, 420, 150);
+		img1.setBounds(sm.screenWidth / 2 - 210, sm.screenHeight / 2 - 165, 420, 150);
 		add(img1);
 		JLabel img2 = new JLabel(textfieldimg);
-		img2.setBounds(screenWidth / 2 - 210, screenHeight / 2 - 85, 420, 150);
+		img2.setBounds(sm.screenWidth / 2 - 210, sm.screenHeight / 2 - 85, 420, 150);
 		add(img2);
 
-		FancyButton btnLogin = new FancyButton("btnLogin", screenWidth / 2 - 250, screenHeight / 2 + 50, 200, 67,
+		FancyButton btnLogin = new FancyButton("btnLogin", sm.screenWidth / 2 - 250, sm.screenHeight / 2 + 50, 200, 67,
 				loginBtnimg, loginBtnpressedimg);
 
 		btnLogin.addMouseListener(new MouseAdapter() {
@@ -96,7 +80,7 @@ public class LoginWindow extends JLabel{
 		});
 		add(btnLogin);
 
-		FancyButton btnRegister = new FancyButton("btnRegister", screenWidth / 2 + 50, screenHeight / 2 + 50, 200, 67,
+		FancyButton btnRegister = new FancyButton("btnRegister", sm.screenWidth / 2 + 50, sm.screenHeight / 2 + 50, 200, 67,
 				registerBtnimg, registerBtnpressedimg);
 		add(btnRegister);
 		btnRegister.addActionListener(new ActionListener() {
