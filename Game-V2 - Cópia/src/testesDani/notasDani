@@ -1,0 +1,43 @@
+Classe Missoes - funcoes todas nao static enquanto atributos todos static
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+todos os personagens tem main?
+Gladiador unico que tem nome, e por alguma razao tem um private "nivel", enquanto Personagens ja tem esse atributo.
+É de porposito que tem cenas em ingles tipo "Gold" e os stats sao em portugues?
+PowerPerLevel muda os atribuitos do personagem e mostra um nivel no Sysout mas nao muda o nivel dele da classe Personagens
+Sistema XP esta um pouco estranho em termos de nao haver uma funcao para dar x XP e verificar se foi suficiente para evoluir...
+		--Sugestao: cirar funcao que retorna um boolean que recebe um x (inteiro ou long) e aumenta o xp do personagem,
+			caso este passe o xp necessario para evoluir, retorna true (para avisar que evoluiu) e atualiza o nivel do jogador..
+Outra coisa do XP:
+	Funcao lvlUp recebe um numero.. da +1 a esse numero... e torna o nivel do personagem nesse numero..
+		será que nao queriam é essa funcao sem receber argumentos e apenas dava +1 ao nivel do proprio personagem??
+
+
+Classe Missoes - linha 127 (ja devem saber mas vou responder...) - p.getNivel();
+
+
+------
+mudancas que fiz:
+	coloquei atribuitos de personagens diferentes na classe Personagens e atribui valores dos mesmos em cada classe
+	nao sei se querem meter esses atribuitos private e depois ter de meter getters e setters
+	criei toString dos personagens para fazer debuging mais facil
+	meti as personagens numa package - personagens
