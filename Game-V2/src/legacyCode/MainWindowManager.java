@@ -1,9 +1,11 @@
-package Graphics;
+package legacyCode;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Graphics.scenes.LoginWindow;
+import Graphics.scenes.MainScreen;
 import Personagens.Cacador;
 import Personagens.Feiticeiro;
 import Personagens.Gladiador;

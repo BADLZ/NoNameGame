@@ -1,9 +1,9 @@
 package main;
 
-import Graphics.MainScreen;
-import Graphics.MainWindowManager;
+import Graphics.scenes.MainScreen;
 import Graphics.SceneManager;
 import javafx.scene.transform.Scale;
+import legacyCode.MainWindowManager;
 
 public class Main {
 

@@ -10,6 +10,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Graphics.scenes.CharacterSelection;
+import Graphics.scenes.Dungeon;
+import Graphics.scenes.LoginWindow;
+import Graphics.scenes.MainScreen;
+import Graphics.scenes.PubScreen;
+import Graphics.scenes.RegisterWindow;
+import Graphics.scenes.TrainingRoom;
 import Personagens.Personagens;
 import database.DatabaseReader;
 import database.DatabaseWriter;
@@ -22,6 +29,8 @@ public class SceneManager {
 	private CharacterSelection characterselection;
 	private RegisterWindow registerwindow;
 	private PubScreen pubscreen;
+	private Dungeon dungeon;
+	private TrainingRoom trainingroom;
 
 	private Personagens p;
 	private String name;
@@ -34,8 +43,8 @@ public class SceneManager {
 	
 	private ImageIcon background;
 	private Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-	final int screenWidth = size.width;
-	final int screenHeight = size.height;
+	public final int screenWidth = size.width;
+	public final int screenHeight = size.height;
 	public SceneManager() {
 		try {
 			background = new ImageIcon(ImageIO.read(new File("src/resources/InGameImg/mainImg.jpg")).getScaledInstance(screenWidth, screenHeight, Image.SCALE_SMOOTH));
@@ -48,6 +57,8 @@ public class SceneManager {
 		characterselection = new CharacterSelection(this);
 		registerwindow = new RegisterWindow(this);
 		pubscreen = new PubScreen(this);
+		trainingroom = new TrainingRoom(this);
+		dungeon = new Dungeon(this);
 		
 		
 		frame = new JFrame();
@@ -67,6 +78,9 @@ public class SceneManager {
 		cards.add(characterselection, "CharacterSelection");
 		cards.add(registerwindow, "RegisterWindow");
 		cards.add(pubscreen, "PubScreen");
+		cards.add(trainingroom, "TrainingRoom");
+		cards.add(dungeon, "Dungeon");
+		
 	}
 	
 	public boolean Login(String name, char[] password) {

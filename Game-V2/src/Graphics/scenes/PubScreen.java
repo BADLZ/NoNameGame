@@ -1,4 +1,4 @@
-package Graphics;
+package Graphics.scenes;
 
 import java.awt.Image;
 import java.io.File;
@@ -6,6 +6,8 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import Graphics.SceneManager;
 
 public class PubScreen extends JLabel{
 

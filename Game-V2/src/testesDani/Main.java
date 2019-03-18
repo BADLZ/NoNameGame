@@ -3,14 +3,14 @@ package testesDani;
 import javax.swing.JFrame;
 import javax.swing.JWindow;
 
-import Graphics.MainWindowManager;
-import Graphics.SceneManager;
 import Personagens.Cacador;
 import Personagens.Feiticeiro;
 import Personagens.Gladiador;
 import Personagens.Personagens;
 import database.DatabaseReader;
 import database.DatabaseWriter;
+import legacyCode.MainWindowManager;
+import Graphics.SceneManager;
 
 public class Main {
 

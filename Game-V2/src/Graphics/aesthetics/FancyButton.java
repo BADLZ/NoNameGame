@@ -1,4 +1,4 @@
-package Graphics;
+package Graphics.aesthetics;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

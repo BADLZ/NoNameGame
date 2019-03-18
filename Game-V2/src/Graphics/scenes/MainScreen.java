@@ -1,4 +1,4 @@
-package testeShun;
+package Graphics.scenes;
 
 import java.awt.Dimension;
 import java.awt.Point;
@@ -14,35 +14,29 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 
-import Graphics.FancyButton;
+import Graphics.SceneManager;
+import Graphics.aesthetics.FancyButton;
 
-public class m2 extends JLabel{
-	myteste myteste;
-	private ImageIcon background, cursorimg, quitBtnimg, quitBtnpressedimg, optionsBtnimg, optionsBtnpressedimg, startBtnimg, startBtnpressedimg;
+public class MainScreen extends JLabel{
+
+	private SceneManager sm;
+	private ImageIcon cursorimg, quitBtnimg, quitBtnpressedimg, optionsBtnimg, optionsBtnpressedimg, startBtnimg, startBtnpressedimg;
 
 	private Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	private final int screenWidth = size.width;
 	private final int screenHeight = size.height;
 
-	/**
-	 * Create the application.
-	 * @param myteste 
-	 */
-	public m2(myteste myteste) {
-		this.myteste = myteste;
+	
+	public MainScreen(SceneManager sm) {
+		this.sm = sm;
 		initialize();
 	}
-	
 
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		initializeImages();
-		
-		this.setIcon(background);
+		setIcon(sm.getBackground());
 		setCursor(
 				Toolkit.getDefaultToolkit().createCustomCursor(cursorimg.getImage(), new Point(0, 0), "custom cursor"));
 
@@ -51,6 +45,7 @@ public class m2 extends JLabel{
 		add(quitBtn);
 		quitBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				sm.getFrame().dispose();
 			}
 		});
 
@@ -59,7 +54,7 @@ public class m2 extends JLabel{
 		startBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				myteste.mudaCards();
+				sm.changeCards("LoginWindow");
 			}
 		});
 		add(startBtn);
@@ -75,7 +70,6 @@ public class m2 extends JLabel{
 
 	private void initializeImages() {
 		try {
-			background =new ImageIcon(ImageIO.read(new File("src/resources/InGameImg/mainImg.jpg")));
 			cursorimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/pointer.png")));
 			quitBtnimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/quitBtn.png")));
 			quitBtnpressedimg = new ImageIcon(ImageIO.read(new File("src/resources/MainScreenImg/quitBtnpressed.png")));
@@ -88,6 +82,5 @@ public class m2 extends JLabel{
 			e.printStackTrace();
 		}
 	}
-
 
 }

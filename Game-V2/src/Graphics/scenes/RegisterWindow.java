@@ -1,4 +1,4 @@
-package Graphics;
+package Graphics.scenes;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -10,6 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
+
+import Graphics.SceneManager;
+import Graphics.aesthetics.FancyButton;
+import Graphics.aesthetics.FancyPasswordField;
+import Graphics.aesthetics.FancyTextField;
 
 public class RegisterWindow extends JLabel {
 	

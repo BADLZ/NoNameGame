@@ -1,4 +1,4 @@
-package Graphics;
+package Graphics.scenes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +12,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import Graphics.SceneManager;
+import Graphics.aesthetics.FancyButton;
+import Graphics.aesthetics.FancyPasswordField;
+import Graphics.aesthetics.FancyTextField;
 
 public class LoginWindow extends JLabel{
 	
