@@ -1,9 +1,46 @@
 package sergitoGames;
 
+import java.util.Scanner;
+
 import Personagens.Gladiador;
 import Personagens.Personagens;
 
 public class SalaTreinos {
+	
+	public void escolherTreino(Personagens p) {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Tipos de Treino:");
+		System.out.println("1 - Audacia");
+		System.out.println("2 - Armas");
+		System.out.print("Opcao (1|2) --> ");
+		int opcao = sc.nextInt();
+		while(opcao != 1 && opcao != 2) {
+			System.out.print("Opção (1|2) ----> ");
+			opcao = sc.nextInt();
+		}
+		
+		switch (opcao) {
+		
+		case 1:
+			if (custoAudacia(p) == true) {
+				treinarAudacia(p);
+			}
+			else {
+				System.out.println("Não tem Gold suficiente\n");
+			}
+			break;
+			
+		case 2:
+			if (custoArmas(p) == true) {
+				treinarArmas(p);
+			}
+			else {
+				System.out.println("Não tem Gold suficiente\n");
+			}
+			break;
+		}
+	}
 	
 	public void treinarAudacia(Personagens p) {
 		
@@ -33,6 +70,35 @@ public class SalaTreinos {
 		System.out.println("Gold "+p.getCurrentGold());
 	}
 	
+	public boolean custoAudacia(Personagens p) {
+		if (p.getNivel() < 51) {
+			if (p.getCurrentGold() < (p.getAudacia()*180)) {
+				return false;
+			}
+		}
+		else if (p.getNivel() < 101) {
+			if (p.getCurrentGold() < (p.getAudacia()*250)) {
+				return false;
+			}
+		}
+		else if (p.getNivel() < 151) {
+			if (p.getCurrentGold() < (p.getAudacia()*700)) {
+				return false;
+			}
+		}
+		else if (p.getNivel() < 250) {
+			if (p.getCurrentGold() < (p.getAudacia()*950)) {
+				return false;
+			}
+		}
+		else {
+			if (p.getCurrentGold() < (p.getAudacia()*1600)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	
 	public void treinarArmas(Personagens p) {
 		System.out.println("Antes Treino");
@@ -59,10 +125,35 @@ public class SalaTreinos {
 		System.out.println("Armas "+p.getTreinoArmas());
 		System.out.println("Gold "+p.getCurrentGold());
 	}
+
 	
-	public static void main(String[] args) {
-		
-	
+	public boolean custoArmas(Personagens p) {
+		if (p.getNivel()<31) {
+			if (p.getCurrentGold() < (p.getTreinoArmas()*150)) {
+				return false;
+			}
+		}
+		else if (p.getNivel() < 80) {
+			if (p.getCurrentGold() < (p.getTreinoArmas()*200)) {
+				return false;
+			}
+		}
+		else if (p.getNivel() < 130) {
+			if (p.getCurrentGold() < (p.getTreinoArmas()*350)) {
+				return false;
+			}
+		}
+		else if (p.getNivel() < 170) {
+			if (p.getCurrentGold() < (p.getTreinoArmas()*700)) {
+				return false;
+			}
+		}
+		else {
+			if (p.getCurrentGold() < (p.getTreinoArmas()*1000)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

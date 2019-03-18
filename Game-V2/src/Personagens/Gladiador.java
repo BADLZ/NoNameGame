@@ -43,8 +43,7 @@ public class Gladiador extends Personagens {
 		setForca(12);
 		setConstituicao(12);
 		setMira(6);
-		setTreinoArmas(10);
-		setAudacia(5);
+		
 		
 		if (lvl > 1) {		
 			for (int i = 0; i < lvl-1; i++) {
@@ -54,8 +53,7 @@ public class Gladiador extends Personagens {
 				setForca(getForca() + 6);
 				setConstituicao(getConstituicao() + 11);
 				setMira(getMira() + 3);
-				setTreinoArmas(getTreinoArmas() + 0);
-				setAudacia(getAudacia() + 0);
+				
 			}
 		}
 //		System.out.println("Nivel "+getNivel());

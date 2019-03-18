@@ -1,6 +1,7 @@
-package sergitoGames;
+package testesPedro;
 
 import java.util.Scanner;
+
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -17,12 +18,19 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import Personagens.Cacador;
+import Personagens.Feiticeiro;
 import Personagens.Gladiador;
 import Personagens.Personagens;
+import sergitoGames.Catacumbas;
+import sergitoGames.Missoes;
+import sergitoGames.SalaTreinos;
+import Personagens.Npc;
 
 public class Main {
 	
 	static int option;
+	static int contador = 0;
 	
 	public static void main(String[] args) throws TransformerException {
 		Document doc = null;
@@ -39,7 +47,11 @@ public class Main {
 		Main ma = new Main();
 		Missoes m = new Missoes();
 		Catacumbas c = new Catacumbas();
-		Gladiador badaxe = new Gladiador("lordskywalker");
+		Feiticeiro badaxe = new Feiticeiro("di");
+		//Cacador badaxe = new Cacador("cacador");
+		//Gladiador badaxe = new Gladiador("gladiador");
+		SalaTreinos s = new SalaTreinos();
+		Npc npc = new Npc("PecadorEmEspera");
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -64,6 +76,14 @@ public class Main {
 						badaxe.setCurrentGold(Long.parseLong(no.getTextContent()));
 						System.out.println("Your Gold "+badaxe.getCurrentGold()+"\n");
 					}
+					else if (no.getNodeName().equalsIgnoreCase("treinoArmas")) {
+						badaxe.setTreinoArmas(Integer.parseInt(no.getTextContent()));
+						System.out.println("Treino Armas "+badaxe.getTreinoArmas());
+					}
+					else if (no.getNodeName().equalsIgnoreCase("audacia")) {
+						badaxe.setAudacia(Integer.parseInt(no.getTextContent()));
+						System.out.println("Audacia "+badaxe.getAudacia());
+					}
 				}
 			}
 		}
@@ -72,10 +92,12 @@ public class Main {
 			System.out.println("1 - Missions");
 			System.out.println("2 - First Floor");
 			System.out.println("3 - Second Floor");
+			System.out.println("4 - Hyperbolic Time Chamber");;
 			System.out.println("0 - Exit Game");
 			System.out.print("Option --> ");
 			option = sc.nextInt();
 			System.out.println();
+			
 			
 			switch (option) {
 			
@@ -94,7 +116,12 @@ public class Main {
 				
 			case 3:
 				c.number2(badaxe);
-				break;							
+				break;	
+			
+			case 4:
+				s.escolherTreino(badaxe);
+				break;
+
 		}
 			//gravar no XML 
 			NodeList players = doc.getElementsByTagName("name");
@@ -113,6 +140,12 @@ public class Main {
 						else if (lvl.getNodeName().equalsIgnoreCase("gold")) {
 							lvl.setTextContent(Long.toString(badaxe.getCurrentGold()));
 						}
+						else if (lvl.getNodeName().equalsIgnoreCase("treinoArmas")) {
+							lvl.setTextContent(Integer.toString(badaxe.getTreinoArmas()));
+						}
+						else if (lvl.getNodeName().equalsIgnoreCase("audacia")) {
+							lvl.setTextContent(Integer.toString(badaxe.getAudacia()));
+						}
 					}
 				}
 			}
@@ -123,6 +156,8 @@ public class Main {
 
 		} while (option!=0);
 		System.out.println("@axe.bad");
+
+
 	}	
 
 }

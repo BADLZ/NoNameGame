@@ -32,14 +32,14 @@ public class MainWindowManager extends JLabel{
 	}
 
 	// corre isto quando faz login
-	public void login(String username) {
-		String dados = logsign.login(username);
-		if (dados != null) {
-			createPlayer(dados.split(""));
-		} else {
-			clearWindow();
-		}
-	}
+//	public void login(String username) {
+//		String dados = logsign.login(username);
+//		if (dados != null) {
+//			createPlayer(dados.split(""));
+//		} else {
+//			clearWindow();
+//		}
+//	}
 
 	private void createPlayer(String[] dados) {
 		switch (dados[1]) {

@@ -47,7 +47,17 @@ public class DatabaseWriter {
 			Element nodeGold = document.createElement("gold");
 			nodeGold.appendChild(document.createTextNode("0"));
 			newServer.appendChild(nodeGold);
-
+			
+			//TODO alterações
+			Element nodeAudacia = document.createElement("audacia");
+			nodeAudacia.appendChild(document.createTextNode("5"));
+			newServer.appendChild(nodeAudacia);
+			
+			Element nodeArmas = document.createElement("armas");
+			nodeArmas.appendChild(document.createTextNode("10"));
+			newServer.appendChild(nodeArmas);
+			//até aqui
+			
 			root.appendChild(newServer);
 
 			DOMSource source = new DOMSource(document);
@@ -136,6 +146,10 @@ public class DatabaseWriter {
 					nodes.get(2).setTextContent(p.getNivel() + "");
 					nodes.get(3).setTextContent(p.getCurrentXp() + "");
 					nodes.get(4).setTextContent(p.getCurrentGold() + "");
+					//TODO alterações começam aqui
+					nodes.get(5).setTextContent(p.getAudacia()+ "");
+					nodes.get(6).setTextContent(p.getTreinoArmas()+ "");
+					//acabam aqui
 					break;
 				}
 			}

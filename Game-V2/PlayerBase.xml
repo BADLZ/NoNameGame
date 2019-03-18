@@ -1,37 +1,183 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<players>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><players>
+                                                            
+    
+    
+
+            
+    
+   
+
+
+    
+    
+    
+    
+    
+    
     <player>
-                
-        <name>BAD AXE</name>
-                
-        <class>Gladiador</class>
-                
-        <Level>1</Level>
-                
+                                                
+        
+        
+        
+        
+        <name>Sergito</name>
+                                                
+        
+        
+        
+        
+        <class>Feiticeiro</class>
+                                                
+        
+        
+        
+        
+        <level>1</level>
+                                                
+        
+        
+        
+        
         <xp>0</xp>
+                                                
+        
+        
+        
+        
+        <Gold>0</Gold>
+                        
+        
+        
+        <treinoArmas>10</treinoArmas>
+                                                
+        
+        
+        
+        
+        <audacia>5</audacia>
+                                            
+    
+    
+    
+    
+    </player>
+                    
+    
+    
+    
+    
+    <player>
+                                        
+        
+        
+        
+        <name>AsleepOrDead</name>
+                                        
+        
+        
+        
+        <class>feiticeiro</class>
+                                        
+        
+        
+        
+        <level>18</level>
+                                        
+        
+        
+        
+        <xp>5866</xp>
+                                        
+        
+        
+        
+        <Gold>2691</Gold>
+                                        
+        
+        
+        
+        <treinoArmas>10</treinoArmas>
+                                        
+        
+        
+        
+        <audacia>5</audacia>
+                                    
+    
+    
+    
+    </player>
                 
-        <gold>0</gold>
-         
+    
+    
+    
+    <player>
+                                
+        
+        
+        <name>pirilampo</name>
+                                
+        
+        
+        <class>gladiador</class>
+                                
+        
+        
+        <level>2</level>
+                                
+        
+        
+        <xp>95</xp>
+                                
+        
+        
+        <Gold>250</Gold>
+                                
+        
+        
+        <treinoArmas>10</treinoArmas>
+                                
+        
+        
+        <audacia>5</audacia>
+                            
+    
+    
+    </player>
+            
+    
+    
+    <player>
+                        
+        
+        <name>di</name>
+                        
+        
+        <class>feiticeiro</class>
+                        
+        
+        <level>20</level>
+                        
+        
+        <xp>2384</xp>
+                        
+        
+        <Gold>76</Gold>
+                      
+        
+        
+        <treinoArmas>10</treinoArmas>
+                        
+        
+        <audacia>8</audacia>
+                    
     
     </player>
         
+    
     <player>
                 
-        <name>Sergito</name>
-                
-        <class>Feiticeiro</class>
-                
-        <Level>1</Level>
-                
-        <xp>0</xp>
-                
-        <gold>0</gold>
-            
-    </player>
-        
-    <player>
-                
-        <name>Soldadinho</name>
+        <name>aaadias</name>
                 
         <class>Cacador</class>
                 
@@ -40,52 +186,20 @@
         <xp>0</xp>
                 
         <gold>0</gold>
+                
+        <audacia>5</audacia>
+                
+        <armas>10</armas>
             
     </player>
-        
-    <player>
-                
-        <name>Mariano</name>
-                
-        <class>Gladiador</class>
-                
-        <Level>1</Level>
-                
-        <xp>0</xp>
-                
-        <gold>0</gold>
-            
-    </player>
-        
-    <player>
-                
-        <name>lordskywalker</name>
-                        
-        
-        <class>Gladiador</class>
-                        
-        
-        <Level>204</Level>
-                
-        <xp>6947312</xp>
-         
-        <gold>1325756</gold>
-                   
     
+    <player>
+        <name>hhhhhhhhhhh</name>
+        <class>Cacador</class>
+        <Level>1</Level>
+        <xp>0</xp>
+        <gold>0</gold>
+        <audacia>5</audacia>
+        <armas>10</armas>
     </player>
-
-<player>
-<name>Teste1</name>
-<class>Gladiador</class>
-<Level>4</Level>
-<xp>0</xp>
-<gold>20</gold>
-</player>
-<player>
-<name>Teste3</name>
-<class>Gladiador</class>
-<Level>1</Level>
-<xp>0</xp>
-<gold>0</gold>
-</player>
 </players>

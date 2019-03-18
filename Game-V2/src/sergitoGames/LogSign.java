@@ -1,5 +1,8 @@
 package sergitoGames;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -15,12 +18,32 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 
-
-public class LogSign{
+public class LogSign {
 
 	private Document document;
-	
-	public LogSign() {
+
+	public static void main(String args[]) {
+		LogSign m = new LogSign();
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Username: ");
+		String username = sc.nextLine();
+		
+		System.out.print("Categoria: ");
+		String categoria = sc.nextLine();
+		while (!categoria.equalsIgnoreCase("Gladiador") 
+				&& !categoria.equalsIgnoreCase("Feiticeiro")
+				&& !categoria.equalsIgnoreCase("Cacador")) {
+			System.out.print("Categoria Inválida! ");
+			categoria = sc.nextLine();
+		}
+		
+		//m.login("Sergito");
+		m.CreateNewPlayer(username, categoria);
+		sc.close();
+	}
+
+	public NodeList login(String name) {
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
@@ -30,11 +53,7 @@ public class LogSign{
 		} catch (Exception e) {
 
 		}
-	}
-	public String login(String name) {
 
-		StringBuilder s = new StringBuilder();
-		
 		NodeList allPlayers = document.getElementsByTagName("name");
 
 		for (int i = 0; i < allPlayers.getLength(); i++) {
@@ -43,12 +62,11 @@ public class LogSign{
 				NodeList lista = databaseName.getParentNode().getChildNodes();
 				for (int j = 0; j < lista.getLength(); j++) {
 					Node m = lista.item(j);
-					if(m.getNodeType() == Node.ELEMENT_NODE) {
-						s.append(m.getTextContent());
-						
+					if (m.getNodeName().equalsIgnoreCase("class")) {
+						System.out.println("Welcome back " + m.getTextContent() + ": " + name);
+						return lista;
 					}
 				}
-				return s.toString();
 			}
 		}
 		return null;
@@ -56,6 +74,9 @@ public class LogSign{
 
 	public void CreateNewPlayer(String name, String Class) {
 		try {
+			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+			Document document = documentBuilder.parse("PlayerBase.xml");
 			
 			Element root = document.getDocumentElement();
 
@@ -69,9 +90,105 @@ public class LogSign{
 			nodeClass.appendChild(document.createTextNode(Class));
 			newServer.appendChild(nodeClass);
 			
-			Element nodeLvl = document.createElement("Level");
+			Element nodeLvl = document.createElement("level");
 			nodeLvl.appendChild(document.createTextNode("1"));
 			newServer.appendChild(nodeLvl);
+			
+			Element nodeXp = document.createElement("xp");
+			nodeXp.appendChild(document.createTextNode("0"));
+			newServer.appendChild(nodeXp);
+			
+			Element nodeGold = document.createElement("Gold");
+			nodeGold.appendChild(document.createTextNode("0"));
+			newServer.appendChild(nodeGold);
+			
+			/*Element nodeStatus = document.createElement("statusBase");
+			nodeStatus.appendChild(document.createTextNode("40"));
+			newServer.appendChild(nodeStatus);
+			
+			Element nodeInt = document.createElement("inteligencia");
+			if (Class.equalsIgnoreCase("feiticeiro")) {
+				nodeInt.appendChild(document.createTextNode("15"));
+			}
+			else if (Class.equalsIgnoreCase("Gladiador")) {
+				nodeInt.appendChild(document.createTextNode("5"));
+			}
+			else {
+				nodeInt.appendChild(document.createTextNode("5"));
+			}		
+			newServer.appendChild(nodeInt);
+			
+			Element nodeDestreza = document.createElement("destreza");
+			if (Class.equalsIgnoreCase("feiticeiro")) {
+				nodeDestreza.appendChild(document.createTextNode("5"));
+			}
+			else if (Class.equalsIgnoreCase("Gladiador")) {
+				nodeDestreza.appendChild(document.createTextNode("5"));
+			}
+			else {
+				nodeDestreza.appendChild(document.createTextNode("10"));
+			}
+			newServer.appendChild(nodeDestreza);
+			
+			Element nodeForca = document.createElement("forca");
+			if (Class.equalsIgnoreCase("feiticeiro")) {
+				nodeForca.appendChild(document.createTextNode("5"));
+			}
+			else if (Class.equalsIgnoreCase("Gladiador")) {
+				nodeForca.appendChild(document.createTextNode("12"));
+			}
+			else {
+				nodeForca.appendChild(document.createTextNode("5"));
+			}
+			newServer.appendChild(nodeForca);
+			
+			Element nodeCons = document.createElement("constituicao");
+			if (Class.equalsIgnoreCase("feiticeiro")) {
+				nodeCons.appendChild(document.createTextNode("5"));
+			}
+			else if (Class.equalsIgnoreCase("Gladiador")) {
+				nodeCons.appendChild(document.createTextNode("12"));
+			}
+			else {
+				nodeCons.appendChild(document.createTextNode("10"));
+			}
+			newServer.appendChild(nodeCons);
+			
+			Element nodeMira = document.createElement("mira");
+			if (Class.equalsIgnoreCase("feiticeiro")) {
+				nodeMira.appendChild(document.createTextNode("10"));
+			}
+			else if (Class.equalsIgnoreCase("Gladiador")) {
+				nodeMira.appendChild(document.createTextNode("6"));
+			}
+			else {
+				nodeMira.appendChild(document.createTextNode("10"));
+			}
+			newServer.appendChild(nodeMira);
+			*/
+			Element nodeArmas = document.createElement("treinoArmas");
+			if (Class.equalsIgnoreCase("feiticeiro")) {
+				nodeArmas.appendChild(document.createTextNode("10"));
+			}
+			else if (Class.equalsIgnoreCase("Gladiador")) {
+				nodeArmas.appendChild(document.createTextNode("10"));
+			}
+			else {
+				nodeArmas.appendChild(document.createTextNode("10"));
+			}
+			newServer.appendChild(nodeArmas);
+			
+			Element nodeAud = document.createElement("audacia");
+			if (Class.equalsIgnoreCase("feiticeiro")) {
+				nodeAud.appendChild(document.createTextNode("5"));
+			}
+			else if (Class.equalsIgnoreCase("Gladiador")) {
+				nodeAud.appendChild(document.createTextNode("5"));
+			}
+			else {
+				nodeAud.appendChild(document.createTextNode("5"));
+			}
+			newServer.appendChild(nodeAud);
 
 			root.appendChild(newServer);
 

@@ -149,7 +149,7 @@ public class Catacumbas {
 	public boolean battleNPC(Personagens p, Npc npc) {
 		//TODO por enquanto não tem ARMA
 		npc.statusNpc(npc.getName()); //status NPC
-		p.powerPerLvl(p.getNivel()); //static PLAYER
+		p.powerPerLvl(p.getNivel()); //status PLAYER
 		
 		//DANO
 		double danoP;
@@ -186,45 +186,24 @@ public class Catacumbas {
 			System.out.println("FALHA AO ENCONTRAR ATRIBUTO BASE");
 			danoNPC = 0;
 		}
-		
-		String randP;		
-		String randNPC;
+
 		
 		//VIDA
 		double vidaNPC = npc.getConstituicao()*50;
 		double vidaP = p.getConstituicao()*50;		
 		
-		while(true) {
-			//assumindo que Player começa TODO confirmar com Sergito
-			//TODO falta critico
-			
+		while(true) {			
 			System.out.println("Vida actual Player: "+vidaP);
 			System.out.println("Vida actual NPC: "+vidaNPC+"\n");
-			
-			randP = randomString();
-			if (randP.equalsIgnoreCase("pos")) {
-				System.out.println("PLAYER 10% POS");
-				danoP = danoP + danoP*0.1;
-			}
-			else {
-				System.out.println("PLAYER 10% NEG");
-				danoP = danoP - danoP*0.1;
-			}
-						
-			randNPC = randomString();
-			if (randNPC.equalsIgnoreCase("pos")) {
-				System.out.println("NPC 10% POS");
-				danoNPC = danoNPC + danoNPC*0.1;
-			}
-			else {
-				System.out.println("NPC 10% NEG");
-				danoNPC = danoNPC - danoNPC*0.1;
-			}
+	
+			//valores random
+			danoP = danoP + danoP*random20()/100;			
+			danoNPC = danoNPC + danoP*random20()/100;
+		
 			
 			//arredondar a 2 casas decimais
 			danoP = Math.round(danoP * 100.0) / 100.0;
 			danoNPC = Math.round(danoNPC * 100.0) / 100.0;
-			
 			
 			
 			if (p instanceof Gladiador) {
@@ -243,7 +222,7 @@ public class Catacumbas {
 			vidaP = vidaP - danoNPC;
 			vidaP = Math.round(vidaP * 100.0) / 100.0;
 			
-			if (vidaNPC < 0) {
+			if (vidaNPC <= 0) {
 				System.out.print("\nCongratularions, you win!\n");
 				return true;
 			}
@@ -254,14 +233,7 @@ public class Catacumbas {
 		}
 		
 	}
-	
-	
-	public String randomString() {
-		String[] randValue = {"pos", "neg"};		
-		rand = new Random();		
-        int randomNumber = rand.nextInt(randValue.length);        
-		return randValue[randomNumber];		
-	}
+
 	
 	public double randomCrit() {
 		rand = new Random();
@@ -294,6 +266,11 @@ public class Catacumbas {
 		System.out.println();
 	}
 	
-	
+	public int random20() {		
+		int r = (int) (Math.random() * (20 - -20)) + -20;
+		System.out.println("random: "+r);
+		return r;
+	}
+
 	
 }
