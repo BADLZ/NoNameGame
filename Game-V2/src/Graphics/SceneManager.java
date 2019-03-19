@@ -20,7 +20,7 @@ import Graphics.scenes.TrainingRoom;
 import Personagens.Personagens;
 import database.DatabaseReader;
 import database.DatabaseWriter;
-import sergitoGames.LogSign;
+import legacyCode.LogSign;
 
 public class SceneManager {
 

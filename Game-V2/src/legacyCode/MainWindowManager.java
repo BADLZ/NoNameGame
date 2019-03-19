@@ -9,7 +9,6 @@ import Graphics.scenes.MainScreen;
 import Personagens.Cacador;
 import Personagens.Feiticeiro;
 import Personagens.Gladiador;
-import sergitoGames.LogSign;
 
 public class MainWindowManager extends JLabel{
 
