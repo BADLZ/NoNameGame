@@ -48,7 +48,7 @@ public class DatabaseWriter {
 			nodeGold.appendChild(document.createTextNode("0"));
 			newServer.appendChild(nodeGold);
 			
-			//TODO alterações (Pedro)
+			//TODO alteracoes (Pedro)
 			Element nodeAudacia = document.createElement("audacia");
 			nodeAudacia.appendChild(document.createTextNode("5"));
 			newServer.appendChild(nodeAudacia);
@@ -64,7 +64,7 @@ public class DatabaseWriter {
 			Element nodeFragmentos = document.createElement("fragmentos");
 			nodeFragmentos.appendChild(document.createTextNode("0"));
 			newServer.appendChild(nodeFragmentos);
-			//até aqui (Pedro)
+			//ate aqui (Pedro)
 			
 			root.appendChild(newServer);
 
@@ -154,11 +154,11 @@ public class DatabaseWriter {
 					nodes.get(2).setTextContent(p.getNivel() + "");
 					nodes.get(3).setTextContent(p.getCurrentXp() + "");
 					nodes.get(4).setTextContent(p.getCurrentGold() + "");
-					//TODO alterações começam aqui (Pedro)
-					//Basicamente, é preciso saber o número exacto de
+					//TODO alteracoes começam aqui (Pedro)
+					//Basicamente, e preciso saber o numero exacto de
 					//audacia e treinoArmas para a salaTreino.
-					//ganhas moedas negras que são forjadas para Fragmentos
-					//a fazer missões ou a comprar
+					//ganhas moedas negras que sao forjadas para Fragmentos
+					//a fazer missoes ou a comprar
 					nodes.get(5).setTextContent(p.getAudacia()+ "");
 					nodes.get(6).setTextContent(p.getTreinoArmas()+ "");
 					nodes.get(7).setTextContent(p.getMoedasNegras() +"");

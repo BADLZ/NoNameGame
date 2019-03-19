@@ -27,7 +27,7 @@ public class SalaTreinos {
 				treinarAudacia(p);
 			}
 			else {
-				System.out.println("Não tem Gold suficiente\n");
+				System.out.println("Nao tem Gold suficiente\n");
 			}
 			break;
 			
@@ -36,7 +36,7 @@ public class SalaTreinos {
 				treinarArmas(p);
 			}
 			else {
-				System.out.println("Não tem Gold suficiente\n");
+				System.out.println("Nao tem Gold suficiente\n");
 			}
 			break;
 		}

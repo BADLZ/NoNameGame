@@ -13,15 +13,15 @@ public class Luvas extends Acessorios {
 	public void choseWeapon(Personagens p) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("1 - Luvas 1\nStatus:");
-		System.out.println("Basico: 15\nConstituição: 40\nMira: 15\n");
+		System.out.println("Basico: 15\nConstituicao: 40\nMira: 15\n");
 		System.out.println("2 - Luvas 2\nStatus:");
-		System.out.println("Basico: 40\nConstituição: 20\nMira: 10\n");
+		System.out.println("Basico: 40\nConstituicao: 20\nMira: 10\n");
 		System.out.println("3 - Luvas 3\nStatus:");
-		System.out.println("Basico: 30\nConstituição: 10\nMira: 30\n");
+		System.out.println("Basico: 30\nConstituicao: 10\nMira: 30\n");
 		System.out.println("Opção (1|2|3) --> ");
 		int opcao = sc.nextInt();
 		while (opcao!=1 && opcao!=2 && opcao!=3) {
-			System.out.println("Opcao inválida");
+			System.out.println("Opcao invalida");
 			opcao = sc.nextInt();
 		}
 		
