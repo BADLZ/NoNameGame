@@ -42,8 +42,7 @@ public class Feiticeiro extends Personagens {
 		setForca(5);
 		setConstituicao(5);
 		setMira(10);
-		setTreinoArmas(10);
-		setAudacia(5);
+		
 		
 		if (lvl > 1) {		
 			for (int i = 0; i < lvl-1; i++) {
@@ -53,8 +52,7 @@ public class Feiticeiro extends Personagens {
 				setForca(getForca() + 0);
 				setConstituicao(getConstituicao() + 2);
 				setMira(getMira() + 6);
-				setTreinoArmas(getTreinoArmas() + 0);
-				setAudacia(getAudacia() + 0);
+				
 			}
 		}
 		

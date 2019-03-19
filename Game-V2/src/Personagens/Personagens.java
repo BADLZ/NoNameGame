@@ -10,12 +10,15 @@ public abstract class Personagens {
 	private long currentGold = 0;
 	private String name;
 	
+	private int treinoArmas;
+	private int audacia;
+	
 	public Personagens(String name) {
 		this.name = name;
 	}
 	
 	//--------------------------novas cenas-----
-	private int statusBase, inteligencia, destreza, forca, constituicao, mira, treinoArmas, audacia;
+	private int statusBase, inteligencia, destreza, forca, constituicao, mira;
 	
 
 	
@@ -137,8 +140,7 @@ public abstract class Personagens {
 			p.setForca(p.getForca() + 6);
 			p.setConstituicao(p.getConstituicao() + 11);
 			p.setMira(p.getMira() + 3);
-			p.setTreinoArmas(p.getTreinoArmas() + 0);
-			p.setAudacia(p.getAudacia() + 0);
+			
 		}
 		else if (p instanceof Feiticeiro) {
 			p.setInteligencia(p.getInteligencia() + 12);
@@ -146,8 +148,7 @@ public abstract class Personagens {
 			p.setForca(p.getForca() + 0);
 			p.setConstituicao(p.getConstituicao() + 2);
 			p.setMira(p.getMira() + 6);
-			p.setTreinoArmas(p.getTreinoArmas() + 0);
-			p.setAudacia(p.getAudacia() + 0);
+			
 		}
 		else { //caçador
 			p.setInteligencia(p.getInteligencia() + 0);
@@ -155,7 +156,7 @@ public abstract class Personagens {
 			p.setForca(p.getForca() + 0);
 			p.setConstituicao(p.getConstituicao() + 7);
 			p.setMira(p.getMira() + 6);
-			p.setTreinoArmas(p.getTreinoArmas() + 0);
+
 		}
 	}
 	

@@ -125,9 +125,11 @@ public class Missoes {
 		System.out.println("2 - " + randomMission());
 		System.out.println("EXP - " + gainXp2);
 		System.out.println("Gold - " + gainGold2);
+		System.out.print("Option (1|2) ----> ");
 		//opcao assim de certeza fica 1 ou 2
-		choice = 0;
-		while(choice != 1 || choice != 2) {
+		//choice = 0 --> tem que ser pelo scanner senão dá erro
+		choice = sc.nextInt();
+		while(choice != 1 && choice != 2) {
 			System.out.print("Option (1|2) ----> ");
 			choice = sc.nextInt();
 		}
@@ -149,7 +151,7 @@ public class Missoes {
 		}
 		System.out.println();
 		
-		sc.close();
+		//sc.close();
 	}
 
 }

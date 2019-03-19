@@ -56,6 +56,8 @@ public class DatabaseReader {
 				int nivel = Integer.parseInt(atributos[2]);
 				long xp = Long.parseLong(atributos[3]);
 				long gold = Long.parseLong(atributos[4]);
+				int audacia = Integer.parseInt(atributos[5]);
+				int armas = Integer.parseInt(atributos[6]);
 				
 				switch (classe) {
 				case "Cacador":
@@ -81,6 +83,8 @@ public class DatabaseReader {
 				result.setNivel(nivel);
 				result.setCurrentXp(xp);
 				result.setCurrentGold(gold);
+				result.setAudacia(audacia);
+				result.setTreinoArmas(armas);
 				
 				break;
 			}

@@ -1,10 +1,22 @@
 package Graphics;
 
 import java.awt.CardLayout;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.io.File;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Graphics.scenes.CharacterSelection;
+import Graphics.scenes.Dungeon;
+import Graphics.scenes.LoginWindow;
+import Graphics.scenes.MainScreen;
+import Graphics.scenes.PubScreen;
+import Graphics.scenes.RegisterWindow;
+import Graphics.scenes.TrainingRoom;
 import Personagens.Personagens;
 import database.DatabaseReader;
 import database.DatabaseWriter;
@@ -12,26 +24,41 @@ import sergitoGames.LogSign;
 
 public class SceneManager {
 
+	private MainScreen mainScreen;
+	private LoginWindow loginwindow;
+	private CharacterSelection characterselection;
+	private RegisterWindow registerwindow;
+	private PubScreen pubscreen;
+	private Dungeon dungeon;
+	private TrainingRoom trainingroom;
+
+	private Personagens p;
+	private String name;
+	private JFrame frame;
+	private LogSign logsign;
+	private CardLayout cl;
+	private JPanel cards;
+	private MainScreen mainscreen;
 	
-	MainScreen mainScreen;
-	LoginWindow loginwindow;
-	CharacterSelection characterselection;
-	RegisterWindow registerwindow;
 	
-	
-	Personagens p;
-	String name;
-	JFrame frame;
-	LogSign logsign;
-	CardLayout cl;
-	JPanel cards;
-	MainScreen mainscreen;
+	private ImageIcon background;
+	private Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+	public final int screenWidth = size.width;
+	public final int screenHeight = size.height;
 	public SceneManager() {
+		try {
+			background = new ImageIcon(ImageIO.read(new File("src/resources/InGameImg/mainImg.jpg")).getScaledInstance(screenWidth, screenHeight, Image.SCALE_SMOOTH));
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		mainscreen = new MainScreen(this);
 		loginwindow = new LoginWindow(this);
 		characterselection = new CharacterSelection(this);
 		registerwindow = new RegisterWindow(this);
-		
+		pubscreen = new PubScreen(this);
+		trainingroom = new TrainingRoom(this);
+		dungeon = new Dungeon(this);
 		
 		
 		frame = new JFrame();
@@ -50,7 +77,10 @@ public class SceneManager {
 		cards.add(loginwindow, "LoginWindow");
 		cards.add(characterselection, "CharacterSelection");
 		cards.add(registerwindow, "RegisterWindow");
-		//falta crear PubScreen
+		cards.add(pubscreen, "PubScreen");
+		cards.add(trainingroom, "TrainingRoom");
+		cards.add(dungeon, "Dungeon");
+		
 	}
 	
 	public boolean Login(String name, char[] password) {
@@ -85,6 +115,10 @@ public class SceneManager {
 	
 	public JFrame getFrame() {
 		return frame;
+	}
+	
+	public ImageIcon getBackground() {
+		return background;
 	}
 	
 }
