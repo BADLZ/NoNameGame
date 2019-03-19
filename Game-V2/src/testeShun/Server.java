@@ -19,17 +19,20 @@ public class Server extends Communication {
 	 * 
 	 */
 	public Server(ICommunicationsUser window) {
+		
 		super(window);
 
+		
 		try {
 			serverSock = new ServerSocket(0);
 
 			System.out.println(
-					"TCP socket created: address = " + getHostAddress() + ", port = " + serverSock.getLocalPort());
+					"TCP socket created: \nAddress = " + getHostAddress() + "\nPort = " + serverSock.getLocalPort());
 
 			localPort = serverSock.getLocalPort();
 
 			t = new Thread(new Runnable() {
+				
 				public void run() {
 					try {
 						sock = serverSock.accept();
@@ -37,7 +40,8 @@ public class Server extends Communication {
 								+ sock.getPort());
 
 						setSocket(sock);
-
+						
+						
 						doit();
 
 						window.setCommunicationsReady();

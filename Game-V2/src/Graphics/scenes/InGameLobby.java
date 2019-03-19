@@ -4,11 +4,12 @@ import javax.swing.JLabel;
 
 import Graphics.SceneManager;
 
-public class TrainingRoom extends JLabel{
+public class InGameLobby extends JLabel{
 	
 	SceneManager sm;
 	
-	public TrainingRoom(SceneManager sm) {
+	public InGameLobby (SceneManager sm) {
+
 		this.sm = sm;
 		initialize();
 	}

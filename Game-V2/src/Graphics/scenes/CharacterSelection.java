@@ -109,7 +109,7 @@ public class CharacterSelection extends JLabel{
 	
 	private void initializeImage() {
 		try {
-			background = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/selectionbackground.png")).getScaledInstance(sm.screenWidth, sm.screenHeight, Image.SCALE_SMOOTH));
+			background = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/selectionbackground.jpg")).getScaledInstance(sm.screenWidth, sm.screenHeight, Image.SCALE_SMOOTH));
 			leftarrowimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/leftarrow.png")));
 			rightarrowimg = new ImageIcon(ImageIO.read(new File("src/resources/characterSelection/rightarrow.png")));
 			leftarrowpressedimg = new ImageIcon(

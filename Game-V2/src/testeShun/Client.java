@@ -19,7 +19,6 @@ public class Client extends Communication {
 
 			Socket sock = new Socket(address, port);
 			setSocket(sock);
-
 			doit();
 
 		} catch (UnknownHostException e) {
