@@ -6,7 +6,7 @@ import Graphics.SceneManager;
 
 public class Dungeon extends JLabel{
 	
-	SceneManager sm = new SceneManager();
+	SceneManager sm;
 	
 	public Dungeon(SceneManager sm) {
 		this.sm = sm;

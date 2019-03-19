@@ -6,7 +6,7 @@ import Graphics.SceneManager;
 
 public class DummyScene_donottouch extends JLabel{
 	
-	SceneManager sm = new SceneManager();
+	SceneManager sm;
 	
 	public DummyScene_donottouch(SceneManager sm) {
 		this.sm = sm;

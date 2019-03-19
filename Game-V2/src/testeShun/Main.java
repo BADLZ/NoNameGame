@@ -8,8 +8,11 @@ import javax.swing.JTextField;
 
 public class Main {
 
-	public static void main(String[] args) {
+	private static String address;
 
+	public static void main(String[] args) throws UnknownHostException, SocketException {
+		
+		
 		GameSupporter server = new GameSupporter() {
 			
 			@Override
@@ -42,13 +45,19 @@ public class Main {
 		server.add(text);
 
 		Communication c = server.getCommunications();
+		
 		try {
-			text.setText("IP: " + Server.getHostAddress());
-		} catch (SocketException | UnknownHostException e) {
+			address = Server.getHostAddress();
+		} catch (SocketException | UnknownHostException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
 		}
+		
+		text.setText("IP: " + address);
 		text1.setText("Port: " + Server.getServerSocketLocalPort());
+		
+//		Client client = new Client(address, Server.getServerSocketLocalPort(), server);
+
 	}
 
 }

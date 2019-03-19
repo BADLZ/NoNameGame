@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import Graphics.scenes.CharacterSelection;
 import Graphics.scenes.Dungeon;
+import Graphics.scenes.InGameLobby;
 import Graphics.scenes.LoginWindow;
 import Graphics.scenes.MainScreen;
 import Graphics.scenes.PubScreen;
@@ -31,7 +32,9 @@ public class SceneManager {
 	private PubScreen pubscreen;
 	private Dungeon dungeon;
 	private TrainingRoom trainingroom;
-
+	private InGameLobby ingamelobby;
+	
+	
 	private Personagens p;
 	private String name;
 	private JFrame frame;
@@ -59,7 +62,7 @@ public class SceneManager {
 		pubscreen = new PubScreen(this);
 		trainingroom = new TrainingRoom(this);
 		dungeon = new Dungeon(this);
-		
+		ingamelobby = new InGameLobby(this);
 		
 		frame = new JFrame();
 		cl = new CardLayout();

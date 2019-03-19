@@ -45,16 +45,22 @@ public class Communication implements ISend {
 	 */
 	public void doit() {
 		try {
-
+			
 			out = new PrintWriter(sock.getOutputStream(), true);
 			in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 
 			Thread tr = new Thread(new Runnable() {
 
 				public void run() {
-
-					System.out.println(window.getName() + ": End of input from socket .....");
-					window.receivedEndOfCommunicationsFromOtherUser();
+					
+					try {
+						if(in.ready()) {
+							System.out.println(in.readLine());
+						}
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					
 					// closing socket if this is last part closed
 					try {
