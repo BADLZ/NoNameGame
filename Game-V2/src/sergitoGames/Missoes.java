@@ -153,5 +153,25 @@ public class Missoes {
 		
 		//sc.close();
 	}
+	
+	/*Se o Personagem tiver 4 moedas negras, forja para 1 fragmento*/
+	public boolean moedasNegras(Personagens p) {
+		
+		int probabilidade = (int) (Math.random()*100);
+		
+		if (probabilidade <= 3) { //probabilidade de 3%
+			p.setMoedasNegras(p.getMoedasNegras()+1);
+			System.out.println("You earned a black coin!");
+			
+			if (p.getMoedasNegras()>=4) {
+				System.out.println("You forged black coins into a Fragment!");
+				p.setFragmentos(p.getFragmentos()+1);
+			}
+			
+			return true;
+		}	
+		return false; //não recebe nada
+	}
+	
 
 }

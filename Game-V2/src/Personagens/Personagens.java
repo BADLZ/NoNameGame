@@ -13,6 +13,9 @@ public abstract class Personagens {
 	private int treinoArmas;
 	private int audacia;
 	
+	private int moedasNegras;
+	private int fragmentos;
+	
 	public Personagens(String name) {
 		this.name = name;
 	}
@@ -206,6 +209,22 @@ public abstract class Personagens {
 		else {
 			return false;
 		}
+	}
+
+	public int getMoedasNegras() {
+		return moedasNegras;
+	}
+
+	public void setMoedasNegras(int moedasNegras) {
+		this.moedasNegras = moedasNegras;
+	}
+
+	public int getFragmentos() {
+		return fragmentos;
+	}
+
+	public void setFragmentos(int fragmentos) {
+		this.fragmentos = fragmentos;
 	}
 
 }
