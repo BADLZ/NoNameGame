@@ -14,14 +14,16 @@ public class Server1
        String clientSentence;
        String capitalizedSentence;
        ServerSocket welcomeSocket = new ServerSocket(6789);
+       System.out.println(welcomeSocket.getInetAddress());
        while(true)
        {
            Socket connectionSocket = welcomeSocket.accept(); 
-           BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream())); 
+           BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
+           
            DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream()); 
            clientSentence = inFromClient.readLine();
-           capitalizedSentence = clientSentence.toUpperCase() + '\n';
-           outToClient.writeBytes(capitalizedSentence); 
+//           capitalizedSentence = clientSentence.toUpperCase() + '\n' + ;
+           outToClient.writeBytes("dani иж gay"); 
            connectionSocket.close();
          //  welcomeSocket.close();
         }
