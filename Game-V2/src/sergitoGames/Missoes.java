@@ -140,12 +140,14 @@ public class Missoes {
 		case 1:
 			//p.setCurrentXp(p.getCurrentXp()+gainXp);
 			Personagens.updateXp(p, gainXp); 
+			moedasNegras(p);
 			p.setCurrentGold(p.getCurrentGold()+gainGold);			
 			break;
 		
 		case 2:
 			//p.setCurrentXp(p.getCurrentXp()+gainXp2);
 			Personagens.updateXp(p, gainXp2);
+			moedasNegras(p);
 			p.setCurrentGold(p.getCurrentGold()+gainGold2);	
 			break;	
 		}
@@ -166,6 +168,7 @@ public class Missoes {
 			if (p.getMoedasNegras()>=4) {
 				System.out.println("You forged black coins into a Fragment!");
 				p.setFragmentos(p.getFragmentos()+1);
+				p.setMoedasNegras(p.getMoedasNegras()-4); //resetar moedas
 			}
 			
 			return true;
