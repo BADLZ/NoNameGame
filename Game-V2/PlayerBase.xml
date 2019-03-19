@@ -88,4 +88,11 @@
 <xp>0</xp>
 <gold>0</gold>
 </player>
+<player>
+<name>Teste5</name>
+<class>Feiticeiro</class>
+<Level>1</Level>
+<xp>0</xp>
+<gold>0</gold>
+</player>
 </players>
