@@ -7,6 +7,8 @@ import Personagens.Cacador;
 import Personagens.Feiticeiro;
 import Personagens.Gladiador;
 import Personagens.Personagens;
+import accessory.Accessory;
+import accessory.Arma;
 import database.DatabaseReader;
 import database.DatabaseWriter;
 import legacyCode.MainWindowManager;
@@ -16,7 +18,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		SceneManager sm = new SceneManager();
+//		SceneManager sm = new SceneManager();
 		
 //		testePersonagens();
 //		testeLogin();
@@ -25,6 +27,47 @@ public class Main {
 //		testeDatabaseWriter2();
 //		testeRegistaConta();
 //		testarLogin();
+		testeAccessoryArma();
+//		equivalencia();
+	}
+	
+	private static void testeAccessoryArma() {
+		Cacador c = new Cacador("Grande Testador");
+		c.powerPerLvl(1);
+		System.out.println(c + "\n----------------\n----------------\n");
+		Arma arma = new Arma("Arma1");
+		System.out.println(arma + "\n----------------\n----------------\n");
+		c.equipItem(arma);
+//		c.equipItem(arma);
+//		c.equipItem(arma);
+//		c.equipItem(arma);
+//		c.equipItem(arma);
+//		c.equipItem(arma);
+		System.out.println(c + "\n----------------\n----------------\n");
+		arma.setLvl(3);
+		System.out.println(c);
+		
+	}
+	
+	private static void equivalencia() {
+		Cacador c = new Cacador("Grande Testador");
+		Gladiador g = new Gladiador("Grande Gladiador");
+		Cacador c2 = new Cacador("Grande Cacador");
+		Personagens p1 = (Personagens) c;
+		Personagens p2 = (Personagens) g;
+		Personagens p3 = (Personagens) c2;
+		
+		System.out.println(p1.getClass().equals(p3.getClass()));
+		
+		Teste2Extends x = new Teste2Extends("oi");
+		Teste3Extends y = new Teste3Extends("aa");
+		
+		Accessory a1 = (Accessory) x;
+		Accessory a2 = (Accessory) y;
+		
+		System.out.println(a1.getClass().equals(a2.getClass()));
+		System.out.println(a1.getClass().getClass().equals(a2.getClass().getClass()));
+
 		
 	}
 	
