@@ -27,7 +27,7 @@ public class DatabaseWriter {
 			Element root = document.getDocumentElement();
 
 			Element newServer = document.createElement("player");
-
+			
 			Element nodeName = document.createElement("name");
 			nodeName.appendChild(document.createTextNode(name));
 			newServer.appendChild(nodeName);

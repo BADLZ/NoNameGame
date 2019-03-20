@@ -76,12 +76,14 @@ public class SceneManager {
 		frame.setUndecorated(true);
 		frame.setVisible(true);
 		
+
+		
 		cards.add(mainscreen, "mainscreen");
 		cards.add(loginwindow, "LoginWindow");
 		cards.add(characterselection, "CharacterSelection");
 		cards.add(registerwindow, "RegisterWindow");
-		cards.add(pubscreen, "PubScreen");
 		cards.add(trainingroom, "TrainingRoom");
+		cards.add(pubscreen, "PubScreen");
 		cards.add(dungeon, "Dungeon");
 		
 	}
