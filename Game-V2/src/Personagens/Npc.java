@@ -89,4 +89,11 @@ public class Npc extends Personagens {
 	}
 
 
+	@Override
+	protected void lvlUpStats() {
+		// nao precisa de aumentar os stats por set npc
+		
+	}
+
+
 }

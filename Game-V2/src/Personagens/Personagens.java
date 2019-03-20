@@ -8,34 +8,47 @@ import accessory.Arma;
 public abstract class Personagens {
 	
 	public abstract void powerPerLvl(int lvl); 
-
+	//numero maximo de acessorios que podem estar no inventario
+	public static final int MAX_ITENS_INV = 30;
 	
-	private int nivel;
-	private long currentXp = 0;
-	private long currentGold = 0;
+	protected int nivel;
+	protected long currentXp = 0;
+	protected long currentGold = 0;
 	private String name;
 	
-	private int treinoArmas;
-	private int audacia;
+	protected int treinoArmas;
+	protected int audacia;
 	
-	private int moedasNegras;
-	private int fragmentos;
+	protected int moedasNegras;
+	protected int fragmentos;
 	
-	private ArrayList<Accessory> equipedItems;
+	protected ArrayList<Accessory> equipedItems;
+	protected ArrayList<Accessory> inventory;
 	
 	public Personagens(String name) {
 		this.name = name;
 		equipedItems = new ArrayList<>();
+		inventory = new ArrayList<>();
+		powerPerLvl(1);
+		setNivel(1);
 	}
 	
 	//--------------------------novas cenas-----
 	//statusBase = soma todos atributos
-	private int statusBase, inteligencia, destreza, forca, constituicao, mira;
+	protected int statusBase, inteligencia, destreza, forca, constituicao, mira;
 	
 	public boolean equipItem(Accessory item) {
 		equipedItems.add(item);
 		//TODO ha casos em que o jogador nao pode equipar itens
 		return true;
+	}
+	
+	public boolean addItem(Accessory item) {
+		if(inventory.size() < MAX_ITENS_INV) {
+			inventory.add(item);
+			return true;
+		}
+		return false;
 	}
 	
 	public int getStatusBase() {
@@ -74,23 +87,23 @@ public abstract class Personagens {
 		this.audacia = audacia;
 	}
 
-	public int getInteligencia() {
+	public int getBaseInteligencia() {
 		return inteligencia;
 	}
 
-	public int getDestreza() {
+	public int getBaseDestreza() {
 		return destreza;
 	}
 
-	public int getForca() {
+	public int getBaseForca() {
 		return forca;
 	}
 
-	public int getConstituicao() {
+	public int getBaseConstituicao() {
 		return constituicao;
 	}
 
-	public int getMira() {
+	public int getBaseMira() {
 		return mira;
 	}
 
@@ -147,34 +160,14 @@ public abstract class Personagens {
 		nivel = a;
 	}
 	
-	public void lvlUp(Personagens p) {
-		p.setNivel(p.getNivel()+1);
-		p.setStatusBase(getStatusBase() + 20);
-		if (p instanceof Gladiador) {
-			p.setInteligencia(p.getInteligencia() + 0);
-			p.setDestreza(p.getDestreza() + 0);
-			p.setForca(p.getForca() + 6);
-			p.setConstituicao(p.getConstituicao() + 11);
-			p.setMira(p.getMira() + 3);
-			
-		}
-		else if (p instanceof Feiticeiro) {
-			p.setInteligencia(p.getInteligencia() + 12);
-			p.setDestreza(p.getDestreza() + 0);
-			p.setForca(p.getForca() + 0);
-			p.setConstituicao(p.getConstituicao() + 2);
-			p.setMira(p.getMira() + 6);
-			
-		}
-		else { //caçador
-			p.setInteligencia(p.getInteligencia() + 0);
-			p.setDestreza(p.getDestreza() + 7);
-			p.setForca(p.getForca() + 0);
-			p.setConstituicao(p.getConstituicao() + 7);
-			p.setMira(p.getMira() + 6);
-
-		}
+	//---------------
+	
+	public void lvlUp() {
+		nivel += 1;
+		lvlUpStats();
 	}
+	protected abstract void lvlUpStats();
+	//---------------
 	
 	
 	public static long xpForNextLvl(int lvl) {
@@ -199,29 +192,21 @@ public abstract class Personagens {
 	}
 	
 	
-	public static boolean updateXp(Personagens p, long xp) {
+	public boolean updateXp(long xp) {
 		boolean chegouAqui = false;
 		
-		p.setCurrentXp(p.getCurrentXp()+xp);
+		setCurrentXp(getCurrentXp()+xp);
 
-		while (p.getCurrentXp() >= xpForNextLvl(p.getNivel()+1)) {
+		while (getCurrentXp() >= xpForNextLvl(getNivel()+1)) {
 			//resetar xp
-			p.setCurrentXp(p.getCurrentXp()-xpForNextLvl(p.getNivel()+1));
+			setCurrentXp(getCurrentXp()-xpForNextLvl(getNivel()+1));
 			//aumentar lvl
-			p.lvlUp(p);
+			lvlUp();
 			System.out.println("LEVEL UP!");
 			
-			chegouAqui = true;
-			//p.setNivel(p.getNivel()+1);			
+			chegouAqui = true;		
 		}	
-		
-		if (chegouAqui == true) {
-			chegouAqui = false;
-			return true;
-		}
-		else {
-			return false;
-		}
+		return chegouAqui;
 	}
 
 	public int getMoedasNegras() {
@@ -293,25 +278,25 @@ public abstract class Personagens {
 		return result;
 	}
 	//-------------------------
-	public int getTotalConstituicao() {
-		return getConstituicao() + getBonusConstituicao();
+	public int getConstituicao() {
+		return getBaseConstituicao() + getBonusConstituicao();
 	}
 	
-	public int getTotalMira() {
-		return getMira() + getBonusMira();
+	public int getMira() {
+		return getBaseMira() + getBonusMira();
 	}
 	
-	public int getTotalForca() {
-		int result = getForca() + getBonusForca();
+	public int getForca() {
+		int result = getBaseForca() + getBonusForca();
 		return result*danoArma();
 	}
 	
-	public int getTotalInteligencia() {
-		return getInteligencia() + getBonusInteligencia();
+	public int getInteligencia() {
+		return getBaseInteligencia() + getBonusInteligencia();
 	}
 	
-	public int getTotalDestreza() {
-		return getDestreza() + getBonusDestreza();
+	public int getDestreza() {
+		return getBaseDestreza() + getBonusDestreza();
 	}
 
 	private int danoArma() {

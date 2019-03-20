@@ -7,15 +7,18 @@ import Personagens.Personagens;
 public abstract class Accessory {
 
 	protected int nivelArma = 1;
-	//qual diferenca entre custoGold e custoTreinoArmas
 	protected long baseGoldCost;
 	protected int baseTreinoArmasCost;
 	protected String nomeArma;
 	
 	//bonus que acessorio da a cada atributo
-	protected int statusBase, constituicao, mira;
+	protected int constituicao, mira;
 	//representam percentagem que aumentam num atributo especifico
-	protected double pStatusBase, pConstituicao, pMira;
+	protected double pConstituicao, pMira;
+	
+	protected double percentageEvolutionStats;
+	protected double percentageEvolutionGold;
+	protected int incrementEvolutionWeapon;
 	//treinoarmas audacia - algum destes e necessario?
 	
 	protected int bonusPersonagem;
@@ -79,13 +82,31 @@ public abstract class Accessory {
 		return false;
 	}
 	
-	public abstract long getCustoGoldEvolucao();
-	public abstract int getCustoTreinoArmasEvolucao();
-	protected abstract void statsLvlUp();
-	//-----------------------------
-	public int getStatusBase() {
-		return statusBase;
+	public long getCustoGoldEvolucao() {
+		int nextLvl = nivelArma + 1;
+		long cost = baseGoldCost;
+		for (int i = 1; i <= nextLvl; i++) {
+			cost += cost*percentageEvolutionGold;
+		}		
+		return cost;
 	}
+	public int getCustoTreinoArmasEvolucao() {
+		int nextLvl = nivelArma + 1;
+		int cost = baseTreinoArmasCost;
+		for (int i = 1; i <= nextLvl; i++) {
+			cost += incrementEvolutionWeapon;
+		}
+		return cost;
+	}
+	
+	protected void statsLvlUp() {
+		int nextLvl = nivelArma + 1;
+		constituicao += constituicao*percentageEvolutionStats;
+		mira += mira*percentageEvolutionStats;
+		bonusPersonagem += bonusPersonagem*percentageEvolutionStats;
+	}
+	//-----------------------------
+	
 	public int getConstituicao() {
 		return constituicao;
 	}
@@ -98,16 +119,13 @@ public abstract class Accessory {
 	
 	public ArrayList<Integer> getAtributos(){
 		ArrayList<Integer> result = new ArrayList<>();
-		result.add(getStatusBase());
 		result.add(getConstituicao());
 		result.add(getMira());
 		result.add(getBonusPersonagem());
 		return result;
 	}
 	//-------------------------------
-	public double getPStatusBase() {
-		return pStatusBase;
-	}
+	
 	public double getPConstituicao() {
 		return pConstituicao;
 	}
@@ -120,7 +138,6 @@ public abstract class Accessory {
 	
 	public ArrayList<Double> getPAtributos(){
 		ArrayList<Double> result = new ArrayList<>();
-		result.add(getPStatusBase());
 		result.add(getPConstituicao());
 		result.add(getPMira());
 		result.add(getPBonusPersonagem());

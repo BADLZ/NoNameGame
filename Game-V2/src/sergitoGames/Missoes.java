@@ -139,14 +139,14 @@ public class Missoes {
 
 		case 1:
 			//p.setCurrentXp(p.getCurrentXp()+gainXp);
-			Personagens.updateXp(p, gainXp); 
+			p.updateXp(gainXp); 
 			moedasNegras(p);
 			p.setCurrentGold(p.getCurrentGold()+gainGold);			
 			break;
 		
 		case 2:
 			//p.setCurrentXp(p.getCurrentXp()+gainXp2);
-			Personagens.updateXp(p, gainXp2);
+			p.updateXp(gainXp2);
 			moedasNegras(p);
 			p.setCurrentGold(p.getCurrentGold()+gainGold2);	
 			break;	
