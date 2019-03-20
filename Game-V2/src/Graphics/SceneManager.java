@@ -10,6 +10,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.sun.javafx.geom.transform.SingularMatrixException;
+
 import Graphics.scenes.CharacterSelection;
 import Graphics.scenes.Dungeon;
 import Graphics.scenes.InGameLobby;
