@@ -67,6 +67,15 @@ public class Gladiador extends Personagens {
 //		System.out.println("Audacia "+getAudacia());
 	}
 
+	@Override
+	protected void lvlUpStats() {
+		super.inteligencia += 0;
+		super.destreza += 7;
+		super.forca += 0;
+		super.constituicao += 7;
+		super.mira += 6;
+	}
+
 	
 
 

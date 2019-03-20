@@ -33,7 +33,7 @@ public class Main {
 	
 	private static void testeAccessoryArma() {
 		Cacador c = new Cacador("Grande Testador");
-		c.powerPerLvl(1);
+//		c.powerPerLvl(1);
 		System.out.println(c + "\n----------------\n----------------\n");
 		Arma arma = new Arma("Arma1");
 		System.out.println(arma + "\n----------------\n----------------\n");
@@ -90,7 +90,7 @@ public class Main {
 	private static void testeDatabaseWriter2() {
 		Personagens p = DatabaseReader.getPersonagem("Teste1");
 		System.out.println(p);
-		p.lvlUp(p);
+		p.lvlUp();
 		p.setCurrentGold(20);
 		System.out.println(p);
 		DatabaseWriter.storePlayer(p);

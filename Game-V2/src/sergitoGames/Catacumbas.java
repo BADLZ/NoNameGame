@@ -249,7 +249,7 @@ public class Catacumbas {
 		rewGold = 100*n.getNivel()/2*1;
 		System.out.println("XP GAINED: "+rewXp);
 		System.out.println("GOLD GAINED: "+rewGold);
-		Personagens.updateXp(p, rewXp);
+		p.updateXp(rewXp);
 		p.setCurrentGold(p.getCurrentGold()+rewGold);
 		System.out.println();
 	}
@@ -261,7 +261,7 @@ public class Catacumbas {
 		rewGold = 100*n.getNivel()/2*2;
 		System.out.println("XP GAINED: "+rewXp);
 		System.out.println("GOLD GAINED: "+rewGold);
-		Personagens.updateXp(p, rewXp);
+		p.updateXp(rewXp);
 		p.setCurrentGold(p.getCurrentGold()+rewGold);	
 		System.out.println();
 	}

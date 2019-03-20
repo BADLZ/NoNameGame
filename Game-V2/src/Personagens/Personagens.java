@@ -8,31 +8,34 @@ import accessory.Arma;
 public abstract class Personagens {
 	
 	public abstract void powerPerLvl(int lvl); 
-
+	//numero maximo de acessorios que podem estar no inventario
+	public static final int MAX_ITENS_INV = 30;
 	
-	private int nivel;
-	private long currentXp = 0;
-	private long currentGold = 0;
+	protected int nivel;
+	protected long currentXp = 0;
+	protected long currentGold = 0;
 	private String name;
 	
-	private int treinoArmas;
-	private int audacia;
+	protected int treinoArmas;
+	protected int audacia;
 	
-	private int moedasNegras;
-	private int fragmentos;
+	protected int moedasNegras;
+	protected int fragmentos;
 	
-	private ArrayList<Accessory> equipedItems;
-	private ArrayList<Accessory> inventory;
+	protected ArrayList<Accessory> equipedItems;
+	protected ArrayList<Accessory> inventory;
 	
 	public Personagens(String name) {
 		this.name = name;
 		equipedItems = new ArrayList<>();
 		inventory = new ArrayList<>();
+		powerPerLvl(1);
+		setNivel(1);
 	}
 	
 	//--------------------------novas cenas-----
 	//statusBase = soma todos atributos
-	private int statusBase, inteligencia, destreza, forca, constituicao, mira;
+	protected int statusBase, inteligencia, destreza, forca, constituicao, mira;
 	
 	public boolean equipItem(Accessory item) {
 		equipedItems.add(item);
@@ -41,6 +44,10 @@ public abstract class Personagens {
 	}
 	
 	public boolean addItem(Accessory item) {
+		if(inventory.size() < MAX_ITENS_INV) {
+			inventory.add(item);
+			return true;
+		}
 		return false;
 	}
 	
@@ -153,34 +160,14 @@ public abstract class Personagens {
 		nivel = a;
 	}
 	
-	public void lvlUp(Personagens p) {
-		p.setNivel(p.getNivel()+1);
-		p.setStatusBase(getStatusBase() + 20);
-		if (p instanceof Gladiador) {
-			p.setInteligencia(p.getInteligencia() + 0);
-			p.setDestreza(p.getDestreza() + 0);
-			p.setForca(p.getForca() + 6);
-			p.setConstituicao(p.getConstituicao() + 11);
-			p.setMira(p.getMira() + 3);
-			
-		}
-		else if (p instanceof Feiticeiro) {
-			p.setInteligencia(p.getInteligencia() + 12);
-			p.setDestreza(p.getDestreza() + 0);
-			p.setForca(p.getForca() + 0);
-			p.setConstituicao(p.getConstituicao() + 2);
-			p.setMira(p.getMira() + 6);
-			
-		}
-		else { //caçador
-			p.setInteligencia(p.getInteligencia() + 0);
-			p.setDestreza(p.getDestreza() + 7);
-			p.setForca(p.getForca() + 0);
-			p.setConstituicao(p.getConstituicao() + 7);
-			p.setMira(p.getMira() + 6);
-
-		}
+	//---------------
+	
+	public void lvlUp() {
+		nivel += 1;
+		lvlUpStats();
 	}
+	protected abstract void lvlUpStats();
+	//---------------
 	
 	
 	public static long xpForNextLvl(int lvl) {
@@ -205,29 +192,21 @@ public abstract class Personagens {
 	}
 	
 	
-	public static boolean updateXp(Personagens p, long xp) {
+	public boolean updateXp(long xp) {
 		boolean chegouAqui = false;
 		
-		p.setCurrentXp(p.getCurrentXp()+xp);
+		setCurrentXp(getCurrentXp()+xp);
 
-		while (p.getCurrentXp() >= xpForNextLvl(p.getNivel()+1)) {
+		while (getCurrentXp() >= xpForNextLvl(getNivel()+1)) {
 			//resetar xp
-			p.setCurrentXp(p.getCurrentXp()-xpForNextLvl(p.getNivel()+1));
+			setCurrentXp(getCurrentXp()-xpForNextLvl(getNivel()+1));
 			//aumentar lvl
-			p.lvlUp(p);
+			lvlUp();
 			System.out.println("LEVEL UP!");
 			
-			chegouAqui = true;
-			//p.setNivel(p.getNivel()+1);			
+			chegouAqui = true;		
 		}	
-		
-		if (chegouAqui == true) {
-			chegouAqui = false;
-			return true;
-		}
-		else {
-			return false;
-		}
+		return chegouAqui;
 	}
 
 	public int getMoedasNegras() {
@@ -300,24 +279,24 @@ public abstract class Personagens {
 	}
 	//-------------------------
 	public int getConstituicao() {
-		return getConstituicao() + getBonusConstituicao();
+		return getBaseConstituicao() + getBonusConstituicao();
 	}
 	
 	public int getMira() {
-		return getMira() + getBonusMira();
+		return getBaseMira() + getBonusMira();
 	}
 	
 	public int getForca() {
-		int result = getForca() + getBonusForca();
+		int result = getBaseForca() + getBonusForca();
 		return result*danoArma();
 	}
 	
 	public int getInteligencia() {
-		return getInteligencia() + getBonusInteligencia();
+		return getBaseInteligencia() + getBonusInteligencia();
 	}
 	
 	public int getDestreza() {
-		return getDestreza() + getBonusDestreza();
+		return getBaseDestreza() + getBonusDestreza();
 	}
 
 	private int danoArma() {

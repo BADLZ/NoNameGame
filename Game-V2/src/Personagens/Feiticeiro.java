@@ -68,4 +68,13 @@ public class Feiticeiro extends Personagens {
 		
 	}
 
+	@Override
+	protected void lvlUpStats() {
+		super.inteligencia += 12;
+		super.destreza += 0;
+		super.forca += 0;
+		super.constituicao += 2;
+		super.mira += 6;
+	}
+
 }
