@@ -29,6 +29,7 @@ public abstract class Personagens {
 	}
 	
 	//--------------------------novas cenas-----
+	//statusBase = soma todos atributos
 	private int statusBase, inteligencia, destreza, forca, constituicao, mira;
 	
 	public boolean equipItem(Accessory item) {
@@ -261,7 +262,7 @@ public abstract class Personagens {
 	
 	public int getBonusForca() {
 		int result = 0;
-		if(this instanceof Cacador) {
+		if(this instanceof Gladiador) {
 			for(Accessory item: equipedItems) {
 				result += item.getBonusPersonagem();
 				result += forca*item.getPBonusPersonagem();
@@ -283,7 +284,7 @@ public abstract class Personagens {
 	
 	public int getBonusDestreza() {
 		int result = 0;
-		if(this instanceof Gladiador) {
+		if(this instanceof Cacador) {
 			for(Accessory item: equipedItems) {
 				result += item.getBonusPersonagem();
 				result += destreza*item.getPBonusPersonagem();

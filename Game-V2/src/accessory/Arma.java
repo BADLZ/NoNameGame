@@ -63,6 +63,7 @@ public class Arma extends Accessory{
 		for (int i = 1; i <= nextLvl; i++) {
 			cost += cost*0.35;
 		}
+		
 		return cost;
 	}
 
@@ -79,26 +80,10 @@ public class Arma extends Accessory{
 	@Override
 	protected void statsLvlUp() {
 		int nextLvl = super.nivelArma + 1;
-		if(super.nomeArma.equalsIgnoreCase("Arma1")) {
-			//daqui tive que inventar que era dificil mer igual ao codigo anterior
-			super.constituicao += 30;
-			super.mira += 30;
-			super.bonusPersonagem += 30;
-			//nao sei quanta % querem aumentar
-			super.pBonusPersonagem += 0.03;
-		}else if(super.nomeArma.equalsIgnoreCase("Arma2")) {
-			super.constituicao += 30;
-			super.mira += 20;
-			super.bonusPersonagem += 60;
-			super.pBonusPersonagem += 0.03;
-		}else if(super.nomeArma.equalsIgnoreCase("Arma3")) {
-			super.constituicao += 10;
-			super.mira += 30;
-			super.bonusPersonagem += 50;
-			super.pBonusPersonagem += 0.03;
-		}else {
-			System.out.println("que arma eh esta??");
-		}
+		double percentagem = 0.25;
+		super.constituicao += super.constituicao*percentagem;
+		super.mira += super.mira*percentagem;
+		super.bonusPersonagem += super.bonusPersonagem*percentagem;
 	}
 
 	public int getDano() {
