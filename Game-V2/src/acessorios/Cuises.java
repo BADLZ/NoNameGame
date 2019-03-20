@@ -7,17 +7,17 @@ import Personagens.Feiticeiro;
 import Personagens.Gladiador;
 import Personagens.Personagens;
 
-public class Chapeu extends Acessorios {
+public class Cuises extends Acessorios {
 
 	@Override
 	public void choseWeapon(Personagens p) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("1 - Chapeu 1\nStatus:");
-		System.out.println("Basico: 60\nConstituicao: 30\nMira: 60\n");
-		System.out.println("2 - Chapeu 2\nStatus:");
-		System.out.println("Basico: 25\nConstituicao: 100\nMira: 25\n");
-		System.out.println("3 - Chapeu 3\nStatus:");
-		System.out.println("Basico: 50\nConstituicao: 50\nMira: 50\n");
+		System.out.println("1 - Cuises 1\nStatus:");
+		System.out.println("Basico: 10\nConstituicao: 30\nMira: 10\n");
+		System.out.println("2 - Cuises 2\nStatus:");
+		System.out.println("Basico: 25\nConstituicao: 10\nMira: 15\n");
+		System.out.println("3 - Cuises 3\nStatus:");
+		System.out.println("Basico: 15\nConstituicao: 15\nMira: 20\n");
 		System.out.println("Opção (1|2|3) --> ");
 		int opcao = sc.nextInt();
 		while (opcao!=1 && opcao!=2 && opcao!=3) {
@@ -27,29 +27,29 @@ public class Chapeu extends Acessorios {
 		
 		switch (opcao) {
 		case 1:
-			setNomeArma("Chapeu1");
+			setNomeArma("Cuises1");
 			setNivelArma(1);
 			
 			p.setConstituicao(p.getConstituicao()+30);
-			p.setMira(p.getMira()+60);
+			p.setMira(p.getMira()+10);
 			
 			if (p instanceof Gladiador) {
-				p.setForca(p.getForca()+60);
+				p.setForca(p.getForca()+10);
 			}
 			else if (p instanceof Feiticeiro) {
-				p.setInteligencia(p.getInteligencia()+60);			
+				p.setInteligencia(p.getInteligencia()+10);			
 			}
 			else if (p instanceof Cacador) {
-				p.setDestreza(p.getDestreza()+60);	
+				p.setDestreza(p.getDestreza()+10);	
 			}
 			break;
 			
 		case 2:
-			setNomeArma("Chapeu2");
+			setNomeArma("Cuises2");
 			setNivelArma(1);
 			
-			p.setConstituicao(p.getConstituicao()+100);
-			p.setMira(p.getMira()+25);
+			p.setConstituicao(p.getConstituicao()+10);
+			p.setMira(p.getMira()+15);
 			
 			if (p instanceof Gladiador) {
 				p.setForca(p.getForca()+25);	
@@ -60,24 +60,24 @@ public class Chapeu extends Acessorios {
 			else if (p instanceof Cacador) {
 				p.setDestreza(p.getDestreza()+25);
 			}
-			
+
 			break;
 			
 		case 3:
-			setNomeArma("Chapeu3");
+			setNomeArma("Cuises3");
 			setNivelArma(1);
 			
-			p.setConstituicao(p.getConstituicao()+50);
-			p.setMira(p.getMira()+50);
+			p.setConstituicao(p.getConstituicao()+15);
+			p.setMira(p.getMira()+20);
 			
 			if (p instanceof Gladiador) {
-				p.setForca(p.getForca()+50);
+				p.setForca(p.getForca()+15);
 			}
 			else if (p instanceof Feiticeiro) {
-				p.setInteligencia(p.getInteligencia()+50);
+				p.setInteligencia(p.getInteligencia()+15);
 			}
 			else if (p instanceof Cacador) {
-				p.setDestreza(p.getDestreza()+50);
+				p.setDestreza(p.getDestreza()+15);
 			}
 			break;
 			
@@ -89,13 +89,13 @@ public class Chapeu extends Acessorios {
 	@Override
 	public void evolutionCost(Personagens p, int lvlArma) {
 		if (lvlArma == 1) {
-			setCustoGold(700);
-			setCustoTreinoArmas(10);
+			setCustoGold(500);
+			setCustoTreinoArmas(7);
 		}
 		else {
 			for (int i = 0; i < lvlArma; i++) {
-				setCustoTreinoArmas(getCustoTreinoArmas()+5);
-				setCustoGold((long) (getCustoGold()+getCustoGold()*0.6));
+				setCustoTreinoArmas(getCustoTreinoArmas()+4);
+				setCustoGold((long) (getCustoGold()+getCustoGold()*0.45));
 			}
 		}
 		
@@ -118,57 +118,58 @@ public class Chapeu extends Acessorios {
 			
 			switch (weapon) {
 			
-			case "Chapeu1":
+			case "Cuises1":
 				
 				for (int i = 0; i < lvlArma-1; i++) {
-					p.setConstituicao((int) (p.getConstituicao()+(30+30*0.5)));
-					p.setMira((int) (p.getMira()+(60+60*0.5)));
+					p.setConstituicao((int) (p.getConstituicao()+(30+30*0.4)));
+					p.setMira((int) (p.getMira()+(10+10*0.4)));
 					
 					if (p instanceof Gladiador) {
-						p.setForca((int) (p.getForca()+(60+60*0.5)));
+						p.setForca((int) (p.getForca()+(10+10*0.4)));
 					}
 					else if (p instanceof Feiticeiro) {
-						p.setInteligencia((int) (p.getInteligencia()+(60+60*0.5)));
+						p.setInteligencia((int) (p.getInteligencia()+(10+10*0.4)));
 					}
 					else if (p instanceof Cacador) {
-						p.setDestreza((int) (p.getDestreza()+(60+60*0.5)));
+						p.setDestreza((int) (p.getDestreza()+(10+10*0.4)));
 					}
 				}
+				
 				break;
 			
-			case "Chapeu2":
-				
+			case "Cuises2":
+			
 				for (int i = 0; i < lvlArma-1; i++) {
-					p.setConstituicao((int) (p.getConstituicao()+(100+100*0.5)));
-					p.setMira((int) (p.getMira()+(25+25*0.5)));
+					p.setConstituicao((int) (p.getConstituicao()+(10+10*0.4)));
+					p.setMira((int) (p.getMira()+(15+15*0.4)));
 					
 					if (p instanceof Gladiador) {
-						p.setForca((int) (p.getForca()+(25+25*0.5)));
+						p.setForca((int) (p.getForca()+(25+25*0.4)));
 					}
 					else if (p instanceof Feiticeiro) {
-						p.setInteligencia((int) (p.getInteligencia()+(25+25*0.5)));
+						p.setInteligencia((int) (p.getInteligencia()+(25+25*0.4)));
 					}
 					else if (p instanceof Cacador) {
-						p.setDestreza((int) (p.getDestreza()+(25+25*0.5)));
+						p.setDestreza((int) (p.getDestreza()+(25+25*0.4)));
 					}
 				}
 				
 				break;
 				
-			case "Chapeu3":
-				
+			case "Cuises3":
+
 				for (int i = 0; i < lvlArma-1; i++) {
-					p.setConstituicao((int) (p.getConstituicao()+(50+50*0.5)));
-					p.setMira((int) (p.getMira()+(50+50*0.5)));
+					p.setConstituicao((int) (p.getConstituicao()+(15+15*0.4)));
+					p.setMira((int) (p.getMira()+(20+20*0.4)));
 					
 					if (p instanceof Gladiador) {
-						p.setForca((int) (p.getForca()+(50+50*0.5)));
+						p.setForca((int) (p.getForca()+(15+15*0.4)));
 					}
 					else if (p instanceof Feiticeiro) {
-						p.setInteligencia((int) (p.getInteligencia()+(50+50*0.5)));
+						p.setInteligencia((int) (p.getInteligencia()+(15+15*0.4)));
 					}
 					else if (p instanceof Cacador) {
-						p.setDestreza((int) (p.getDestreza()+(50+50*0.5)));
+						p.setDestreza((int) (p.getDestreza()+(15+15*0.4)));
 					}
 				}
 				break;

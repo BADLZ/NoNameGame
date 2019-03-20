@@ -7,7 +7,6 @@ public class Cacador extends Personagens {
 	public Cacador(String name) {
 		//o nome vai para a classe Personagens
 		super(name);
-		
 		if (name == null || name.length() < 1) {
 			throw new IllegalArgumentException("Nome inválido");
 		}

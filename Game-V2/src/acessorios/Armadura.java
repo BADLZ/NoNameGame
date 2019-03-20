@@ -7,16 +7,16 @@ import Personagens.Feiticeiro;
 import Personagens.Gladiador;
 import Personagens.Personagens;
 
-public class Chapeu extends Acessorios {
+public class Armadura extends Acessorios {
 
 	@Override
 	public void choseWeapon(Personagens p) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("1 - Chapeu 1\nStatus:");
+		System.out.println("1 - Armadura 1\nStatus:");
 		System.out.println("Basico: 60\nConstituicao: 30\nMira: 60\n");
-		System.out.println("2 - Chapeu 2\nStatus:");
+		System.out.println("2 - Armadura 2\nStatus:");
 		System.out.println("Basico: 25\nConstituicao: 100\nMira: 25\n");
-		System.out.println("3 - Chapeu 3\nStatus:");
+		System.out.println("3 - Armadura 3\nStatus:");
 		System.out.println("Basico: 50\nConstituicao: 50\nMira: 50\n");
 		System.out.println("Opção (1|2|3) --> ");
 		int opcao = sc.nextInt();
@@ -27,7 +27,7 @@ public class Chapeu extends Acessorios {
 		
 		switch (opcao) {
 		case 1:
-			setNomeArma("Chapeu1");
+			setNomeArma("Armadura1");
 			setNivelArma(1);
 			
 			p.setConstituicao(p.getConstituicao()+30);
@@ -45,7 +45,7 @@ public class Chapeu extends Acessorios {
 			break;
 			
 		case 2:
-			setNomeArma("Chapeu2");
+			setNomeArma("Armadura2");
 			setNivelArma(1);
 			
 			p.setConstituicao(p.getConstituicao()+100);
@@ -64,7 +64,7 @@ public class Chapeu extends Acessorios {
 			break;
 			
 		case 3:
-			setNomeArma("Chapeu3");
+			setNomeArma("Armadura3");
 			setNivelArma(1);
 			
 			p.setConstituicao(p.getConstituicao()+50);
@@ -118,7 +118,7 @@ public class Chapeu extends Acessorios {
 			
 			switch (weapon) {
 			
-			case "Chapeu1":
+			case "Armadura1":
 				
 				for (int i = 0; i < lvlArma-1; i++) {
 					p.setConstituicao((int) (p.getConstituicao()+(30+30*0.5)));
@@ -136,7 +136,7 @@ public class Chapeu extends Acessorios {
 				}
 				break;
 			
-			case "Chapeu2":
+			case "Armadura2":
 				
 				for (int i = 0; i < lvlArma-1; i++) {
 					p.setConstituicao((int) (p.getConstituicao()+(100+100*0.5)));
@@ -155,7 +155,7 @@ public class Chapeu extends Acessorios {
 				
 				break;
 				
-			case "Chapeu3":
+			case "Armadura3":
 				
 				for (int i = 0; i < lvlArma-1; i++) {
 					p.setConstituicao((int) (p.getConstituicao()+(50+50*0.5)));

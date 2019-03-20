@@ -1,5 +1,10 @@
 package Personagens;
 
+import java.util.ArrayList;
+
+import accessory.Accessory;
+import accessory.Arma;
+
 public abstract class Personagens {
 	
 	public abstract void powerPerLvl(int lvl); 
@@ -16,14 +21,22 @@ public abstract class Personagens {
 	private int moedasNegras;
 	private int fragmentos;
 	
+	private ArrayList<Accessory> equipedItems;
+	
 	public Personagens(String name) {
 		this.name = name;
+		equipedItems = new ArrayList<>();
 	}
 	
 	//--------------------------novas cenas-----
+	//statusBase = soma todos atributos
 	private int statusBase, inteligencia, destreza, forca, constituicao, mira;
 	
-
+	public boolean equipItem(Accessory item) {
+		equipedItems.add(item);
+		//TODO ha casos em que o jogador nao pode equipar itens
+		return true;
+	}
 	
 	public int getStatusBase() {
 		return statusBase;
@@ -100,11 +113,11 @@ public abstract class Personagens {
 		result.append("Current XP:     -" + getCurrentXp() + "-\n");
 		result.append("Current Gold:   -" + getCurrentGold() + "-\n");
 		result.append("Status Base:    -" + getStatusBase() + "-\n");
-		result.append("Inteligencia:   -" + getInteligencia() + "-\n");
-		result.append("Destreza:       -" + getDestreza() + "-\n");
-		result.append("Forca:          -" + getForca() + "-\n");
-		result.append("Constituicao:   -" + getConstituicao() + "-\n");
-		result.append("Mira:           -" + getMira() + "-\n");
+		result.append("Inteligencia:   -" + getInteligencia() + " + " + getBonusInteligencia() + "-\n");
+		result.append("Destreza:       -" + getDestreza() + " + " + getBonusDestreza() + "-\n");
+		result.append("Forca:          -" + getForca() + " + " + getBonusForca() + "-\n");
+		result.append("Constituicao:   -" + getConstituicao() + " + " + getBonusConstituicao() + "-\n");
+		result.append("Mira:           -" + getMira() + " + " + getBonusMira() + "-\n");
 		result.append("Treino Armas:   -" + getTreinoArmas() + "-\n");
 		result.append("Audacia:        -" + getAudacia() + "-");
 		
@@ -226,5 +239,95 @@ public abstract class Personagens {
 	public void setFragmentos(int fragmentos) {
 		this.fragmentos = fragmentos;
 	}
+	
+	
+	//-------------------------
+	public int getBonusConstituicao() {
+		int result = 0;
+		for(Accessory item: equipedItems) {
+			result += item.getConstituicao();
+			result += constituicao*item.getPConstituicao();
+		}
+		return result;
+	}
+	
+	public int getBonusMira() {
+		int result = 0;
+		for(Accessory item: equipedItems) {
+			result += item.getMira();
+			result += mira*item.getPMira();
+		}
+		return result;
+	}
+	
+	public int getBonusForca() {
+		int result = 0;
+		if(this instanceof Gladiador) {
+			for(Accessory item: equipedItems) {
+				result += item.getBonusPersonagem();
+				result += forca*item.getPBonusPersonagem();
+			}
+		}
+		return result;
+	}
+	
+	public int getBonusInteligencia() {
+		int result = 0;
+		if(this instanceof Feiticeiro) {
+			for(Accessory item: equipedItems) {
+				result += item.getBonusPersonagem();
+				result += inteligencia*item.getPBonusPersonagem();
+			}
+		}
+		return result;
+	}
+	
+	public int getBonusDestreza() {
+		int result = 0;
+		if(this instanceof Cacador) {
+			for(Accessory item: equipedItems) {
+				result += item.getBonusPersonagem();
+				result += destreza*item.getPBonusPersonagem();
+			}
+		}
+		return result;
+	}
+	//-------------------------
+	public int getTotalConstituicao() {
+		return getConstituicao() + getBonusConstituicao();
+	}
+	
+	public int getTotalMira() {
+		return getMira() + getBonusMira();
+	}
+	
+	public int getTotalForca() {
+		int result = getForca() + getBonusForca();
+		return result*danoArma();
+	}
+	
+	public int getTotalInteligencia() {
+		return getInteligencia() + getBonusInteligencia();
+	}
+	
+	public int getTotalDestreza() {
+		return getDestreza() + getBonusDestreza();
+	}
+
+	private int danoArma() {
+		int result = 0;
+		for(Accessory item: equipedItems) {
+			if(item instanceof Arma) {
+				Arma arma = (Arma) item;
+				//assumindo que ele so tem 1 arma
+				result = arma.getDano();
+				break;
+			}
+		}
+		
+		return result;
+	}
+	
+	
 
 }
