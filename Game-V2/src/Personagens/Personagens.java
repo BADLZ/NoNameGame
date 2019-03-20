@@ -22,10 +22,12 @@ public abstract class Personagens {
 	private int fragmentos;
 	
 	private ArrayList<Accessory> equipedItems;
+	private ArrayList<Accessory> inventory;
 	
 	public Personagens(String name) {
 		this.name = name;
 		equipedItems = new ArrayList<>();
+		inventory = new ArrayList<>();
 	}
 	
 	//--------------------------novas cenas-----
@@ -36,6 +38,10 @@ public abstract class Personagens {
 		equipedItems.add(item);
 		//TODO ha casos em que o jogador nao pode equipar itens
 		return true;
+	}
+	
+	public boolean addItem(Accessory item) {
+		return false;
 	}
 	
 	public int getStatusBase() {
@@ -74,23 +80,23 @@ public abstract class Personagens {
 		this.audacia = audacia;
 	}
 
-	public int getInteligencia() {
+	public int getBaseInteligencia() {
 		return inteligencia;
 	}
 
-	public int getDestreza() {
+	public int getBaseDestreza() {
 		return destreza;
 	}
 
-	public int getForca() {
+	public int getBaseForca() {
 		return forca;
 	}
 
-	public int getConstituicao() {
+	public int getBaseConstituicao() {
 		return constituicao;
 	}
 
-	public int getMira() {
+	public int getBaseMira() {
 		return mira;
 	}
 
@@ -293,24 +299,24 @@ public abstract class Personagens {
 		return result;
 	}
 	//-------------------------
-	public int getTotalConstituicao() {
+	public int getConstituicao() {
 		return getConstituicao() + getBonusConstituicao();
 	}
 	
-	public int getTotalMira() {
+	public int getMira() {
 		return getMira() + getBonusMira();
 	}
 	
-	public int getTotalForca() {
+	public int getForca() {
 		int result = getForca() + getBonusForca();
 		return result*danoArma();
 	}
 	
-	public int getTotalInteligencia() {
+	public int getInteligencia() {
 		return getInteligencia() + getBonusInteligencia();
 	}
 	
-	public int getTotalDestreza() {
+	public int getDestreza() {
 		return getDestreza() + getBonusDestreza();
 	}
 
