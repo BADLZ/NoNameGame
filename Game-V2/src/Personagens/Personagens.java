@@ -288,19 +288,30 @@ public abstract class Personagens {
 	
 	public int getForca() {
 		int result = getBaseForca() + getBonusForca();
-		return result*danoArma();
+		if(this instanceof Gladiador) {
+			result *= danoArma();
+		}
+		return result;
 	}
 	
 	public int getInteligencia() {
-		return getBaseInteligencia() + getBonusInteligencia();
+		int result =  getBaseInteligencia() + getBonusInteligencia();
+		if(this instanceof Feiticeiro) {
+			result *= danoArma();
+		}
+		return result;
 	}
 	
 	public int getDestreza() {
-		return getBaseDestreza() + getBonusDestreza();
+		int result = getBaseDestreza() + getBonusDestreza();
+		if(this instanceof Cacador) {
+			result *= danoArma();
+		}
+		return result;
 	}
 
 	private int danoArma() {
-		int result = 0;
+		int result = 1;
 		for(Accessory item: equipedItems) {
 			if(item instanceof Arma) {
 				Arma arma = (Arma) item;
