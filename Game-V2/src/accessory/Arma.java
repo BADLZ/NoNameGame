@@ -40,15 +40,17 @@ public class Arma extends Accessory{
 			super.constituicao = 30;
 			super.mira = 30;
 			super.bonusPersonagem = 30;
-
+			this.dano = 10;
 		}else if(super.nomeArma.equalsIgnoreCase("Arma2")) {
 			super.constituicao = 60;
 			super.mira = 20;
 			super.bonusPersonagem = 10;
+			this.dano = 10;
 		}else if(super.nomeArma.equalsIgnoreCase("Arma3")) {
 			super.constituicao = 10;
 			super.mira = 30;
 			super.bonusPersonagem = 50;
+			this.dano = 10;
 		}else {
 			System.out.println("Criaste uma arma inexistente??");
 		}

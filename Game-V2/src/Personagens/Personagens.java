@@ -125,12 +125,12 @@ public abstract class Personagens {
 		result.append("Nivel:          -" + getNivel() + "-\n");
 		result.append("Current XP:     -" + getCurrentXp() + "-\n");
 		result.append("Current Gold:   -" + getCurrentGold() + "-\n");
-		result.append("Status Base:    -" + getStatusBase() + "-\n");
-		result.append("Inteligencia:   -" + getInteligencia() + " + " + getBonusInteligencia() + "-\n");
-		result.append("Destreza:       -" + getDestreza() + " + " + getBonusDestreza() + "-\n");
-		result.append("Forca:          -" + getForca() + " + " + getBonusForca() + "-\n");
-		result.append("Constituicao:   -" + getConstituicao() + " + " + getBonusConstituicao() + "-\n");
-		result.append("Mira:           -" + getMira() + " + " + getBonusMira() + "-\n");
+//		result.append("Status Base:    -" + getStatusBase() + "-\n");
+		result.append("Inteligencia:   -" + getBaseInteligencia() + " + " + getBonusInteligencia() + " = " + getInteligencia() + "-\n");
+		result.append("Destreza:       -" + getBaseDestreza() + " + " + getBonusDestreza() + " = " + getDestreza() + "-\n");
+		result.append("Forca:          -" + getBaseForca() + " + " + getBonusForca() + " = " + getForca() + "-\n");
+		result.append("Constituicao:   -" + getBaseConstituicao() + " + " + getBonusConstituicao() + " = " + getConstituicao() + "-\n");
+		result.append("Mira:           -" + getBaseMira() + " + " + getBonusMira() + " = " + getMira() + "-\n");
 		result.append("Treino Armas:   -" + getTreinoArmas() + "-\n");
 		result.append("Audacia:        -" + getAudacia() + "-");
 		
@@ -321,7 +321,9 @@ public abstract class Personagens {
 			}
 		}
 		
-		return result;
+		//caso result der 0 ou menos o dano tem que ser no minimo 1, pois se tiver a 0 o atributo
+		//caracteristico ficara a 0
+		return result>0? result : 1;
 	}
 	
 	
