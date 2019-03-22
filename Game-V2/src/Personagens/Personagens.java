@@ -7,7 +7,7 @@ import accessory.Arma;
 
 public abstract class Personagens {
 	
-	public abstract void powerPerLvl(int lvl); 
+	public abstract void powerPerLvl(int lvl);
 	//numero maximo de acessorios que podem estar no inventario
 	public static final int MAX_ITENS_INV = 30;
 	

@@ -1,6 +1,5 @@
-<<<<<<< HEAD
-=======
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><players>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<players>
                                                             
     
     
@@ -50,7 +49,7 @@
                         
         
         
-        <treinoArmas>10</treinoArmas>
+        
                                                 
         
         
@@ -62,7 +61,8 @@
     
     
     
-    </player>
+    <treinoArmas>10</treinoArmas>
+</player>
                     
     
     
@@ -98,7 +98,7 @@
         
         
         
-        <treinoArmas>10</treinoArmas>
+        
                                         
         
         
@@ -108,7 +108,8 @@
     
     
     
-    </player>
+    <treinoArmas>10</treinoArmas>
+</player>
                 
     
     
@@ -137,7 +138,7 @@
                                 
         
         
-        <treinoArmas>10</treinoArmas>
+        
                                 
         
         
@@ -145,7 +146,8 @@
                             
     
     
-    </player>
+    <treinoArmas>10</treinoArmas>
+</player>
             
     
     
@@ -168,18 +170,19 @@
                       
         
         
-        <treinoArmas>10</treinoArmas>
+        
                         
         
         <audacia>8</audacia>
                     
     
-    </player>
+    <treinoArmas>10</treinoArmas>
+</player>
         
     
     <player>
                 
-        <name>aaadias</name>
+        
                 
         <class>Cacador</class>
                 
@@ -190,8 +193,9 @@
         <gold>0</gold>
                 
         <audacia>5</audacia>
-                
-        <armas>10</armas>
+        <treinoArmas>10</treinoArmas>
+
+        
             
     </player>
     
@@ -202,22 +206,18 @@
         <xp>0</xp>
         <gold>0</gold>
         <audacia>5</audacia>
-        <armas>10</armas>
+        <treinoArmas>10</treinoArmas>
+        
     </player>
-</players><?xml version="1.0" encoding="UTF-8" standalone="no"?><players>
-                                                            
-    
-    
-
-            
-    
-   
-
-
-    
-    
-    
-    
-    
-    
->>>>>>> branch 'master' of https://github.com/BADLZ/NoNameGame.git
+<player>
+<name>aaadias</name>
+<class>Cacador</class>
+<Level>1</Level>
+<xp>0</xp>
+<gold>0</gold>
+<audacia>5</audacia>
+<treinoArmas>10</treinoArmas>
+<moedasNegras>0</moedasNegras>
+<fragmentos>0</fragmentos>
+</player>
+</players>
