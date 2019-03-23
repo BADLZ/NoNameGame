@@ -5,7 +5,7 @@ import accessory.Accessory;
 public abstract class TesteExtends extends Accessory{
 
 	public TesteExtends(String name) {
-		super(name);
+		super(name, "teste");
 		// TODO Auto-generated constructor stub
 	}
 

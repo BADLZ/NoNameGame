@@ -45,19 +45,19 @@ public class MainWindowManager extends JLabel{
 	private void createPlayer(String[] dados) {
 		switch (dados[1]) {
 		case "Cacador":
-			Cacador c = new Cacador(dados[0]);
+			Cacador c = new Cacador(dados[0], 0);
 			c.powerPerLvl(Integer.parseInt(dados[2]));
 			c.setCurrentXp(Long.parseLong(dados[3]));
 			c.setCurrentGold(Long.parseLong(dados[4]));
 			break;
 		case "Feiticeiro":
-			Feiticeiro f = new Feiticeiro(dados[0]);
+			Feiticeiro f = new Feiticeiro(dados[0], 0);
 			f.powerPerLvl(Integer.parseInt(dados[2]));
 			f.setCurrentXp(Long.parseLong(dados[3]));
 			f.setCurrentGold(Long.parseLong(dados[4]));
 			break;
 		case "Gladiador":
-			Gladiador g = new Gladiador(dados[0]);
+			Gladiador g = new Gladiador(dados[0], 0);
 			g.powerPerLvl(Integer.parseInt(dados[2]));
 			g.setCurrentXp(Long.parseLong(dados[3]));
 			g.setCurrentGold(Long.parseLong(dados[4]));

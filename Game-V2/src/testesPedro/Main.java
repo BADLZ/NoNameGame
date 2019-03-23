@@ -47,7 +47,7 @@ public class Main {
 		Main ma = new Main();
 		Missoes m = new Missoes();
 		Catacumbas c = new Catacumbas();
-		Feiticeiro badaxe = new Feiticeiro("di");
+		Feiticeiro badaxe = new Feiticeiro("di", 0);
 		//Cacador badaxe = new Cacador("cacador");
 		//Gladiador badaxe = new Gladiador("gladiador");
 		SalaTreinos s = new SalaTreinos();

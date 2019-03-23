@@ -3,13 +3,13 @@ package accessory;
 public class Chapeu extends Accessory {
 
 	public Chapeu(String name) {
-		super(name);
+		super(name, "Chapeu");
 
 		initialize();
 	}
 
 	public Chapeu(int tipo) {
-		super("Arma" + tipo);
+		super("Chapeu" + tipo, "Chapeu");
 
 		initialize();
 	}

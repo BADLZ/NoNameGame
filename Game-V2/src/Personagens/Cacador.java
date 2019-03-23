@@ -4,9 +4,9 @@ public class Cacador extends Personagens {
 	
 //	String name;
 	//-------------------------------
-	public Cacador(String name) {
+	public Cacador(String name, int id) {
 		//o nome vai para a classe Personagens
-		super(name);
+		super(name, id);
 		if (name == null || name.length() < 1) {
 			throw new IllegalArgumentException("Nome inválido");
 		}

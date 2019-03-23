@@ -9,7 +9,7 @@ public class Npc extends Personagens {
 
 	
 	public Npc(String name) {
-		super(name);
+		super(name, -1);
 		
 		if (name == null || name.length() < 1) {
 			throw new IllegalArgumentException("Nome NPC inválido");

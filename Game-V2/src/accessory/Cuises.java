@@ -3,13 +3,13 @@ package accessory;
 public class Cuises extends Accessory {
 
 	public Cuises(String name) {
-		super(name);
+		super(name, "Cuises");
 
 		initialize();
 	}
 
 	public Cuises(int tipo) {
-		super("Arma" + tipo);
+		super("Cuises" + tipo, "Cuises");
 
 		initialize();
 	}

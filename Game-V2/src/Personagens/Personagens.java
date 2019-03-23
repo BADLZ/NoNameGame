@@ -11,7 +11,7 @@ public abstract class Personagens {
 	//numero maximo de acessorios que podem estar no inventario
 	public static final int MAX_ITENS_INV = 30;
 	
-	protected int nivel;
+	protected int nivel, id;
 	protected long currentXp = 0;
 	protected long currentGold = 0;
 	private String name;
@@ -25,8 +25,9 @@ public abstract class Personagens {
 	protected ArrayList<Accessory> equipedItems;
 	protected ArrayList<Accessory> inventory;
 	
-	public Personagens(String name) {
+	public Personagens(String name, int id) {
 		this.name = name;
+		this.id = id;
 		equipedItems = new ArrayList<>();
 		inventory = new ArrayList<>();
 		powerPerLvl(1);
@@ -117,6 +118,10 @@ public abstract class Personagens {
 	
 	public String getName() {
 		return name;
+	}
+	
+	public int getId() {
+		return this.id;
 	}
 	
 	public String toString() {

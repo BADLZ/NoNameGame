@@ -15,20 +15,25 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import Personagens.Personagens;
+import accessory.Accessory;
 
 public class DatabaseWriter {
 
-	public static boolean createNewPlayer(String name, String Class) {
+	public static boolean createNewPlayer(String name, String Class, int id) {
 
 		Document document = DatabaseReader.readDocument("PlayerBase.xml");
 
-
+		System.out.println(name + " " + Class + " " + id);
 		try {
 
 			Element root = document.getDocumentElement();
 
 			Element newServer = document.createElement("player");
 
+			Element nodeId = document.createElement("id");
+			nodeId.appendChild(document.createTextNode("" +id));
+			newServer.appendChild(nodeId);
+			
 			Element nodeName = document.createElement("name");
 			nodeName.appendChild(document.createTextNode(name));
 			newServer.appendChild(nodeName);
@@ -66,13 +71,12 @@ public class DatabaseWriter {
 			nodeFragmentos.appendChild(document.createTextNode("0"));
 			newServer.appendChild(nodeFragmentos);
 			//ate aqui (Pedro)
-
+			
 			root.appendChild(newServer);
-
 			storeInfo(document, "PlayerBase.xml");
-
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -90,7 +94,7 @@ public class DatabaseWriter {
 			Element root = document.getDocumentElement();
 
 			Element newServer = document.createElement("conta");
-
+			
 			Element nodeName = document.createElement("name");
 			nodeName.appendChild(document.createTextNode(name));
 			newServer.appendChild(nodeName);
@@ -99,6 +103,10 @@ public class DatabaseWriter {
 			nodePass.appendChild(document.createTextNode(String.valueOf(password)));
 			newServer.appendChild(nodePass);
 
+			Element nodeId = document.createElement("id");
+			nodeId.appendChild(document.createTextNode("" + (DatabaseReader.getNumberAccounts() + 1)));
+			newServer.appendChild(nodeId);
+			
 			Element nodeEmail = document.createElement("email");
 			nodeEmail.appendChild(document.createTextNode(email));
 			newServer.appendChild(nodeEmail);
@@ -138,26 +146,26 @@ public class DatabaseWriter {
 						}
 					}
 
-					nodes.get(2).setTextContent(p.getNivel() + "");
-					nodes.get(3).setTextContent(p.getCurrentXp() + "");
-					nodes.get(4).setTextContent(p.getCurrentGold() + "");
+					nodes.get(3).setTextContent(p.getNivel() + "");
+					nodes.get(4).setTextContent(p.getCurrentXp() + "");
+					nodes.get(5).setTextContent(p.getCurrentGold() + "");
 					//TODO alteracoes começam aqui (Pedro)
 					//Basicamente, e preciso saber o numero exacto de
 					//audacia e treinoArmas para a salaTreino.
 					//ganhas moedas negras que sao forjadas para Fragmentos
 					//a fazer missoes ou a comprar
-					nodes.get(5).setTextContent(p.getAudacia()+ "");
-					nodes.get(6).setTextContent(p.getTreinoArmas()+ "");
-					nodes.get(7).setTextContent(p.getMoedasNegras() +"");
-					nodes.get(8).setTextContent(p.getFragmentos() + "");
+					nodes.get(6).setTextContent(p.getAudacia()+ "");
+					nodes.get(7).setTextContent(p.getTreinoArmas()+ "");
+					nodes.get(8).setTextContent(p.getMoedasNegras() +"");
+					nodes.get(9).setTextContent(p.getFragmentos() + "");
 					//acabam aqui (Pedro)
 					break;
 				}
 			}
 
-
+			
 			storeInfo(document, "PlayerBase.xml");
-
+			
 			return true;
 		} 
 		//		catch (IndexOutOfBoundsException e) {
@@ -168,9 +176,15 @@ public class DatabaseWriter {
 		//			return true;
 		//		} 
 		catch (Exception e) {
+
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	protected static boolean storeInventory(Personagens p, ArrayList<Accessory> inv, ArrayList<Accessory> equipedInv, Document document) {
+		//ainda tenho que fazer
+		return false;
 	}
 
 	public static boolean deletePlayer(String name) {
@@ -199,18 +213,19 @@ public class DatabaseWriter {
 
 	}
 
-	public static void storeInfo(Document document, String txtFile) throws TransformerException {
+	protected static void storeInfo(Document document, String txtFile) throws TransformerException {
 
 		DOMSource source = new DOMSource(document);
 
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer;
-
+		
 		transformer = transformerFactory.newTransformer();
 		transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 		StreamResult result = new StreamResult(txtFile);
 		transformer.transform(source, result);
+		
 
 	}
 

@@ -5,7 +5,7 @@ public class Gladiador extends Personagens {
 	
 	
 	//-------------------------------
-	public Gladiador(String name) {
+	public Gladiador(String name, int id) {
 		/*
 		super.setStatusBase(40);   
 		super.setInteligencia(5);  
@@ -17,7 +17,7 @@ public class Gladiador extends Personagens {
 		super.setAudacia(5);*/
 		
 		//o nome vai para a classe Personagens
-		super(name);
+		super(name, id);
 		
 		if (name == null || name.length() < 1) {
 			throw new IllegalArgumentException("Nome inválido");

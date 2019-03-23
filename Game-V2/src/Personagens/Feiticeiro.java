@@ -4,7 +4,7 @@ public class Feiticeiro extends Personagens {
 	
 	
 	//-------------------------------	
-	public Feiticeiro(String name) {
+	public Feiticeiro(String name, int id) {
 		/*super.setStatusBase(40);     
 		super.setInteligencia(15);   
 		super.setDestreza(5);        
@@ -16,7 +16,7 @@ public class Feiticeiro extends Personagens {
 		*/
 		
 		//o nome vai para a classe Personagens
-		super(name);
+		super(name, id);
 		
 		if (name == null || name.length() < 1) {
 			throw new IllegalArgumentException("Nome inválido");

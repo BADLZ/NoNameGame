@@ -20,6 +20,76 @@ import Personagens.Personagens;
 
 public class DatabaseReader {
 	
+public static Personagens getPersonagem(int playerId) {
+		
+		Document document = readDocument("PlayerBase.xml");
+		
+		NodeList allPlayers = document.getElementsByTagName("id");
+		
+		Personagens result = null;
+		
+		for (int i = 0; i < allPlayers.getLength(); i++) {
+			
+			Node databaseName = allPlayers.item(i);
+			if (databaseName.getNodeType() == Node.ELEMENT_NODE && databaseName.getTextContent().equals(playerId + "")) {
+				
+				StringBuilder s = new StringBuilder();
+				
+				NodeList lista = databaseName.getParentNode().getChildNodes();
+				
+				for (int j = 0; j < lista.getLength(); j++) {
+					Node m = lista.item(j);
+					if(m.getNodeType() == Node.ELEMENT_NODE) {
+						s.append(m.getTextContent() + "\n");
+					}
+				}
+				
+				//id
+				//classe
+				//nivel
+				//xp
+				//gold
+				
+				String[] atributos = s.toString().split("\n");
+				String nomeJogador = atributos[1];
+				String classe = atributos[2];
+				int nivel = Integer.parseInt(atributos[3]);
+				long xp = Long.parseLong(atributos[4]);
+				long gold = Long.parseLong(atributos[5]);
+				int audacia = Integer.parseInt(atributos[6]);
+				int armas = Integer.parseInt(atributos[7]);
+				
+				switch (classe) {
+				case "Cacador":
+					Cacador c = new Cacador(nomeJogador, playerId);
+					result = (Personagens) c;
+					break;
+				case "Feiticeiro":
+					Feiticeiro f = new Feiticeiro(nomeJogador, playerId);
+					result = (Personagens) f;
+					break;
+				case "Gladiador":
+					Gladiador g = new Gladiador(nomeJogador, playerId);
+					result = (Personagens) g;
+					break;
+				default:
+					System.out.println("Error");
+					break;
+				}
+				result.powerPerLvl(nivel);
+				result.setNivel(nivel);
+				result.setCurrentXp(xp);
+				result.setCurrentGold(gold);
+				result.setAudacia(audacia);
+				result.setTreinoArmas(armas);
+				
+				break;
+			}
+		}
+		return result;
+	}
+
+	
 	public static Personagens getPersonagem(String nome) {
 		
 		Document document = readDocument("PlayerBase.xml");
@@ -51,35 +121,33 @@ public class DatabaseReader {
 				//gold
 				
 				String[] atributos = s.toString().split("\n");
-				String nomeJogador = atributos[0];
-				String classe = atributos[1];
-				int nivel = Integer.parseInt(atributos[2]);
-				long xp = Long.parseLong(atributos[3]);
-				long gold = Long.parseLong(atributos[4]);
-				int audacia = Integer.parseInt(atributos[5]);
-				int armas = Integer.parseInt(atributos[6]);
+				int id = Integer.parseInt(atributos[0]);
+				String nomeJogador = atributos[1];
+				String classe = atributos[2];
+				int nivel = Integer.parseInt(atributos[3]);
+				long xp = Long.parseLong(atributos[4]);
+				long gold = Long.parseLong(atributos[5]);
+				int audacia = Integer.parseInt(atributos[6]);
+				int armas = Integer.parseInt(atributos[7]);
 				
 				switch (classe) {
 				case "Cacador":
-					Cacador c = new Cacador(nomeJogador);
-					c.powerPerLvl(nivel);
+					Cacador c = new Cacador(nomeJogador, id);
 					result = (Personagens) c;
 					break;
 				case "Feiticeiro":
-					Feiticeiro f = new Feiticeiro(nomeJogador);
-					f.powerPerLvl(nivel);
+					Feiticeiro f = new Feiticeiro(nomeJogador, id);
 					result = (Personagens) f;
 					break;
 				case "Gladiador":
-					Gladiador g = new Gladiador(nomeJogador);
-					g.powerPerLvl(nivel);
+					Gladiador g = new Gladiador(nomeJogador, id);
 					result = (Personagens) g;
 					break;
 				default:
 					System.out.println("Error");
 					break;
 				}
-				
+				result.powerPerLvl(nivel);
 				result.setNivel(nivel);
 				result.setCurrentXp(xp);
 				result.setCurrentGold(gold);
@@ -92,7 +160,7 @@ public class DatabaseReader {
 		return result;
 	}
 	
-	public static boolean login(String name, char[] password) {
+	public static int login(String name, char[] password) {
 		Document document = DatabaseReader.readDocument("AccountBase.xml");
 		
 		NodeList allPlayers = document.getElementsByTagName("name");
@@ -105,24 +173,26 @@ public class DatabaseReader {
 				NodeList lista = databaseName.getParentNode().getChildNodes();
 				
 				String storedPass = "";
-				
+				int id = -1;
 				for (int j = 0; j < lista.getLength(); j++) {
 					Node m = lista.item(j);
 					if(m.getNodeType() == Node.ELEMENT_NODE && m.getNodeName().equalsIgnoreCase("pass")) {
 						storedPass = m.getTextContent();
+					}else if(m.getNodeType() == Node.ELEMENT_NODE && m.getNodeName().equalsIgnoreCase("id")) {
+						id = Integer.parseInt(m.getTextContent());
 					}
 				}
 				if(storedPass.equals(String.valueOf(password)))
-					return true;
+					return id;
 				else
-					return false;
+					return -1;
 			}
 		}
 		
-		return false;
+		return -1;
 	}
 	
-	public static Document readDocument(String textFile) {
+	protected static Document readDocument(String textFile) {
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
@@ -135,7 +205,7 @@ public class DatabaseReader {
 		}
 	}
 	
-	public static boolean existsAccount(String name) {
+	protected static boolean existsAccount(String name) {
 		Document document = DatabaseReader.readDocument("AccountBase.xml");
 		
 		NodeList allPlayers = document.getElementsByTagName("name");
@@ -149,6 +219,21 @@ public class DatabaseReader {
 		}
 		
 		return false;
+	}
+	
+	protected static int getNumberAccounts() {
+		Document document = readDocument("AccountBase.xml");
+		NodeList allPlayers = document.getElementsByTagName("totalNum");
+		
+		for (int i = 0; i < allPlayers.getLength(); i++) {
+			
+			Node databaseName = allPlayers.item(i);
+			if (databaseName.getNodeType() == Node.ELEMENT_NODE) {
+				return Integer.parseInt(databaseName.getTextContent());
+			}
+		}
+		return -1;
+		
 	}
 	
 }

@@ -11,7 +11,7 @@ public class Arma extends Accessory{
 	 * pois por 1 lado tens menos classes mas por equanto pode-se deixar assim
 	 */
 	public Arma(String name) {
-		super(name);
+		super(name, "Arma");
 		super.percentageEvolutionStats = 0.25;
 		super.percentageEvolutionGold = 0.35;
 		super.incrementEvolutionWeapon = 5;
@@ -19,7 +19,7 @@ public class Arma extends Accessory{
 	}
 	
 	public Arma(int tipo) {
-		super("Arma" + tipo);
+		super("Arma" + tipo, "Arma");
 		super.percentageEvolutionStats = 0.25;
 		super.percentageEvolutionGold = 0.35;
 		super.incrementEvolutionWeapon = 5;

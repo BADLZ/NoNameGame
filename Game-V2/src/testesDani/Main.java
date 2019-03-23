@@ -27,12 +27,18 @@ public class Main {
 //		testeDatabaseWriter2();
 //		testeRegistaConta();
 //		testarLogin();
-		testeAccessoryArma();
+//		System.out.println(	DatabaseReader.getNumberAccounts());
+//		DatabaseWriter.createNewPlayer("BAD AXE", "Feiticeiro", 0);
+//		Personagens p = DatabaseReader.getPersonagem(0);
+//		DatabaseWriter.storePlayer(p);
+//		System.out.println(p);
+//		DatabaseWriter.storePlayer(p);
+//		testeAccessoryArma();
 //		equivalencia();
 	}
 	
 	private static void testeAccessoryArma() {
-		Cacador c = new Cacador("Grande Testador");
+		Cacador c = new Cacador("Grande Testador", 0);
 //		c.powerPerLvl(1);
 		System.out.println(c + "\n----------------\n----------------\n");
 		Arma arma = new Arma("Arma1");
@@ -50,9 +56,9 @@ public class Main {
 	}
 	
 	private static void equivalencia() {
-		Cacador c = new Cacador("Grande Testador");
-		Gladiador g = new Gladiador("Grande Gladiador");
-		Cacador c2 = new Cacador("Grande Cacador");
+		Cacador c = new Cacador("Grande Testador", 0);
+		Gladiador g = new Gladiador("Grande Gladiador", 0);
+		Cacador c2 = new Cacador("Grande Cacador", 0);
 		Personagens p1 = (Personagens) c;
 		Personagens p2 = (Personagens) g;
 		Personagens p3 = (Personagens) c2;
@@ -110,7 +116,7 @@ public class Main {
 	}
 	
 	private static void testePersonagens() {
-		Cacador c = new Cacador("nome");
+		Cacador c = new Cacador("nome", 0);
 		if(c instanceof Personagens) {
 			Personagens p = (Personagens) c;
 			System.out.println(p);
@@ -119,9 +125,9 @@ public class Main {
 	
 	private static void testeToString() {
 		
-		Cacador c = new Cacador(null);
-		Feiticeiro f = new Feiticeiro(null);
-		Gladiador g = new Gladiador("Nome qualquer");
+		Cacador c = new Cacador(null, 0);
+		Feiticeiro f = new Feiticeiro(null, 0);
+		Gladiador g = new Gladiador("Nome qualquer", 0);
 		System.out.println(c);
 		c.powerPerLvl(4);
 		System.out.println(c);

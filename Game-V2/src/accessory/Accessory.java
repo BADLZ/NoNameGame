@@ -10,6 +10,7 @@ public abstract class Accessory {
 	protected long baseGoldCost;
 	protected int baseTreinoArmasCost;
 	protected String nomeArma;
+	private String type;
 	
 	//bonus que acessorio da a cada atributo
 	protected int constituicao, mira;
@@ -25,13 +26,18 @@ public abstract class Accessory {
 	protected double pBonusPersonagem;
 	
 	
-	public Accessory(String name) {
+	public Accessory(String name, String type) {
 		this.nomeArma = name;
+		this.type = type;
 	}
 	
 	//--------------------------------
 	public long getCustoCompraGold() {
 		return baseGoldCost;
+	}
+	
+	public String getType() {
+		return type;
 	}
 	
 	public int getCustoCompraTreinoArmas() {

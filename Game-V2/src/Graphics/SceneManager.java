@@ -39,6 +39,7 @@ public class SceneManager {
 	
 	private Personagens p;
 	private String name;
+	private int playerId;
 	private JFrame frame;
 	private LogSign logsign;
 	private CardLayout cl;
@@ -91,8 +92,11 @@ public class SceneManager {
 	}
 	
 	public boolean Login(String name, char[] password) {
-		if(DatabaseReader.login(name, password)) {
-			Personagens p = DatabaseReader.getPersonagem(name);
+		int id = DatabaseReader.login(name, password); 
+		this.name = name;
+		if(id != -1) {
+			playerId = id;
+			Personagens p = DatabaseReader.getPersonagem(id);
 			if(p == null) {
 				cl.show(cards, "CharacterSelection");
 				return false;
@@ -101,11 +105,13 @@ public class SceneManager {
 			return true;
 		}
 			
-		return true;
+		return false;
 	}
 	
 	public boolean createPersonagem(String category) {
-		return DatabaseWriter.createNewPlayer(name, category);
+		boolean result = DatabaseWriter.createNewPlayer(name, category, playerId);
+		System.out.println(result);
+		return result;
 	}
 	
 	public boolean setRegisterInfo(String email, String name, char[] password) {

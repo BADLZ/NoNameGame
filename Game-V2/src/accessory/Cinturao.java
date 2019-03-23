@@ -3,13 +3,13 @@ package accessory;
 public class Cinturao extends Accessory {
 
 	public Cinturao(String name) {
-		super(name);
+		super(name, "Cinturao");
 
 		initialize();
 	}
 
 	public Cinturao(int tipo) {
-		super("Arma" + tipo);
+		super("Cinturao" + tipo, "Cinturao");
 
 		initialize();
 	}
