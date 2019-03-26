@@ -34,6 +34,7 @@ public class Main {
 //		System.out.println(p);
 //		DatabaseWriter.storePlayer(p);
 //		testeAccessoryArma();
+		System.out.println(DatabaseReader.login("Teste123", "12345678".toCharArray()));
 //		equivalencia();
 	}
 	

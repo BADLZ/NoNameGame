@@ -116,8 +116,10 @@ public class SceneManager {
 	
 	public boolean setRegisterInfo(String email, String name, char[] password) {
 		this.name = name;
+		boolean result =  DatabaseWriter.createAccout(name, password, email);
+		playerId = DatabaseReader.login(name, password); 
 		//Ir a database criar o gajo
-		return DatabaseWriter.createAccout(name, password, email);
+		return result;
 		
 	}
 	
