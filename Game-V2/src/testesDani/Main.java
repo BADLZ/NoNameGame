@@ -43,7 +43,7 @@ public class Main {
 		System.out.println(c + "\n----------------\n----------------\n");
 		Arma arma = new Arma("Arma1");
 		System.out.println(arma + "\n----------------\n----------------\n");
-		c.equipItem(arma);
+//		c.equipItem(arma);
 //		c.equipItem(arma);
 //		c.equipItem(arma);
 //		c.equipItem(arma);

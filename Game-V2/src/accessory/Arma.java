@@ -57,7 +57,7 @@ public class Arma extends Accessory{
 	}
 	
 	public String toString() {
-		String s = super.nomeArma + ": Dano " + this.dano + ", Basico " + super.constituicao + ", Mira " + super.mira; 
+		String s = "Dano: " + this.dano; 
 		return s;
 	}
 
