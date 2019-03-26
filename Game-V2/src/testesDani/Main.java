@@ -33,8 +33,7 @@ public class Main {
 //		DatabaseWriter.storePlayer(p);
 //		System.out.println(p);
 //		DatabaseWriter.storePlayer(p);
-//		testeAccessoryArma();
-		System.out.println(DatabaseReader.login("Teste123", "12345678".toCharArray()));
+		testeAccessoryArma();
 //		equivalencia();
 	}
 	
@@ -44,14 +43,18 @@ public class Main {
 		System.out.println(c + "\n----------------\n----------------\n");
 		Arma arma = new Arma("Arma1");
 		System.out.println(arma + "\n----------------\n----------------\n");
+		c.getInventory().addItem(arma);
+		c.getInventory().equipItem(arma);
 //		c.equipItem(arma);
 //		c.equipItem(arma);
 //		c.equipItem(arma);
 //		c.equipItem(arma);
 //		c.equipItem(arma);
 //		c.equipItem(arma);
+		
 		System.out.println(c + "\n----------------\n----------------\n");
 		arma.setLvl(3);
+		c.getInventory().unequipItem(arma);
 		System.out.println(c);
 		
 	}

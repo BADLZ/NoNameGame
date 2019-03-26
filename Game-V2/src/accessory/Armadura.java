@@ -51,4 +51,17 @@ public class Armadura extends Accessory {
 		String s = super.nomeArma + ": Basico " +super.bonusPersonagem+", Constituição "+ super.constituicao + ", Mira " + super.mira; 
 		return s;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o == this)
+			return true;
+		if(o == null || !(o instanceof Armadura))
+			return false;
+		Armadura a = (Armadura) o;
+		if(super.getName().equals(a.getName()) && super.getLevel() == a.getLevel() &&
+				super.getType().equals(a.getType()))
+			return true;
+		return false;
+	}
 }

@@ -51,4 +51,17 @@ public class Chapeu extends Accessory {
 		String s = super.nomeArma + ": Basico " +super.bonusPersonagem+", Constituição "+ super.constituicao + ", Mira " + super.mira; 
 		return s;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o == this)
+			return true;
+		if(o == null || !(o instanceof Chapeu))
+			return false;
+		Chapeu b = (Chapeu) o;
+		if(super.getName().equals(b.getName()) && super.getLevel() == b.getLevel() &&
+				super.getType().equals(b.getType()))
+			return true;
+		return false;
+	}
 }

@@ -50,4 +50,17 @@ public class Luvas extends Accessory {
 		String s = super.nomeArma + ": Basico " +super.bonusPersonagem+", Constituição "+ super.constituicao + ", Mira " + super.mira; 
 		return s;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o == this)
+			return true;
+		if(o == null || !(o instanceof Luvas))
+			return false;
+		Luvas l = (Luvas) o;
+		if(super.getName().equals(l.getName()) && super.getLevel() == l.getLevel() &&
+				super.getType().equals(l.getType()))
+			return true;
+		return false;
+	}
 }

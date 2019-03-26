@@ -51,6 +51,16 @@ public abstract class Accessory {
 	public int getNivelArma() {
 		return nivelArma;
 	}
+	
+	//---------------english---------------
+	public String getName() {
+		return nomeArma;
+	}
+	
+	public int getLevel() {
+		return nivelArma;
+	}
+	
 	//-----------------------------
 	
 	public void lvlUp(Personagens p) {
