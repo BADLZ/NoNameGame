@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<acessorios>
+        	
+    
+    <acessorio class="Gladiador" id="0" name="Draven">
+                		
+        
+        <amuleto>0</amuleto>
+                		
+        
+        <anel>0</anel>
+                		
+        
+        <arma>0</arma>
+                		
+        
+        <bracelete>0</bracelete>
+                		
+        
+        <calcas>0</calcas>
+                		
+        
+        <colar>0</colar>
+                		
+        
+        <companheiro>0</companheiro>
+                		
+        
+        <insignias>0</insignias>
+                		
+        
+        <tronco>0</tronco>
+                	
+    
+    </acessorio>
+        
+    
+    <acessorio class="Gladiador" id="1" name="@axe.bad">
+                
+        <amuleto>0</amuleto>
+                
+        <anel>0</anel>
+                
+        <arma>0</arma>
+                
+        <bracelete>0</bracelete>
+                
+        <calcas>0</calcas>
+                
+        <colar>0</colar>
+                
+        <companheiro>0</companheiro>
+                
+        <insignias>0</insignias>
+                
+        <tronco>0</tronco>
+            
+    </acessorio>
+    
+    <acessorio class="Cacador" id="2" name="EuEraOViolador">
+        <amuleto>0</amuleto>
+        <anel>0</anel>
+        <arma>0</arma>
+        <bracelete>0</bracelete>
+        <calcas>0</calcas>
+        <colar>0</colar>
+        <companheiro>0</companheiro>
+        <insignias>0</insignias>
+        <tronco>0</tronco>
+    </acessorio>
+</acessorios>

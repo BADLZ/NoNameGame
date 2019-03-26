@@ -1,6 +1,7 @@
 package Graphics;
 
 import java.awt.CardLayout;
+
 import java.awt.Dimension;
 import java.awt.Image;
 import java.io.File;
@@ -9,8 +10,6 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import com.sun.javafx.geom.transform.SingularMatrixException;
 
 import Graphics.scenes.CharacterSelection;
 import Graphics.scenes.Dungeon;

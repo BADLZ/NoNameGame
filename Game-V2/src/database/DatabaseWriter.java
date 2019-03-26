@@ -54,7 +54,6 @@ public class DatabaseWriter {
 			nodeGold.appendChild(document.createTextNode("0"));
 			newServer.appendChild(nodeGold);
 
-			//TODO alteracoes (Pedro)
 			Element nodeAudacia = document.createElement("audacia");
 			nodeAudacia.appendChild(document.createTextNode("5"));
 			newServer.appendChild(nodeAudacia);
@@ -70,7 +69,6 @@ public class DatabaseWriter {
 			Element nodeFragmentos = document.createElement("fragmentos");
 			nodeFragmentos.appendChild(document.createTextNode("0"));
 			newServer.appendChild(nodeFragmentos);
-			//ate aqui (Pedro)
 			
 			root.appendChild(newServer);
 			storeInfo(document, "PlayerBase.xml");
