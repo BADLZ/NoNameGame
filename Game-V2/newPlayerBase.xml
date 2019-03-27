@@ -1,17 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<players>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><players>
         	
     
     <player class="Gladiador" id="0" name="Draven">
                 	    
         
-        <Level>1</Level>
+        <Level>10</Level>
                 	    
         
-        <xp>0</xp>
+        <xp>2026</xp>
                 	    
         
-        <gold>0</gold>
+        <gold>1494</gold>
                 	    
         
         <audacia>5</audacia>
@@ -23,7 +22,7 @@
         <moedasNegras>0</moedasNegras>
                 	    
         
-        <fragmentos>0</fragmentos>
+        <fragmentos>1</fragmentos>
                 	
     
     </player>

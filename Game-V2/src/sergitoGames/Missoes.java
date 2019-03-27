@@ -89,7 +89,8 @@ public class Missoes {
 	
 	public void firstMission(Personagens p) {
 		System.out.println("Congratulations on your first mission!\n");
-		p.setCurrentXp(44);
+		//p.setCurrentXp(44);
+		p.updateXp(44);
 		p.setCurrentGold(50);
 	}
 	

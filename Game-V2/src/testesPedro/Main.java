@@ -12,9 +12,14 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -37,31 +42,42 @@ public class Main {
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			doc = dBuilder.parse("PlayerBase.xml");			
+			doc = dBuilder.parse("newPlayerBase.xml");			
 			doc.getDocumentElement().normalize();			
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		
 		
 		Main ma = new Main();
 		Missoes m = new Missoes();
 		Catacumbas c = new Catacumbas();
-		Feiticeiro badaxe = new Feiticeiro("di", 0);
+		//Feiticeiro badaxe = new Feiticeiro("di", 0);
 		//Cacador badaxe = new Cacador("cacador");
-		//Gladiador badaxe = new Gladiador("gladiador");
+		Gladiador badaxe = new Gladiador("Draven", 0);
 		SalaTreinos s = new SalaTreinos();
 		Npc npc = new Npc("PecadorEmEspera");
 		
 		Scanner sc = new Scanner(System.in);
-		
+
 		//Para termos os stats através do XML
-		NodeList nomePlayers = doc.getElementsByTagName("name");
-		
+		/*NodeList nomePlayers = doc.getElementsByTagName("name");		
 		for (int i = 0; i < nomePlayers.getLength(); i++) {
 			Node databaseName = nomePlayers.item(i);
 			if (databaseName.getTextContent().equals(badaxe.getName())) {
 				NodeList player = databaseName.getParentNode().getChildNodes();
+				for (int j = 0; j < player.getLength(); j++) {*/
+					//
+					
+		NodeList nomePlayers = doc.getElementsByTagName("player");
+		for (int i = 0; i < nomePlayers.getLength(); i++) {
+			Node databaseName = nomePlayers.item(i);
+			NamedNodeMap attributes = databaseName.getAttributes();
+			if(attributes.item(2).getNodeValue().equals(badaxe.getName())) {
+				System.out.println("aqui");
+				NodeList player = databaseName.getChildNodes();
 				for (int j = 0; j < player.getLength(); j++) {
 					Node no = player.item(j);
 					if (no.getNodeName().equalsIgnoreCase("Level")) {
@@ -74,15 +90,23 @@ public class Main {
 					}
 					else if (no.getNodeName().equalsIgnoreCase("gold")) {
 						badaxe.setCurrentGold(Long.parseLong(no.getTextContent()));
-						System.out.println("Your Gold "+badaxe.getCurrentGold()+"\n");
-					}
-					else if (no.getNodeName().equalsIgnoreCase("treinoArmas")) {
-						badaxe.setTreinoArmas(Integer.parseInt(no.getTextContent()));
-						System.out.println("Treino Armas "+badaxe.getTreinoArmas());
+						System.out.println("Your Gold "+badaxe.getCurrentGold());
 					}
 					else if (no.getNodeName().equalsIgnoreCase("audacia")) {
 						badaxe.setAudacia(Integer.parseInt(no.getTextContent()));
 						System.out.println("Audacia "+badaxe.getAudacia());
+					}
+					else if (no.getNodeName().equalsIgnoreCase("treinoArmas")) {
+						badaxe.setTreinoArmas(Integer.parseInt(no.getTextContent()));
+						System.out.println("Treino Armas "+badaxe.getTreinoArmas());
+					}					
+					else if (no.getNodeName().equalsIgnoreCase("moedasNegras")) {
+						badaxe.setMoedasNegras(Integer.parseInt(no.getTextContent()));
+						System.out.println("Moedas "+badaxe.getMoedasNegras());
+					}
+					else if (no.getNodeName().equalsIgnoreCase("fragmentos")) {
+						badaxe.setFragmentos(Integer.parseInt(no.getTextContent()));
+						System.out.println("Fragmentos "+badaxe.getFragmentos()+"\n");
 					}
 				}
 			}
@@ -124,11 +148,13 @@ public class Main {
 
 		}
 			//gravar no XML 
-			NodeList players = doc.getElementsByTagName("name");
+			NodeList players = doc.getElementsByTagName("player");
 			for (int i = 0; i < players.getLength(); i++) {
 				Node playerInfo = players.item(i);
-				if (playerInfo.getTextContent().equals(badaxe.getName())) {
-					NodeList info = playerInfo.getParentNode().getChildNodes();
+				NamedNodeMap attributes = playerInfo.getAttributes();
+				if(attributes.item(2).getNodeValue().equals(badaxe.getName())) {
+
+					NodeList info = playerInfo.getChildNodes();
 					for (int j = 0; j < info.getLength(); j++) {
 						Node lvl = info.item(j);							
 						if (lvl.getNodeName().equalsIgnoreCase("Level")) {
@@ -146,13 +172,19 @@ public class Main {
 						else if (lvl.getNodeName().equalsIgnoreCase("audacia")) {
 							lvl.setTextContent(Integer.toString(badaxe.getAudacia()));
 						}
+						else if (lvl.getNodeName().equalsIgnoreCase("moedasNegras")) {
+							lvl.setTextContent(Integer.toString(badaxe.getMoedasNegras()));
+						}
+						else if (lvl.getNodeName().equalsIgnoreCase("fragmentos")) {
+							lvl.setTextContent(Integer.toString(badaxe.getFragmentos()));
+						}
 					}
 				}
 			}
 			
 			Transformer xformer = TransformerFactory.newInstance().newTransformer();
 		    xformer.transform
-		        (new DOMSource(doc), new StreamResult(("PlayerBase.xml")));	
+		        (new DOMSource(doc), new StreamResult(("newPlayerBase.xml")));	
 
 		} while (option!=0);
 		System.out.println("@axe.bad");
