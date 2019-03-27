@@ -121,11 +121,55 @@ public class DatabaseWriter {
 			return false;
 		}
 	}
+	
+	public static void storeInv(Personagens p) {
+		Document document = DatabaseReader.readDocument("ItemBase.xml");
+		
+		try {
+			NodeList allPlayers = document.getElementsByTagName("playerid");
+			boolean hadInv = false;
+			for (int i = 0; i < allPlayers.getLength(); i++) {
+				Node playerNode = allPlayers.item(i);
+				if (playerNode.getNodeType() == Node.ELEMENT_NODE && playerNode.getTextContent().equals(String.valueOf(p.getId()))) {
+					hadInv = true;
+					playerNode = playerNode.getParentNode();
+					
+					
+					NodeList playerNodes = playerNode.getChildNodes();
+					
+					Node equippedNode;
+					Node invNode;
+					for(int j = 0; j < playerNodes.getLength(); j++) {
+						Node n = playerNodes.item(j);
+						if(n.getNodeType() == Node.ELEMENT_NODE) {
+							if(n.getNodeName().equalsIgnoreCase("inv"))
+								invNode = n;
+							else if(n.getNodeName().equalsIgnoreCase("equipped"))
+								equippedNode = n;
+						}
+					}
+					
+//					for(int j = playerNodes.getLength() - 1; j >= 0; j--) {
+//						playerNode.removeChild(playerNodes.item(j));
+//					}
+					
+				}
+			}
+			if(!hadInv) {
+				//crea novo inv
+			}
+			
+			
+			storeInfo(document, "ItemBase.xml");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 
 
 	public static boolean storePlayer(Personagens p) {
-
+		//falta meter para id
 		Document document = DatabaseReader.readDocument("PlayerBase.xml");
 
 		try {
@@ -196,8 +240,9 @@ public class DatabaseWriter {
 
 			Node databaseName = allPlayers.item(i);
 			if (databaseName.getNodeType() == Node.ELEMENT_NODE && databaseName.getTextContent().equals(name)) {
-
-				databaseName.getParentNode().removeChild(databaseName);
+				
+				Node player = databaseName.getParentNode();
+				player.getParentNode().removeChild(player);
 
 				try {
 					storeInfo(document, "PlayerBase.xml");
