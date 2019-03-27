@@ -16,6 +16,7 @@ import org.w3c.dom.NodeList;
 
 import Personagens.Personagens;
 import accessory.Accessory;
+import accessory.Arma;
 
 public class DatabaseWriter {
 
@@ -135,8 +136,8 @@ public class DatabaseWriter {
 					
 					NodeList playerNodes = playerNode.getChildNodes();
 					
-					Node equippedNode;
-					Node invNode;
+					Node equippedNode = null;
+					Node invNode = null;
 					for(int j = 0; j < playerNodes.getLength(); j++) {
 						Node n = playerNodes.item(j);
 						if(n.getNodeType() == Node.ELEMENT_NODE) {
@@ -146,6 +147,18 @@ public class DatabaseWriter {
 								equippedNode = n;
 						}
 					}
+					Node parent = playerNode;
+					
+					if(equippedNode != null)
+						parent.removeChild(equippedNode);
+					if(invNode != null)
+						parent.removeChild(invNode);
+					
+					Node inventoryNode = getInvNode("inv", p.getInventory().getInv(), document);
+					parent.appendChild(inventoryNode);
+					
+					Node equipNode = getInvNode("equipped", p.getInventory().getEquipped(), document);
+					parent.appendChild(equipNode);
 					
 //					for(int j = playerNodes.getLength() - 1; j >= 0; j--) {
 //						playerNode.removeChild(playerNodes.item(j));
@@ -154,7 +167,20 @@ public class DatabaseWriter {
 				}
 			}
 			if(!hadInv) {
-				//crea novo inv
+				//cria novo inv
+				Element root = document.getDocumentElement();
+				Element playerNode = document.createElement("player");
+				Element playerId = document.createElement("playerid");
+				playerId.setTextContent(String.valueOf(p.getId()));
+				Node invNode = getInvNode("inv", p.getInventory().getInv(), document);
+				Node equippedNode = getInvNode("equipped", p.getInventory().getEquipped(), document);
+				
+				playerNode.appendChild(playerId);
+				playerNode.appendChild(invNode);
+				playerNode.appendChild(equippedNode);
+				
+				root.appendChild(playerNode);
+				
 			}
 			
 			
@@ -163,7 +189,40 @@ public class DatabaseWriter {
 			e.printStackTrace();
 		}
 	}
+	
+	protected static Node getInvNode(String nodeName, ArrayList<Accessory> inventory, Document document) {
+		Element invNode = document.createElement(nodeName);
+		for(Accessory item: inventory) {
+			Node itemNode = getAccessoryNode(item, document);
+			invNode.appendChild(itemNode);
+		}
+		return invNode;
+	}
 
+	
+	protected static Node getAccessoryNode(Accessory item, Document document) {
+		Element e = document.createElement("item");
+		Element name = document.createElement("name");
+		Element type = document.createElement("type");
+		Element lvl = document.createElement("lvl");
+		
+		name.setTextContent(item.getName());
+		type.setTextContent(item.getType());
+		lvl.setTextContent("" + item.getLevel());
+		
+		e.appendChild(name);
+		e.appendChild(type);
+		e.appendChild(lvl);
+		
+		if(item instanceof Arma) {
+			Element damage = document.createElement("damage");
+			Arma a = (Arma) item;
+			damage.setTextContent("" + a.getDamage());
+			e.appendChild(damage);
+		}
+		
+		return e;
+	}
 
 
 	public static boolean storePlayer(Personagens p) {

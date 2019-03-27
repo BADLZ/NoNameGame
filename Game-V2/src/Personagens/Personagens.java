@@ -317,6 +317,10 @@ public abstract class Personagens {
 		return result>0? result : 1;
 	}
 	
+	public void clearInventory() {
+		this.inv = new Inventory();
+	}
+	
 	
 
 }
