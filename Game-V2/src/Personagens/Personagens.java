@@ -23,6 +23,8 @@ public abstract class Personagens {
 	protected int moedasNegras;
 	protected int fragmentos;
 	
+	
+	
 	public Personagens(String name, int id) {
 		this.name = name;
 		this.id = id;
@@ -31,13 +33,67 @@ public abstract class Personagens {
 		setNivel(1);
 	}
 	
-	//--------------------------novas cenas-----
 	//statusBase = soma todos atributos
 	protected int statusBase, inteligencia, destreza, forca, constituicao, mira;
 	
 	public Inventory getInventory() {
 		return inv;
 	}
+	
+	//companheiro
+	private int tipo;
+	private int cons;
+	private int cForca, cDestreza, cInteligencia;
+
+	public int getCForca() {
+		return cForca;
+	}
+
+	public void setCForca(int cForca) {
+		this.cForca = cForca;
+	}
+
+	public int getCDestreza() {
+		return cDestreza;
+	}
+
+	public void setCDestreza(int cDestreza) {
+		this.cDestreza = cDestreza;
+	}
+
+	public int getCInteligencia() {
+		return cInteligencia;
+	}
+
+	public void setCInteligencia(int cInteligencia) {
+		this.cInteligencia = cInteligencia;
+	}
+
+	
+	public int getTipo() {
+		return tipo;
+	}
+
+
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
+
+
+
+	public int getCons() {
+		return cons;
+	}
+
+
+	public void setCons(int cons) {
+		this.cons = cons;
+	}
+
+
+	
+
+	
 	public int getStatusBase() {
 		return statusBase;
 	}

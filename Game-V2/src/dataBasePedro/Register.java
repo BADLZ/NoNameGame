@@ -1,5 +1,9 @@
 package dataBasePedro;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -9,6 +13,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
@@ -16,7 +21,9 @@ import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
 
 import legacyCode.LogSign;
 
@@ -51,7 +58,7 @@ public class Register {
 		}
 		
 		String newGuyId = m.availableId(doc);
-
+		//String newGuyId = "2";
 		m.registPlayerBase(username, categoria, newGuyId);
 		m.registAccounBase(username, newGuyId);
 		m.registAcessoryBase(username, categoria, newGuyId);
@@ -86,6 +93,11 @@ public class Register {
 			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			Document document = documentBuilder.parse("newPlayerBase.xml");
 			DOMSource source = new DOMSource(document);
+			
+			//DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			//DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			//document = dBuilder.parse("newPlayerBase.xml");			
+			//document.getDocumentElement().normalize();	
 			
 			Element root = document.getDocumentElement();
 			
@@ -122,8 +134,39 @@ public class Register {
 			nodeFragmentos.appendChild(document.createTextNode("0"));
 			newPlayer.appendChild(nodeFragmentos);
 			
-			root.appendChild(newPlayer);
-
+			//Companheiro
+			Element companheiro = document.createElement("companheiro");
+			
+			Element nodeTipo = document.createElement("tipo");
+			nodeTipo.appendChild(document.createTextNode("0"));
+			companheiro.appendChild(nodeTipo);
+			
+			
+			Element nodeCons = document.createElement("constituicao");
+			nodeCons.appendChild(document.createTextNode("0"));
+			companheiro.appendChild(nodeCons);
+			
+			//basico
+			Element basico = document.createElement("basico");
+			
+			Element nodeCF = document.createElement("cforca");
+			nodeCF.appendChild(document.createTextNode("0"));
+			basico.appendChild(nodeCF);
+			
+			Element nodeCD = document.createElement("cdestreza");
+			nodeCD.appendChild(document.createTextNode("0"));
+			basico.appendChild(nodeCD);
+			
+			Element nodeCI = document.createElement("cinteligencia");
+			nodeCI.appendChild(document.createTextNode("0"));
+			basico.appendChild(nodeCI);
+			
+			companheiro.appendChild(basico);
+			
+			newPlayer.appendChild(companheiro);
+			
+			root.appendChild(newPlayer);			
+			
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
@@ -136,6 +179,7 @@ public class Register {
 		
 		return false;
 	}
+
 	
 	public boolean registAccounBase(String name, String id) {
 		
@@ -167,7 +211,6 @@ public class Register {
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			StreamResult result = new StreamResult("newAccountBase.xml");
 			transformer.transform(source, result);
-			
 			return true;
 		} catch (Exception e) {}
 		
@@ -175,7 +218,6 @@ public class Register {
 	}
 	
 	public boolean registAcessoryBase(String name, String category, String id) {
-		
 		
 		try {
 			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();

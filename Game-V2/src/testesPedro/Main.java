@@ -28,6 +28,7 @@ import Personagens.Feiticeiro;
 import Personagens.Gladiador;
 import Personagens.Personagens;
 import sergitoGames.Catacumbas;
+import sergitoGames.Companheiro;
 import sergitoGames.Missoes;
 import sergitoGames.Pvp;
 import sergitoGames.SalaTreinos;
@@ -54,16 +55,18 @@ public class Main {
 		Missoes m = new Missoes();
 		Catacumbas c = new Catacumbas();
 		Feiticeiro feit = new Feiticeiro("@axe.bad", 1);
-		Cacador teste = new Cacador("EuEraOViolador", 2);
-		Gladiador badaxe = new Gladiador("Draven", 0);
+		Cacador badaxe = new Cacador("hey", 2);
+		//Gladiador badaxe = new Gladiador("Draven", 0);
+		//Feiticeiro badaxe = new Feiticeiro("ProudAlQaholic", 3);
 		SalaTreinos s = new SalaTreinos();
 		Npc npc = new Npc("PecadorEmEspera");
 		Pvp pv = new Pvp();
+		Companheiro comp = new Companheiro();
 		
 		Scanner sc = new Scanner(System.in);	
 		
 		ma.readPlayer(doc, badaxe);
-		ma.readPlayer(doc, teste);
+		//ma.readPlayer(doc, teste);
 		ma.readPlayer(doc, feit);
 		
 		do {
@@ -72,6 +75,7 @@ public class Main {
 			System.out.println("3 - Second Floor");
 			System.out.println("4 - Hyperbolic Time Chamber");
 			System.out.println("5 - PVP");
+			System.out.println("6 - Companion");
 			System.out.println("0 - Exit Game");
 			System.out.print("Option --> ");
 			option = sc.nextInt();
@@ -102,6 +106,10 @@ public class Main {
 				
 			case 5:
 				pv.battlePVP(badaxe, feit);
+				break;
+				
+			case 6:
+				comp.choseCompanheiro(badaxe);
 				break;
 
 		}
@@ -158,6 +166,39 @@ public class Main {
 						p.setFragmentos(Integer.parseInt(no.getTextContent()));
 						System.out.println("Fragmentos "+p.getFragmentos()+"\n");
 					}
+					else if (no.getNodeName().equalsIgnoreCase("companheiro")) {
+						NodeList companheiro = no.getChildNodes();
+						System.out.println("Stats Companheiro de "+p.getName());
+						for (int k = 0; k < companheiro.getLength();k++) {
+							Node compStats = companheiro.item(k);
+							if (compStats.getNodeName().equalsIgnoreCase("tipo")) {
+								p.setTipo(Integer.parseInt(compStats.getTextContent()));
+								System.out.println("Tipo "+p.getTipo());
+							}
+							else if (compStats.getNodeName().equalsIgnoreCase("basico")) {
+								NodeList basico = compStats.getChildNodes();
+								for (int y = 0; y < basico.getLength(); y++) {
+									Node statBas = basico.item(y);
+									if (statBas.getNodeName().equalsIgnoreCase("cforca")) {
+										p.setCForca(Integer.parseInt(statBas.getTextContent()));
+										System.out.println("Forca Companheiro "+p.getCForca());
+									}
+									else if (statBas.getNodeName().equalsIgnoreCase("cdestreza")) {
+										p.setCDestreza(Integer.parseInt(statBas.getTextContent()));
+										System.out.println("Destreza Companheiro "+p.getCDestreza());
+									}
+									else if (statBas.getNodeName().equalsIgnoreCase("cinteligencia")) {
+										p.setCInteligencia(Integer.parseInt(statBas.getTextContent()));
+										System.out.println("Inteligencia Companheiro "+p.getCInteligencia());
+									}
+								}
+							}
+							else if (compStats.getNodeName().equalsIgnoreCase("constituicao")) {
+								p.setCons(Integer.parseInt(compStats.getTextContent()));
+								System.out.println("Constituicao "+p.getCons()+"\n");
+							}
+						}
+					}
 				}
 			}
 		}
@@ -193,6 +234,36 @@ public class Main {
 					}
 					else if (lvl.getNodeName().equalsIgnoreCase("fragmentos")) {
 						lvl.setTextContent(Integer.toString(p.getFragmentos()));
+					}
+					else if (lvl.getNodeName().equalsIgnoreCase("companheiro")) {
+						NodeList comp = lvl.getChildNodes();
+						for (int k = 0; k < comp.getLength();k++) {
+							Node stats = comp.item(k);
+							if (stats.getNodeName().equalsIgnoreCase("tipo")) {
+								stats.setTextContent(Integer.toString(p.getTipo()));
+							}
+							else if (stats.getNodeName().equalsIgnoreCase("constituicao")) {
+								stats.setTextContent(Integer.toString(p.getCons()));
+							}
+							else if (stats.getNodeName().equalsIgnoreCase("basico")) {
+								NodeList basico = stats.getChildNodes();
+								for (int y = 0; y < basico.getLength(); y++) {
+									Node statBas = basico.item(y);
+									if (statBas.getNodeName().equalsIgnoreCase("cforca")) {										
+										statBas.setTextContent(Integer.toString(p.getCForca()));
+									}
+									else if (statBas.getNodeName().equalsIgnoreCase("cdestreza")) {
+										statBas.setTextContent(Integer.toString(p.getCDestreza()));
+									
+									}
+									else if (statBas.getNodeName().equalsIgnoreCase("cinteligencia")) {
+										statBas.setTextContent(Integer.toString(p.getCInteligencia()));
+										
+									}
+								}
+							}							
+							
+						}
 					}
 				}
 			}

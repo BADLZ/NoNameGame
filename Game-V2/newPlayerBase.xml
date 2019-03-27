@@ -1,52 +1,80 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><players>
-        	
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<players>
+                
+    
+    
     
     <player class="Gladiador" id="0" name="Draven">
-                	    
+                                
         
-        <Level>12</Level>
-                	    
         
-        <xp>120</xp>
-                	    
+        <level>2</level>
+                                
         
-        <gold>843</gold>
-                	    
         
-        <audacia>6</audacia>
-                	    
-        
-        <treinoArmas>10</treinoArmas>
-                	    
-        
-        <moedasNegras>0</moedasNegras>
-                	    
-        
-        <fragmentos>1</fragmentos>
-                	
-    
-    </player>
-        
-    
-    <player class="Feiticeiro" id="1" name="@axe.bad">
-                
-        <level>1</level>
-                
         <xp>0</xp>
-                
-        <gold>0</gold>
-                
+                                
+        
+        
+        <gold>50</gold>
+                                
+        
+        
         <audacia>5</audacia>
-                
+                                
+        
+        
         <treinoArmas>10</treinoArmas>
-                
+                                
+        
+        
         <moedas>0</moedas>
-                
+                                
+        
+        
         <fragmentos>0</fragmentos>
+                                
+        
+        
+        <companheiro>
+                                                
             
+            
+            <tipo>1</tipo>
+                                                
+            
+            
+            <constituicao>90</constituicao>
+                                                
+            
+            
+            <basico>
+                                                                
+                
+                
+                <cforca>200</cforca>
+                                                                
+                
+                
+                <cdestreza>0</cdestreza>
+                                                                
+                
+                
+                <cinteligencia>0</cinteligencia>
+                                                            
+            
+            
+            </basico>
+                                            
+        
+        
+        </companheiro>
+                            
+    
+    
     </player>
     
-    <player class="Cacador" id="2" name="EuEraOViolador">
+    <player class="Feiticeiro" id="1" name="Serito Games">
         <level>1</level>
         <xp>0</xp>
         <gold>0</gold>
@@ -54,5 +82,14 @@
         <treinoArmas>10</treinoArmas>
         <moedas>0</moedas>
         <fragmentos>0</fragmentos>
+        <companheiro>
+            <tipo>0</tipo>
+            <constituicao>0</constituicao>
+            <basico>
+                <cforca>0</cforca>
+                <cdestreza>0</cdestreza>
+                <cinteligencia>0</cinteligencia>
+            </basico>
+        </companheiro>
     </player>
 </players>
