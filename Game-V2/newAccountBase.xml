@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<contas>
+        	
+    
+    <conta id="0" name="Draven">
+                		
+        
+        <pass>123</pass>
+                		
+        
+        <email>something</email>
+                	
+    
+    </conta>
+        
+    
+    <conta id="1" name="@axe.bad">
+                
+        <pass>1234</pass>
+                
+        <email>something</email>
+            
+    </conta>
+    
+    <conta id="2" name="EuEraOViolador">
+        <pass>1234</pass>
+        <email>something</email>
+    </conta>
+</contas>
