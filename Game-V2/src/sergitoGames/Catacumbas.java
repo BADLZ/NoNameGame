@@ -145,7 +145,6 @@ public class Catacumbas {
 		return true;
 	}
 	
-	//TODO aleatorio entre -20 e 20
 	public boolean battleNPC(Personagens p, Npc npc) {
 		//TODO por enquanto não tem ARMA
 		npc.statusNpc(npc.getName()); //status NPC

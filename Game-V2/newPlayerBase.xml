@@ -4,16 +4,16 @@
     <player class="Gladiador" id="0" name="Draven">
                 	    
         
-        <Level>10</Level>
+        <Level>12</Level>
                 	    
         
-        <xp>2026</xp>
+        <xp>120</xp>
                 	    
         
-        <gold>1494</gold>
+        <gold>843</gold>
                 	    
         
-        <audacia>5</audacia>
+        <audacia>6</audacia>
                 	    
         
         <treinoArmas>10</treinoArmas>
@@ -28,7 +28,7 @@
     </player>
         
     
-    <player class="Gladiador" id="1" name="@axe.bad">
+    <player class="Feiticeiro" id="1" name="@axe.bad">
                 
         <level>1</level>
                 
