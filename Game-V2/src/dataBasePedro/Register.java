@@ -1,7 +1,9 @@
 package dataBasePedro;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.Scanner;
@@ -30,7 +32,7 @@ import legacyCode.LogSign;
 public class Register {
 
 
-	public static void main(String args[]) {
+	public static void main(String args[]) throws FileNotFoundException {
 		Document doc = null;
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -62,6 +64,12 @@ public class Register {
 		m.registPlayerBase(username, categoria, newGuyId);
 		m.registAccounBase(username, newGuyId);
 		m.registAcessoryBase(username, categoria, newGuyId);
+		
+		
+		/*File f = new File("newPlayerBase.xml");
+		PrintWriter write = new PrintWriter("correctPlayerBase.xml");
+		m.removeEmptyLines(f, write);
+		*/
 		sc.close();
 		
 		//System.out.println(m.availableId(doc));
@@ -174,6 +182,12 @@ public class Register {
 			StreamResult result = new StreamResult("newPlayerBase.xml");
 			transformer.transform(source, result);
 			
+			//fix lines
+			File f = new File("newPlayerBase.xml");
+			PrintWriter write = new PrintWriter("correctPlayerBase.xml");
+			removeEmptyLines(f, write);
+			
+			
 			return true;
 		} catch (Exception e) {}
 		
@@ -211,6 +225,11 @@ public class Register {
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			StreamResult result = new StreamResult("newAccountBase.xml");
 			transformer.transform(source, result);
+			
+			File f = new File("newAccountBase.xml");
+			PrintWriter write = new PrintWriter("correctAccountBase.xml");
+			removeEmptyLines(f, write);
+			
 			return true;
 		} catch (Exception e) {}
 		
@@ -278,12 +297,38 @@ public class Register {
 			StreamResult result = new StreamResult("newAcessoryBase.xml");
 			transformer.transform(source, result);
 			
+			File f = new File("newAcessoryBase.xml");
+			PrintWriter write = new PrintWriter("correctAcessoryBase.xml");
+			removeEmptyLines(f, write);
+			
 			return true;
 		} catch (Exception e) {}
 		
-		
-		
 		return false;
+	}
+	
+	public void removeEmptyLines(File f, PrintWriter write) throws FileNotFoundException {
+		Scanner file = new Scanner(f);
+		
+		boolean copia = false;
+		
+		while(file.hasNextLine()) {
+			String linha = file.nextLine();
+			for (int i = 0; i < linha.length(); i++) {
+				char a = linha.charAt(i);
+				if (Character.isLetterOrDigit(a)) {
+					copia = true;
+				}
+			}
+			if (copia) {
+				write.write(linha+"\n");
+				copia = false;
+			}
+
+        }
+        write.close();
+        file.close();
+		
 	}
 		
 }

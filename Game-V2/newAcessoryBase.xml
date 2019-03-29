@@ -1,8 +1,377 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <acessorios>
-     
+                             
    
+    
+    
+    
+    
+    
+    
     <acessorio class="Gladiador" id="0" name="Draven">
+                                                                
+        
+        
+        
+        
+        
+        
+        <amuleto>0</amuleto>
+                                                                
+        
+        
+        
+        
+        
+        
+        <anel>0</anel>
+                                                                
+        
+        
+        
+        
+        
+        
+        <arma>0</arma>
+                                                                
+        
+        
+        
+        
+        
+        
+        <bracelete>0</bracelete>
+                                                                
+        
+        
+        
+        
+        
+        
+        <calcas>0</calcas>
+                                                                
+        
+        
+        
+        
+        
+        
+        <colar>0</colar>
+                                                                
+        
+        
+        
+        
+        
+        
+        <companheiro>0</companheiro>
+                                                                
+        
+        
+        
+        
+        
+        
+        <insignias>0</insignias>
+                                                                
+        
+        
+        
+        
+        
+        
+        <tronco>0</tronco>
+                                                            
+    
+    
+    
+    
+    
+    
+    </acessorio>
+                            
+    
+    
+    
+    
+    
+    
+    <acessorio class="Feiticeiro" id="1" name="Serito Games">
+                                                        
+        
+        
+        
+        
+        
+        <amuleto>0</amuleto>
+                                                        
+        
+        
+        
+        
+        
+        <anel>0</anel>
+                                                        
+        
+        
+        
+        
+        
+        <arma>0</arma>
+                                                        
+        
+        
+        
+        
+        
+        <bracelete>0</bracelete>
+                                                        
+        
+        
+        
+        
+        
+        <calcas>0</calcas>
+                                                        
+        
+        
+        
+        
+        
+        <colar>0</colar>
+                                                        
+        
+        
+        
+        
+        
+        <companheiro>0</companheiro>
+                                                        
+        
+        
+        
+        
+        
+        <insignias>0</insignias>
+                                                        
+        
+        
+        
+        
+        
+        <tronco>0</tronco>
+                                                    
+    
+    
+    
+    
+    
+    </acessorio>
+                        
+    
+    
+    
+    
+    
+    <acessorio class="Cacador" id="2" name="Mariano">
+                                                
+        
+        
+        
+        
+        <amuleto>0</amuleto>
+                                                
+        
+        
+        
+        
+        <anel>0</anel>
+                                                
+        
+        
+        
+        
+        <arma>0</arma>
+                                                
+        
+        
+        
+        
+        <bracelete>0</bracelete>
+                                                
+        
+        
+        
+        
+        <calcas>0</calcas>
+                                                
+        
+        
+        
+        
+        <colar>0</colar>
+                                                
+        
+        
+        
+        
+        <companheiro>0</companheiro>
+                                                
+        
+        
+        
+        
+        <insignias>0</insignias>
+                                                
+        
+        
+        
+        
+        <tronco>0</tronco>
+                                            
+    
+    
+    
+    
+    </acessorio>
+                    
+    
+    
+    
+    
+    <acessorio class="feiticeiro" id="3" name="removeLines">
+                                        
+        
+        
+        
+        <amuleto>0</amuleto>
+                                        
+        
+        
+        
+        <anel>0</anel>
+                                        
+        
+        
+        
+        <arma>0</arma>
+                                        
+        
+        
+        
+        <bracelete>0</bracelete>
+                                        
+        
+        
+        
+        <calcas>0</calcas>
+                                        
+        
+        
+        
+        <colar>0</colar>
+                                        
+        
+        
+        
+        <companheiro>0</companheiro>
+                                        
+        
+        
+        
+        <insignias>0</insignias>
+                                        
+        
+        
+        
+        <tronco>0</tronco>
+                                    
+    
+    
+    
+    </acessorio>
+                
+    
+    
+    
+    <acessorio class="cacador" id="4" name="nn">
+                                
+        
+        
+        <amuleto>0</amuleto>
+                                
+        
+        
+        <anel>0</anel>
+                                
+        
+        
+        <arma>0</arma>
+                                
+        
+        
+        <bracelete>0</bracelete>
+                                
+        
+        
+        <calcas>0</calcas>
+                                
+        
+        
+        <colar>0</colar>
+                                
+        
+        
+        <companheiro>0</companheiro>
+                                
+        
+        
+        <insignias>0</insignias>
+                                
+        
+        
+        <tronco>0</tronco>
+                            
+    
+    
+    </acessorio>
+            
+    
+    
+    <acessorio class="cacador" id="5" name="jnj">
+                        
+        
+        <amuleto>0</amuleto>
+                        
+        
+        <anel>0</anel>
+                        
+        
+        <arma>0</arma>
+                        
+        
+        <bracelete>0</bracelete>
+                        
+        
+        <calcas>0</calcas>
+                        
+        
+        <colar>0</colar>
+                        
+        
+        <companheiro>0</companheiro>
+                        
+        
+        <insignias>0</insignias>
+                        
+        
+        <tronco>0</tronco>
+                    
+    
+    </acessorio>
+        
+    
+    <acessorio class="cacador" id="6" name="ajndjvadvd">
                 
         <amuleto>0</amuleto>
                 
@@ -24,7 +393,7 @@
             
     </acessorio>
     
-    <acessorio class="Feiticeiro" id="1" name="Serito Games">
+    <acessorio class="Feiticeiro" id="7" name="Taliyah">
         <amuleto>0</amuleto>
         <anel>0</anel>
         <arma>0</arma>
