@@ -12,4 +12,16 @@
     <moedasNegras>0</moedasNegras>
     <fragmentos>0</fragmentos>
 	</player>
+<player>
+<id>8</id>
+<name>Teste3</name>
+<class>Cacador</class>
+<Level>1</Level>
+<xp>0</xp>
+<gold>0</gold>
+<audacia>5</audacia>
+<treinoArmas>10</treinoArmas>
+<moedasNegras>0</moedasNegras>
+<fragmentos>0</fragmentos>
+</player>
 </players>
