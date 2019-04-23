@@ -14,6 +14,7 @@ public abstract class Personagens {
 	protected int nivel, id;
 	protected long currentXp = 0;
 	protected long currentGold = 0;
+	protected Inventory inv;
 	private String name;
 	
 	protected int treinoArmas;
@@ -22,35 +23,76 @@ public abstract class Personagens {
 	protected int moedasNegras;
 	protected int fragmentos;
 	
-	protected ArrayList<Accessory> equipedItems;
-	protected ArrayList<Accessory> inventory;
+	
 	
 	public Personagens(String name, int id) {
 		this.name = name;
 		this.id = id;
-		equipedItems = new ArrayList<>();
-		inventory = new ArrayList<>();
+		inv = new Inventory();
 		powerPerLvl(1);
 		setNivel(1);
 	}
 	
-	//--------------------------novas cenas-----
 	//statusBase = soma todos atributos
 	protected int statusBase, inteligencia, destreza, forca, constituicao, mira;
 	
-	public boolean equipItem(Accessory item) {
-		equipedItems.add(item);
-		//TODO ha casos em que o jogador nao pode equipar itens
-		return true;
+	public Inventory getInventory() {
+		return inv;
 	}
 	
-	public boolean addItem(Accessory item) {
-		if(inventory.size() < MAX_ITENS_INV) {
-			inventory.add(item);
-			return true;
-		}
-		return false;
+	//companheiro
+	private int tipo;
+	private int cons;
+	private int cForca, cDestreza, cInteligencia;
+
+	public int getCForca() {
+		return cForca;
 	}
+
+	public void setCForca(int cForca) {
+		this.cForca = cForca;
+	}
+
+	public int getCDestreza() {
+		return cDestreza;
+	}
+
+	public void setCDestreza(int cDestreza) {
+		this.cDestreza = cDestreza;
+	}
+
+	public int getCInteligencia() {
+		return cInteligencia;
+	}
+
+	public void setCInteligencia(int cInteligencia) {
+		this.cInteligencia = cInteligencia;
+	}
+
+	
+	public int getTipo() {
+		return tipo;
+	}
+
+
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
+
+
+
+	public int getCons() {
+		return cons;
+	}
+
+
+	public void setCons(int cons) {
+		this.cons = cons;
+	}
+
+
+	
+
 	
 	public int getStatusBase() {
 		return statusBase;
@@ -234,7 +276,7 @@ public abstract class Personagens {
 	//-------------------------
 	public int getBonusConstituicao() {
 		int result = 0;
-		for(Accessory item: equipedItems) {
+		for(Accessory item: inv.getEquipped()) {
 			result += item.getConstituicao();
 			result += constituicao*item.getPConstituicao();
 		}
@@ -243,7 +285,7 @@ public abstract class Personagens {
 	
 	public int getBonusMira() {
 		int result = 0;
-		for(Accessory item: equipedItems) {
+		for(Accessory item: inv.getEquipped()) {
 			result += item.getMira();
 			result += mira*item.getPMira();
 		}
@@ -253,7 +295,7 @@ public abstract class Personagens {
 	public int getBonusForca() {
 		int result = 0;
 		if(this instanceof Gladiador) {
-			for(Accessory item: equipedItems) {
+			for(Accessory item: inv.getEquipped()) {
 				result += item.getBonusPersonagem();
 				result += forca*item.getPBonusPersonagem();
 			}
@@ -264,7 +306,7 @@ public abstract class Personagens {
 	public int getBonusInteligencia() {
 		int result = 0;
 		if(this instanceof Feiticeiro) {
-			for(Accessory item: equipedItems) {
+			for(Accessory item: inv.getEquipped()) {
 				result += item.getBonusPersonagem();
 				result += inteligencia*item.getPBonusPersonagem();
 			}
@@ -275,7 +317,7 @@ public abstract class Personagens {
 	public int getBonusDestreza() {
 		int result = 0;
 		if(this instanceof Cacador) {
-			for(Accessory item: equipedItems) {
+			for(Accessory item: inv.getEquipped()) {
 				result += item.getBonusPersonagem();
 				result += destreza*item.getPBonusPersonagem();
 			}
@@ -317,7 +359,7 @@ public abstract class Personagens {
 
 	private int danoArma() {
 		int result = 1;
-		for(Accessory item: equipedItems) {
+		for(Accessory item: inv.getEquipped()) {
 			if(item instanceof Arma) {
 				Arma arma = (Arma) item;
 				//assumindo que ele so tem 1 arma
@@ -329,6 +371,10 @@ public abstract class Personagens {
 		//caso result der 0 ou menos o dano tem que ser no minimo 1, pois se tiver a 0 o atributo
 		//caracteristico ficara a 0
 		return result>0? result : 1;
+	}
+	
+	public void clearInventory() {
+		this.inv = new Inventory();
 	}
 	
 	

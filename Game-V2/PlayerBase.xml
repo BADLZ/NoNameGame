@@ -13,8 +13,13 @@
     <fragmentos>0</fragmentos>
 	</player>
 <player>
+<<<<<<< HEAD
 <id>8</id>
 <name>Teste3</name>
+=======
+<id>11</id>
+<name>Teste124</name>
+>>>>>>> branch 'master' of https://github.com/BADLZ/NoNameGame.git
 <class>Cacador</class>
 <Level>1</Level>
 <xp>0</xp>

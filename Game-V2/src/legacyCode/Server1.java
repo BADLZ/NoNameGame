@@ -1,4 +1,4 @@
-package testesDani;
+package legacyCode;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;

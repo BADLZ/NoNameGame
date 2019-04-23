@@ -57,7 +57,7 @@ public class Arma extends Accessory{
 	}
 	
 	public String toString() {
-		String s = super.nomeArma + ": Dano " + this.dano + ", Basico " + super.constituicao + ", Mira " + super.mira; 
+		String s = super.toString() + "Dano: " + this.dano; 
 		return s;
 	}
 
@@ -65,5 +65,22 @@ public class Arma extends Accessory{
 	public int getDano() {
 		return dano;
 	}
+	
+	public int getDamage() {
+		return dano;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o == this)
+			return true;
+		if(o == null || !(o instanceof Arma))
+			return false;
+		Arma a = (Arma) o;
+		if(super.getName().equals(a.getName()) && super.getLevel() == a.getLevel() &&
+				super.getType().equals(a.getType()) && this.getDamage() == a.getDamage())
+			return true;
+		return false;
+	}	
 
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<players>
+    <player>
+        <playerid>-1</playerid>
+        <inv>
+            <item>
+                <type>"Arma"</type>
+                <name>"Arma1"</name>
+                <level>1</level>
+            </item>
+        </inv>
+        <equipped></equipped></player>
+</players>

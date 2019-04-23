@@ -1,6 +1,7 @@
 package Graphics;
 
 import java.awt.CardLayout;
+
 import java.awt.Dimension;
 import java.awt.Image;
 import java.io.File;
@@ -9,8 +10,6 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import com.sun.javafx.geom.transform.SingularMatrixException;
 
 import Graphics.scenes.CharacterSelection;
 import Graphics.scenes.Dungeon;
@@ -116,8 +115,10 @@ public class SceneManager {
 	
 	public boolean setRegisterInfo(String email, String name, char[] password) {
 		this.name = name;
+		boolean result =  DatabaseWriter.createAccout(name, password, email);
+		playerId = DatabaseReader.login(name, password); 
 		//Ir a database criar o gajo
-		return DatabaseWriter.createAccout(name, password, email);
+		return result;
 		
 	}
 	

@@ -89,7 +89,8 @@ public class Missoes {
 	
 	public void firstMission(Personagens p) {
 		System.out.println("Congratulations on your first mission!\n");
-		p.setCurrentXp(44);
+		//p.setCurrentXp(44);
+		p.updateXp(44);
 		p.setCurrentGold(50);
 	}
 	
@@ -156,25 +157,27 @@ public class Missoes {
 		//sc.close();
 	}
 	
-	/*Se o Personagem tiver 4 moedas negras, forja para 1 fragmento*/
+	/*Se o Personagem tiver 4 fragmentos, forja para 1 moeda*/
 	public boolean moedasNegras(Personagens p) {
 		
-		int probabilidade = (int) (Math.random()*100);
-		
-		if (probabilidade <= 3) { //probabilidade de 3%
-			p.setMoedasNegras(p.getMoedasNegras()+1);
-			System.out.println("You earned a black coin!");
+		if (!p.getName().equalsIgnoreCase("Jamal")) {
+			int probabilidade = (int) (Math.random()*100);
 			
-			if (p.getMoedasNegras()>=4) {
-				System.out.println("You forged black coins into a Fragment!");
+			if (probabilidade <= 3) { //probabilidade de 3%
 				p.setFragmentos(p.getFragmentos()+1);
-				p.setMoedasNegras(p.getMoedasNegras()-4); //resetar moedas
-			}
-			
-			return true;
-		}	
+				System.out.println("You earned a Fragment!");
+				
+				while (p.getFragmentos()>=4) {
+					System.out.println("You forged fragments into a Black Coin!");
+					p.setMoedasNegras(p.getMoedasNegras()+1);
+					p.setFragmentos(p.getFragmentos()-4); //fragmentos
+				}
+				
+				return true;
+			}	
+		}
 		return false; //não recebe nada
 	}
 	
-
+	
 }

@@ -51,6 +51,16 @@ public abstract class Accessory {
 	public int getNivelArma() {
 		return nivelArma;
 	}
+	
+	//---------------english---------------
+	public String getName() {
+		return nomeArma;
+	}
+	
+	public int getLevel() {
+		return nivelArma;
+	}
+	
 	//-----------------------------
 	
 	public void lvlUp(Personagens p) {
@@ -79,10 +89,10 @@ public abstract class Accessory {
 	}
 	
 	public boolean compraAcessorio(Personagens p) {
-		if(p.getCurrentGold() >= baseGoldCost && p.getTreinoArmas() >= baseTreinoArmasCost) {
+		if(p.getCurrentGold() >= baseGoldCost && p.getTreinoArmas() >= baseTreinoArmasCost && p.getInventory().hasSpace()) {
 			p.setCurrentGold(p.getCurrentGold() - baseGoldCost);
 			p.setTreinoArmas(p.getTreinoArmas() - baseTreinoArmasCost);
-			p.equipItem(this);
+			p.getInventory().addItem(this);
 			return true;
 		}
 		return false;
@@ -106,7 +116,6 @@ public abstract class Accessory {
 	}
 	
 	protected void statsLvlUp() {
-		int nextLvl = nivelArma + 1;
 		constituicao += constituicao*percentageEvolutionStats;
 		mira += mira*percentageEvolutionStats;
 		bonusPersonagem += bonusPersonagem*percentageEvolutionStats;
@@ -149,6 +158,17 @@ public abstract class Accessory {
 		result.add(getPBonusPersonagem());
 		return result;
 	}
+	//-----------------------------
+	public String toString() {
+		StringBuilder result = new StringBuilder();
+		result.append(this.nomeArma + ", tipo: " + this.type + "\n");
+		result.append("nivel: " + this.nivelArma + "\n");
+		result.append("Constituicao: " + this.constituicao);
+		result.append("Mira: " + this.mira);
+		result.append("Basico: " + this.bonusPersonagem);
+		return result.toString();
+	}
+	
 	//-----------------------------
 	/**
 	public void setStatusBase(int statusBase) {

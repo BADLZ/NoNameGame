@@ -16,6 +16,7 @@ import org.w3c.dom.NodeList;
 import Personagens.Cacador;
 import Personagens.Feiticeiro;
 import Personagens.Gladiador;
+import Personagens.Inventory;
 import Personagens.Personagens;
 
 public class DatabaseReader {
@@ -190,6 +191,11 @@ public static Personagens getPersonagem(int playerId) {
 		}
 		
 		return -1;
+	}
+	
+	public static void readPlayerInventory(Personagens p) {
+		
+		
 	}
 	
 	protected static Document readDocument(String textFile) {

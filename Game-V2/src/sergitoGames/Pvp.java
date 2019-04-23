@@ -49,7 +49,9 @@ public class Pvp {
 		double vidaA = a.getConstituicao()*50;
 		double vidaB = b.getConstituicao()*50;	
 		
-		while(true) {			
+		boolean fight = true;
+		
+		while(fight) {			
 			System.out.println("Vida actual de "+a.getName() + ": "+vidaA);
 			System.out.println("Vida actual de "+b.getName() + ": "+vidaB);
 	
@@ -84,6 +86,7 @@ public class Pvp {
 			
 			//começa player A
 			if (a.getAudacia() >= b.getAudacia()) {
+				System.out.println("Player A attacks first");
 				
 				vidaB = vidaB - danoA;
 				vidaB = Math.round(vidaB * 100.0) / 100.0;
@@ -94,6 +97,8 @@ public class Pvp {
 			
 			//começa player B
 			else {
+				System.out.println("Player B attacks first");
+				
 				vidaA = vidaA - danoB;
 				vidaA = Math.round(vidaA * 100.0) / 100.0;
 				
@@ -102,10 +107,12 @@ public class Pvp {
 			}
 			
 			if (vidaA <= 0) {
-				System.out.print("\nPlayer "+b.getName()+" wins!\n");
+				System.out.println("\nPlayer "+b.getName()+" wins!\n");
+				fight = false;
 			}
 			else if (vidaB <= 0) {
-				System.out.print("\nPlayer "+a.getName()+" wins!\n");
+				System.out.println("\nPlayer "+a.getName()+" wins!\n");
+				fight = false;
 			}	
 		}
 		

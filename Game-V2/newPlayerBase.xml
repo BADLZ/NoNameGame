@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<players>
+                                        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <player class="Gladiador" id="0" name="Draven">
+                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        <level>2</level>
+                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        <xp>0</xp>
+                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        <gold>50</gold>
+                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        <audacia>5</audacia>
+                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        <treinoArmas>10</treinoArmas>
+                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        <moedas>0</moedas>
+                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        <fragmentos>0</fragmentos>
+                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        <companheiro>
+                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            <tipo>1</tipo>
+                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            <constituicao>90</constituicao>
+                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            <basico>
+                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                <cforca>200</cforca>
+                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                <cdestreza>0</cdestreza>
+                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                <cinteligencia>0</cinteligencia>
+                                                                                                                                                            
+            
+            
+            
+            
+            
+            
+            
+            
+            </basico>
+                                                                                                                    
+        
+        
+        
+        
+        
+        
+        
+        
+        </companheiro>
+                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    </player>
+                            
+    
+    
+    
+    
+    
+    
+    <player class="Feiticeiro" id="1" name="Serito Games">
+                                                        
+        
+        
+        
+        
+        
+        <level>1</level>
+                                                        
+        
+        
+        
+        
+        
+        <xp>0</xp>
+                                                        
+        
+        
+        
+        
+        
+        <gold>0</gold>
+                                                        
+        
+        
+        
+        
+        
+        <audacia>5</audacia>
+                                                        
+        
+        
+        
+        
+        
+        <treinoArmas>10</treinoArmas>
+                                                        
+        
+        
+        
+        
+        
+        <moedas>0</moedas>
+                                                        
+        
+        
+        
+        
+        
+        <fragmentos>0</fragmentos>
+                                                        
+        
+        
+        
+        
+        
+        <companheiro>
+                                                                                    
+            
+            
+            
+            
+            
+            <tipo>0</tipo>
+                                                                                    
+            
+            
+            
+            
+            
+            <constituicao>0</constituicao>
+                                                                                    
+            
+            
+            
+            
+            
+            <basico>
+                                                                                                                
+                
+                
+                
+                
+                
+                <cforca>0</cforca>
+                                                                                                                
+                
+                
+                
+                
+                
+                <cdestreza>0</cdestreza>
+                                                                                                                
+                
+                
+                
+                
+                
+                <cinteligencia>0</cinteligencia>
+                                                                                                            
+            
+            
+            
+            
+            
+            </basico>
+                                                                                
+        
+        
+        
+        
+        
+        </companheiro>
+                                                    
+    
+    
+    
+    
+    
+    </player>
+                        
+    
+    
+    
+    
+    
+    <player class="Cacador" id="2" name="Mariano">
+                                                
+        
+        
+        
+        
+        <level>1</level>
+                                                
+        
+        
+        
+        
+        <xp>0</xp>
+                                                
+        
+        
+        
+        
+        <gold>0</gold>
+                                                
+        
+        
+        
+        
+        <audacia>5</audacia>
+                                                
+        
+        
+        
+        
+        <treinoArmas>10</treinoArmas>
+                                                
+        
+        
+        
+        
+        <moedas>0</moedas>
+                                                
+        
+        
+        
+        
+        <fragmentos>0</fragmentos>
+                                                
+        
+        
+        
+        
+        <companheiro>
+                                                                        
+            
+            
+            
+            
+            <tipo>0</tipo>
+                                                                        
+            
+            
+            
+            
+            <constituicao>0</constituicao>
+                                                                        
+            
+            
+            
+            
+            <basico>
+                                                                                                
+                
+                
+                
+                
+                <cforca>0</cforca>
+                                                                                                
+                
+                
+                
+                
+                <cdestreza>0</cdestreza>
+                                                                                                
+                
+                
+                
+                
+                <cinteligencia>0</cinteligencia>
+                                                                                            
+            
+            
+            
+            
+            </basico>
+                                                                    
+        
+        
+        
+        
+        </companheiro>
+                                            
+    
+    
+    
+    
+    </player>
+                    
+    
+    
+    
+    
+    <player class="feiticeiro" id="3" name="removeLines">
+                                        
+        
+        
+        
+        <level>1</level>
+                                        
+        
+        
+        
+        <xp>0</xp>
+                                        
+        
+        
+        
+        <gold>0</gold>
+                                        
+        
+        
+        
+        <audacia>5</audacia>
+                                        
+        
+        
+        
+        <treinoArmas>10</treinoArmas>
+                                        
+        
+        
+        
+        <moedas>0</moedas>
+                                        
+        
+        
+        
+        <fragmentos>0</fragmentos>
+                                        
+        
+        
+        
+        <companheiro>
+                                                            
+            
+            
+            
+            <tipo>0</tipo>
+                                                            
+            
+            
+            
+            <constituicao>0</constituicao>
+                                                            
+            
+            
+            
+            <basico>
+                                                                                
+                
+                
+                
+                <cforca>0</cforca>
+                                                                                
+                
+                
+                
+                <cdestreza>0</cdestreza>
+                                                                                
+                
+                
+                
+                <cinteligencia>0</cinteligencia>
+                                                                            
+            
+            
+            
+            </basico>
+                                                        
+        
+        
+        
+        </companheiro>
+                                    
+    
+    
+    
+    </player>
+                
+    
+    
+    
+    <player class="cacador" id="4" name="nn">
+                                
+        
+        
+        <level>1</level>
+                                
+        
+        
+        <xp>0</xp>
+                                
+        
+        
+        <gold>0</gold>
+                                
+        
+        
+        <audacia>5</audacia>
+                                
+        
+        
+        <treinoArmas>10</treinoArmas>
+                                
+        
+        
+        <moedas>0</moedas>
+                                
+        
+        
+        <fragmentos>0</fragmentos>
+                                
+        
+        
+        <companheiro>
+                                                
+            
+            
+            <tipo>0</tipo>
+                                                
+            
+            
+            <constituicao>0</constituicao>
+                                                
+            
+            
+            <basico>
+                                                                
+                
+                
+                <cforca>0</cforca>
+                                                                
+                
+                
+                <cdestreza>0</cdestreza>
+                                                                
+                
+                
+                <cinteligencia>0</cinteligencia>
+                                                            
+            
+            
+            </basico>
+                                            
+        
+        
+        </companheiro>
+                            
+    
+    
+    </player>
+            
+    
+    
+    <player class="cacador" id="5" name="jnj">
+                        
+        
+        <level>1</level>
+                        
+        
+        <xp>0</xp>
+                        
+        
+        <gold>0</gold>
+                        
+        
+        <audacia>5</audacia>
+                        
+        
+        <treinoArmas>10</treinoArmas>
+                        
+        
+        <moedas>0</moedas>
+                        
+        
+        <fragmentos>0</fragmentos>
+                        
+        
+        <companheiro>
+                                    
+            
+            <tipo>0</tipo>
+                                    
+            
+            <constituicao>0</constituicao>
+                                    
+            
+            <basico>
+                                                
+                
+                <cforca>0</cforca>
+                                                
+                
+                <cdestreza>0</cdestreza>
+                                                
+                
+                <cinteligencia>0</cinteligencia>
+                                            
+            
+            </basico>
+                                
+        
+        </companheiro>
+                    
+    
+    </player>
+        
+    
+    <player class="cacador" id="6" name="ajndjvadvd">
+                
+        <level>1</level>
+                
+        <xp>0</xp>
+                
+        <gold>0</gold>
+                
+        <audacia>5</audacia>
+                
+        <treinoArmas>10</treinoArmas>
+                
+        <moedas>0</moedas>
+                
+        <fragmentos>0</fragmentos>
+                
+        <companheiro>
+                        
+            <tipo>0</tipo>
+                        
+            <constituicao>0</constituicao>
+                        
+            <basico>
+                                
+                <cforca>0</cforca>
+                                
+                <cdestreza>0</cdestreza>
+                                
+                <cinteligencia>0</cinteligencia>
+                            
+            </basico>
+                    
+        </companheiro>
+            
+    </player>
+    
+    <player class="Feiticeiro" id="7" name="Taliyah">
+        <level>1</level>
+        <xp>0</xp>
+        <gold>0</gold>
+        <audacia>5</audacia>
+        <treinoArmas>10</treinoArmas>
+        <moedas>0</moedas>
+        <fragmentos>0</fragmentos>
+        <companheiro>
+            <tipo>0</tipo>
+            <constituicao>0</constituicao>
+            <basico>
+                <cforca>0</cforca>
+                <cdestreza>0</cdestreza>
+                <cinteligencia>0</cinteligencia>
+            </basico>
+        </companheiro>
+    </player>
+</players>

@@ -33,24 +33,29 @@ public class Main {
 //		DatabaseWriter.storePlayer(p);
 //		System.out.println(p);
 //		DatabaseWriter.storePlayer(p);
-//		testeAccessoryArma();
+		testeAccessoryArma();
 //		equivalencia();
 	}
 	
 	private static void testeAccessoryArma() {
-		Cacador c = new Cacador("Grande Testador", 0);
+		Cacador c = new Cacador("Grande Testador", -1);
 //		c.powerPerLvl(1);
-		System.out.println(c + "\n----------------\n----------------\n");
+//		System.out.println(c + "\n----------------\n----------------\n");
 		Arma arma = new Arma("Arma1");
-		System.out.println(arma + "\n----------------\n----------------\n");
-		c.equipItem(arma);
+//		System.out.println(arma + "\n----------------\n----------------\n");
+		c.getInventory().addItem(arma);
+		c.getInventory().equipItem(arma);
+		DatabaseWriter.storeInv(c);
 //		c.equipItem(arma);
 //		c.equipItem(arma);
 //		c.equipItem(arma);
 //		c.equipItem(arma);
 //		c.equipItem(arma);
-		System.out.println(c + "\n----------------\n----------------\n");
+//		c.equipItem(arma);
+		
+//		System.out.println(c + "\n----------------\n----------------\n");
 		arma.setLvl(3);
+		c.getInventory().unequipItem(arma);
 		System.out.println(c);
 		
 	}

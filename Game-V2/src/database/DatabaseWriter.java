@@ -16,6 +16,7 @@ import org.w3c.dom.NodeList;
 
 import Personagens.Personagens;
 import accessory.Accessory;
+import accessory.Arma;
 
 public class DatabaseWriter {
 
@@ -54,7 +55,6 @@ public class DatabaseWriter {
 			nodeGold.appendChild(document.createTextNode("0"));
 			newServer.appendChild(nodeGold);
 
-			//TODO alteracoes (Pedro)
 			Element nodeAudacia = document.createElement("audacia");
 			nodeAudacia.appendChild(document.createTextNode("5"));
 			newServer.appendChild(nodeAudacia);
@@ -70,7 +70,6 @@ public class DatabaseWriter {
 			Element nodeFragmentos = document.createElement("fragmentos");
 			nodeFragmentos.appendChild(document.createTextNode("0"));
 			newServer.appendChild(nodeFragmentos);
-			//ate aqui (Pedro)
 			
 			root.appendChild(newServer);
 			storeInfo(document, "PlayerBase.xml");
@@ -121,11 +120,113 @@ public class DatabaseWriter {
 			return false;
 		}
 	}
+	
+	public static void storeInv(Personagens p) {
+		Document document = DatabaseReader.readDocument("ItemBase.xml");
+		
+		try {
+			NodeList allPlayers = document.getElementsByTagName("playerid");
+			boolean hadInv = false;
+			for (int i = 0; i < allPlayers.getLength(); i++) {
+				Node playerNode = allPlayers.item(i);
+				if (playerNode.getNodeType() == Node.ELEMENT_NODE && playerNode.getTextContent().equals(String.valueOf(p.getId()))) {
+					hadInv = true;
+					playerNode = playerNode.getParentNode();
+					
+					
+					NodeList playerNodes = playerNode.getChildNodes();
+					
+					Node equippedNode = null;
+					Node invNode = null;
+					for(int j = 0; j < playerNodes.getLength(); j++) {
+						Node n = playerNodes.item(j);
+						if(n.getNodeType() == Node.ELEMENT_NODE) {
+							if(n.getNodeName().equalsIgnoreCase("inv"))
+								invNode = n;
+							else if(n.getNodeName().equalsIgnoreCase("equipped"))
+								equippedNode = n;
+						}
+					}
+					Node parent = playerNode;
+					
+					if(equippedNode != null)
+						parent.removeChild(equippedNode);
+					if(invNode != null)
+						parent.removeChild(invNode);
+					
+					Node inventoryNode = getInvNode("inv", p.getInventory().getInv(), document);
+					parent.appendChild(inventoryNode);
+					
+					Node equipNode = getInvNode("equipped", p.getInventory().getEquipped(), document);
+					parent.appendChild(equipNode);
+					
+//					for(int j = playerNodes.getLength() - 1; j >= 0; j--) {
+//						playerNode.removeChild(playerNodes.item(j));
+//					}
+					
+				}
+			}
+			if(!hadInv) {
+				//cria novo inv
+				Element root = document.getDocumentElement();
+				Element playerNode = document.createElement("player");
+				Element playerId = document.createElement("playerid");
+				playerId.setTextContent(String.valueOf(p.getId()));
+				Node invNode = getInvNode("inv", p.getInventory().getInv(), document);
+				Node equippedNode = getInvNode("equipped", p.getInventory().getEquipped(), document);
+				
+				playerNode.appendChild(playerId);
+				playerNode.appendChild(invNode);
+				playerNode.appendChild(equippedNode);
+				
+				root.appendChild(playerNode);
+				
+			}
+			
+			
+			storeInfo(document, "ItemBase.xml");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	protected static Node getInvNode(String nodeName, ArrayList<Accessory> inventory, Document document) {
+		Element invNode = document.createElement(nodeName);
+		for(Accessory item: inventory) {
+			Node itemNode = getAccessoryNode(item, document);
+			invNode.appendChild(itemNode);
+		}
+		return invNode;
+	}
 
+	
+	protected static Node getAccessoryNode(Accessory item, Document document) {
+		Element e = document.createElement("item");
+		Element name = document.createElement("name");
+		Element type = document.createElement("type");
+		Element lvl = document.createElement("lvl");
+		
+		name.setTextContent(item.getName());
+		type.setTextContent(item.getType());
+		lvl.setTextContent("" + item.getLevel());
+		
+		e.appendChild(name);
+		e.appendChild(type);
+		e.appendChild(lvl);
+		
+		if(item instanceof Arma) {
+			Element damage = document.createElement("damage");
+			Arma a = (Arma) item;
+			damage.setTextContent("" + a.getDamage());
+			e.appendChild(damage);
+		}
+		
+		return e;
+	}
 
 
 	public static boolean storePlayer(Personagens p) {
-
+		//falta meter para id
 		Document document = DatabaseReader.readDocument("PlayerBase.xml");
 
 		try {
@@ -196,8 +297,9 @@ public class DatabaseWriter {
 
 			Node databaseName = allPlayers.item(i);
 			if (databaseName.getNodeType() == Node.ELEMENT_NODE && databaseName.getTextContent().equals(name)) {
-
-				databaseName.getParentNode().removeChild(databaseName);
+				
+				Node player = databaseName.getParentNode();
+				player.getParentNode().removeChild(player);
 
 				try {
 					storeInfo(document, "PlayerBase.xml");

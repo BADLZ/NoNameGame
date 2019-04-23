@@ -51,4 +51,17 @@ public class Cuises extends Accessory {
 		String s = super.nomeArma + ": Basico " +super.bonusPersonagem+", Constituição "+ super.constituicao + ", Mira " + super.mira; 
 		return s;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o == this)
+			return true;
+		if(o == null || !(o instanceof Cuises))
+			return false;
+		Cuises c = (Cuises) o;
+		if(super.getName().equals(c.getName()) && super.getLevel() == c.getLevel() &&
+				super.getType().equals(c.getType()))
+			return true;
+		return false;
+	}
 }
